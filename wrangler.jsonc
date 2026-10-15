@@ -1,5 +1,7 @@
 {
-    "name": "928tech-website",
-    "compatibility_date": "2026-10-15",
-    "pages_build_output_dir": "./dist"
+  "name": "928tech-website",
+  "compatibility_date": "2026-10-15",
+  "assets": {
+    "directory": "./dist"
+  }
 }
