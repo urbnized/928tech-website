@@ -1,1 +1,17 @@
-﻿{"name":"928tech-website","compatibility_date":"2026-10-15","assets":{"directory":"./dist"}}
+﻿{
+  "name": "928tech-website",
+  "compatibility_date": "2026-10-15",
+  "assets": {
+    "directory": "./dist"
+  },
+  "routes": [
+    {
+      "pattern": "928tech.com",
+      "custom_domain": true
+    },
+    {
+      "pattern": "www.928tech.com",
+      "custom_domain": true
+    }
+  ]
+}
