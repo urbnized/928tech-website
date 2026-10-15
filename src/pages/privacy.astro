@@ -1,0 +1,122 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import ArizonaBadge from '../components/ArizonaBadge.astro';
+
+const pageTitle = "Privacy Policy | 928Tech";
+const pageDescription = "Transparent privacy disclosures for 928Tech request submissions, SMS consent terms, and data collection protocols.";
+---
+
+<Layout title={pageTitle} description={pageDescription}>
+  <Header slot="header" />
+
+  <section class="legal-section section-spacing">
+    <div class="container legal-container">
+      <div class="legal-header animate-slide-up">
+        <ArizonaBadge size="small" />
+        <h1 class="legal-title mt-space-2">Privacy Policy</h1>
+        <p class="legal-meta">Last Updated: May 26, 2026</p>
+      </div>
+
+      <div class="legal-body card-glass animate-fade-in">
+        <h2>1. Data Collection Protocols</h2>
+        <p>
+          At 928Tech, we prioritize honest, transparent, and fair relations. We collect personal contact information (such as name, company name, phone number, email address, and existing URL parameters) solely when you submit quote requests via our pricing calculator or lead forms.
+        </p>
+
+        <h2>2. Data Usage &amp; Consent</h2>
+        <p>
+          We use your submitted data exclusively to prepare custom site specifications, provide fixed-rate project roadmap estimates, and contact you directly. We will never sell, lease, or distribute your email address or phone numbers to third-party databases.
+        </p>
+
+        <h2>3. SMS Consent Disclosures</h2>
+        <p>
+          When you check the consent checkbox on our quote request forms, you explicitly authorize 928Tech to send you direct SMS text message replies or callback confirmations regarding your web project. You can opt-out of SMS text replies at any time by replying with **"STOP"**. Standard carrier message and data rates may apply.
+        </p>
+
+        <h2>4. Cookie Implementations</h2>
+        <p>
+          We utilize minimal, performance-optimized, secure cookies to store calculator preferences or referral URL values (such as page configurations passed from the pricing slider) to keep your quote session consistent.
+        </p>
+
+        <h2>5. Client Contacts</h2>
+        <p>
+          For any privacy questions or data deletion requests, please contact the founder directly:
+        </p>
+        <ul class="legal-contact-list">
+          <li><strong>Phone/Text:</strong> 928-458-8121</li>
+          <li><strong>Email:</strong> 928techaz@gmail.com</li>
+          <li><strong>Desk Address:</strong> Fort Mohave, AZ 86426</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <Footer slot="footer" />
+</Layout>
+
+<style>
+  .mt-space-2 { margin-top: var(--space-2); }
+  
+  .legal-container {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  
+  .legal-header {
+    margin-bottom: var(--space-4);
+  }
+  .legal-title {
+    font-size: clamp(2rem, 5vw, 3rem);
+    margin-bottom: 4px;
+  }
+  .legal-meta {
+    font-size: 0.9rem;
+    color: var(--color-text-muted);
+    font-weight: 500;
+  }
+
+  .legal-body {
+    padding: var(--space-4);
+  }
+  @media (min-width: 768px) {
+    .legal-body {
+      padding: var(--space-6);
+    }
+  }
+
+  .legal-body h2 {
+    font-size: 1.35rem;
+    margin-top: var(--space-4);
+    margin-bottom: var(--space-2);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    padding-bottom: var(--space-1);
+    color: var(--color-text-primary);
+  }
+  .legal-body h2:first-of-type {
+    margin-top: 0;
+  }
+
+  .legal-body p {
+    font-size: 1rem;
+    color: var(--color-text-secondary);
+    line-height: 1.7;
+    margin-bottom: var(--space-3);
+  }
+
+  .legal-contact-list {
+    margin-left: var(--space-3);
+    margin-top: var(--space-2);
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .legal-contact-list li {
+    font-size: 0.95rem;
+    color: var(--color-text-secondary);
+  }
+  .legal-contact-list strong {
+    color: var(--color-text-primary);
+  }
+</style>

@@ -1,0 +1,400 @@
+---
+import { getCollection } from 'astro:content';
+import Layout from '../../layouts/Layout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import ArizonaBadge from '../../components/ArizonaBadge.astro';
+
+const pageTitle = "Arizona Business Growth Blog & Guides | 928Tech";
+const pageDescription = "Learn how to optimize your small business website for speed, outrank competitors locally, and get cited in ChatGPT and AI engine searches.";
+
+// Retrieve and sort blog posts by pubDate
+const posts = await getCollection('blog');
+const sortedPosts = posts.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+
+// Extract unique tags across all posts
+const uniqueTags = [...new Set(sortedPosts.flatMap(post => post.data.tags))];
+---
+
+<Layout title={pageTitle} description={pageDescription}>
+  <Header slot="header" />
+
+  <!-- Blog Hero Segment -->
+  <section class="blog-hero section-spacing relative overflow-hidden">
+    <div class="glow-blob glow-blob-1"></div>
+    <div class="container text-center animate-slide-up">
+      <ArizonaBadge />
+      <h1 class="hero-title mt-space-2">Arizona Local <span class="text-gradient-sunset">Growth Blog &amp; Guides</span></h1>
+      <p class="hero-lead">
+        We make digital marketing and web design simple. Learn practical steps to rank higher on Google Maps, write high-converting copy, and optimize for Siri and ChatGPT search.
+      </p>
+    </div>
+  </section>
+
+  <!-- Tag Filter Widget Segment -->
+  <section class="filter-section pb-space-4">
+    <div class="container">
+      <div class="tag-filter-container card-glass">
+        <span class="filter-label">Filter Topics:</span>
+        <div class="tag-buttons-group" role="tablist" aria-label="Topic filters">
+          <button class="tag-filter-btn active" data-tag="all" role="tab" aria-selected="true">
+            All Articles
+          </button>
+          {uniqueTags.map(tag => (
+            <button class="tag-filter-btn" data-tag={tag} role="tab" aria-selected="false">
+              {tag}
+            </button>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Articles List Segment -->
+  <section class="blog-grid-section section-spacing pt-space-2">
+    <div class="container">
+      <div class="grid-3" id="blog-posts-grid">
+        {sortedPosts.map(post => (
+          <article 
+            class="blog-card card-glass animate-fade-in" 
+            data-tags={JSON.stringify(post.data.tags)}
+          >
+            <div class="blog-card-header">
+              <span class="blog-read-time">{post.data.readingTime}</span>
+              <span class="blog-date">
+                {post.data.pubDate.toLocaleDateString('en-US', {
+                  month: 'short',
+                  day: 'numeric',
+                  year: 'numeric'
+                })}
+              </span>
+            </div>
+            
+            <h3 class="blog-card-title">
+              <a href={`/blog/${post.slug}`} class="blog-title-link">
+                {post.data.title}
+              </a>
+            </h3>
+            
+            <p class="blog-card-desc">{post.data.description}</p>
+            
+            <div class="blog-card-tags">
+              {post.data.tags.map(t => (
+                <span class="blog-tag-pill">#{t}</span>
+              ))}
+            </div>
+
+            <div class="blog-card-footer">
+              <span class="blog-author">By {post.data.author}</span>
+              <a href={`/blog/${post.slug}`} class="blog-read-more" aria-label={`Read ${post.data.title}`}>
+                <span>Read Article</span>
+                <svg class="arrow-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <line x1="5" y1="12" x2="19" y2="12"/>
+                  <polyline points="12 5 19 12 12 19"/>
+                </svg>
+              </a>
+            </div>
+          </article>
+        ))}
+      </div>
+      
+      <!-- Empty State indicator (accessible) -->
+      <div id="blog-empty-state" class="empty-state card-glass text-center mt-space-4" style="display: none;">
+        <span class="empty-icon">📂</span>
+        <h3>No Articles Found</h3>
+        <p>We haven't written any guides for that specific topic yet. Select "All Articles" to see everything.</p>
+        <button class="btn btn-secondary" id="reset-filter-btn">View All Guides</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Bottom CTA Banner -->
+  <section class="cta-banner section-spacing">
+    <div class="container text-center card-glass cta-card relative overflow-hidden">
+      <div class="glow-blob glow-blob-3"></div>
+      <h2 class="cta-title">Need Help Structuring Local Keywords?</h2>
+      <p class="cta-subtitle">Let's audit your current business presence on search engines and maps, completely free with zero obligations.</p>
+      <div class="cta-actions">
+        <a href="/contact" class="btn btn-sunset">Request Free GBP Audit</a>
+        <a href="/pricing" class="btn btn-secondary">Estimate Custom Quote</a>
+      </div>
+      <p class="phone-disclaimer mt-space-2">Or call the founder directly at: <a href="tel:928-458-8121" class="text-gradient-green"><strong>928-458-8121</strong></a></p>
+    </div>
+  </section>
+
+  <Footer slot="footer" />
+</Layout>
+
+<style>
+  .mt-space-2 { margin-top: var(--space-2); }
+  .mt-space-4 { margin-top: var(--space-4); }
+  .pt-space-2 { padding-top: var(--space-2); }
+  .pb-space-4 { padding-bottom: var(--space-4); }
+  .text-center { text-align: center; }
+
+  /* Hero */
+  .blog-hero {
+    padding-top: var(--space-12);
+    padding-bottom: var(--space-3);
+  }
+  .hero-title {
+    font-size: clamp(2.2rem, 5vw, 3.5rem);
+    margin-bottom: var(--space-3);
+  }
+  .hero-lead {
+    font-size: 1.25rem;
+    color: var(--color-text-secondary);
+    max-width: 680px;
+    margin: 0 auto;
+  }
+
+  /* Tag filter widget */
+  .tag-filter-container {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+    padding: var(--space-3) var(--space-4);
+    align-items: center;
+  }
+  @media (min-width: 768px) {
+    .tag-filter-container {
+      flex-direction: row;
+      justify-content: space-between;
+    }
+  }
+
+  .filter-label {
+    font-family: var(--font-family-heading);
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: var(--color-text-primary);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  .tag-buttons-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-1);
+    justify-content: center;
+  }
+
+  .tag-filter-btn {
+    background: rgba(255, 255, 255, 0.02);
+    border: var(--border-glow);
+    padding: 0.35rem 0.85rem;
+    border-radius: var(--radius-sm);
+    color: var(--color-text-secondary);
+    font-size: 0.85rem;
+    font-family: var(--font-family-heading);
+    font-weight: 600;
+    cursor: pointer;
+    transition: all var(--transition-fast);
+  }
+  .tag-filter-btn:hover {
+    color: var(--color-text-primary);
+    background: rgba(255, 255, 255, 0.05);
+    border-color: rgba(255, 255, 255, 0.15);
+  }
+  .tag-filter-btn.active {
+    color: var(--color-bg-base);
+    background: var(--color-accent-green);
+    border-color: var(--color-accent-green);
+    box-shadow: var(--glow-green);
+  }
+
+  /* Blog Cards */
+  .blog-card {
+    display: flex;
+    flex-direction: column;
+    padding: var(--space-4);
+    min-height: 380px;
+    height: 100%;
+    border-color: rgba(255, 255, 255, 0.05);
+    transition: all var(--transition-normal);
+  }
+  .blog-card:hover {
+    border-color: rgba(11, 181, 92, 0.25);
+    box-shadow: var(--shadow-lg), var(--glow-green);
+  }
+
+  .blog-card-header {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.75rem;
+    color: var(--color-text-muted);
+    font-weight: 500;
+    margin-bottom: var(--space-2);
+  }
+  
+  .blog-card-title {
+    margin-bottom: var(--space-2);
+    font-size: 1.3rem;
+  }
+  .blog-title-link:hover {
+    color: var(--color-accent-green);
+  }
+
+  .blog-card-desc {
+    font-size: 0.95rem;
+    color: var(--color-text-secondary);
+    line-height: 1.6;
+    margin-bottom: var(--space-4);
+    flex-grow: 1;
+  }
+
+  .blog-card-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px;
+    margin-bottom: var(--space-3);
+  }
+  .blog-tag-pill {
+    font-size: 0.75rem;
+    color: var(--color-accent-green);
+    font-weight: 600;
+  }
+
+  .blog-card-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    padding-top: var(--space-2);
+    margin-top: auto;
+  }
+  .blog-author {
+    font-size: 0.8rem;
+    color: var(--color-text-muted);
+    font-weight: 500;
+  }
+
+  .blog-read-more {
+    display: flex;
+    align-items: center;
+    gap: var(--space-1);
+    font-family: var(--font-family-heading);
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--color-accent-green);
+    transition: gap var(--transition-fast);
+  }
+  .arrow-icon {
+    width: 14px;
+    height: 14px;
+    transition: transform var(--transition-fast);
+  }
+  .blog-card:hover .blog-read-more {
+    gap: 6px;
+  }
+  .blog-card:hover .arrow-icon {
+    transform: translateX(2px);
+  }
+
+  /* Empty state */
+  .empty-state {
+    padding: var(--space-6) var(--space-4);
+    max-width: 500px;
+    margin: var(--space-6) auto;
+  }
+  .empty-icon {
+    font-size: 2.5rem;
+    margin-bottom: var(--space-2);
+    display: block;
+  }
+
+  /* Bottom CTA Banner */
+  .cta-card {
+    padding: var(--space-6) var(--space-4);
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+  @media (min-width: 768px) {
+    .cta-card {
+      padding: var(--space-8) var(--space-6);
+    }
+  }
+  .cta-title {
+    font-size: clamp(1.8rem, 4vw, 2.5rem);
+    margin-bottom: var(--space-2);
+  }
+  .cta-subtitle {
+    font-size: 1.1rem;
+    color: var(--color-text-secondary);
+    max-width: 600px;
+    margin: 0 auto var(--space-4);
+  }
+  .cta-actions {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+  }
+  .phone-disclaimer {
+    font-size: 0.95rem;
+    color: var(--color-text-secondary);
+  }
+</style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const filterButtons = document.querySelectorAll('.tag-filter-btn');
+    const articles = document.querySelectorAll('.blog-card');
+    const emptyState = document.getElementById('blog-empty-state');
+    const resetBtn = document.getElementById('reset-filter-btn');
+
+    const filterArticles = (targetTag: string) => {
+      let visibleCount = 0;
+
+      articles.forEach(card => {
+        const cardTagsJson = (card as HTMLElement).dataset.tags || '[]';
+        const cardTags = JSON.parse(cardTagsJson) as string[];
+
+        // Transition fade-out first
+        (card as HTMLElement).style.opacity = '0';
+        
+        setTimeout(() => {
+          if (targetTag === 'all' || cardTags.includes(targetTag)) {
+            (card as HTMLElement).style.display = 'flex';
+            visibleCount++;
+            // Trigger reflow & fade-in
+            window.requestAnimationFrame(() => {
+              (card as HTMLElement).style.opacity = '1';
+            });
+          } else {
+            (card as HTMLElement).style.display = 'none';
+          }
+
+          // Toggle empty state cleanly after card iterations
+          if (emptyState) {
+            emptyState.style.display = visibleCount === 0 ? 'block' : 'none';
+          }
+        }, 150);
+      });
+    };
+
+    filterButtons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        filterButtons.forEach(b => {
+          b.classList.remove('active');
+          b.setAttribute('aria-selected', 'false');
+        });
+        
+        btn.classList.add('active');
+        btn.setAttribute('aria-selected', 'true');
+        
+        const targetTag = (btn as HTMLElement).dataset.tag || 'all';
+        filterArticles(targetTag);
+      });
+    });
+
+    if (resetBtn) {
+      resetBtn.addEventListener('click', () => {
+        const allBtn = document.querySelector('.tag-filter-btn[data-tag="all"]') as HTMLButtonElement;
+        if (allBtn) {
+          allBtn.click();
+        }
+      });
+    }
+  });
+</script>

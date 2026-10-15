@@ -1,0 +1,326 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import ArizonaBadge from '../components/ArizonaBadge.astro';
+
+const pageTitle = "Our Story & Friendly, Fair Values | 928Tech";
+const pageDescription = "Why we founded 928Tech to protect Arizona small businesses from slow website templates, high recurring fees, and proprietary software lock-ins. Read our values.";
+---
+
+<Layout title={pageTitle} description={pageDescription}>
+  <Header slot="header" />
+
+  <!-- About Hero Section -->
+  <section class="about-hero section-spacing relative overflow-hidden">
+    <div class="glow-blob glow-blob-1"></div>
+    <div class="container grid-2 align-center">
+      <div class="hero-content animate-slide-up">
+        <ArizonaBadge />
+        <h1 class="hero-title mt-space-2">Friendly, Fair &amp; <span class="text-gradient-green">100% Arizona-Owned</span></h1>
+        <p class="hero-lead">
+          We founded 928Tech to solve a massive problem local small businesses face: getting locked into slow, expensive template websites they don't actually own.
+        </p>
+        <p>
+          We operate right here in Northern and Western Arizona. When you call us, you talk to the developer who writes your code. No sales reps, no support ticketing lines, and no technical jargon.
+        </p>
+        <div class="hero-actions">
+          <a href="/contact" class="btn btn-sunset">Start a Conversation</a>
+          <a href="#our-values" class="btn btn-secondary">Read Our Values</a>
+        </div>
+      </div>
+
+      <div class="hero-visual animate-fade-in">
+        <!-- Visual badge representing code freedom -->
+        <div class="code-freedom-badge card-glass">
+          <div class="badge-ring">
+            <span class="lock-icon">🔓</span>
+          </div>
+          <h3 class="badge-title text-gradient-green">Code &amp; Asset Freedom</h3>
+          <p class="badge-text">
+            We pledge to never hold your domain name hostage, lock your files inside proprietary builders, or restrict where your site is hosted.
+          </p>
+          <div class="badge-tag">100% Ownership Guaranteed</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Core Values Grid Section -->
+  <section class="values-section section-spacing" id="our-values">
+    <div class="container">
+      <div class="section-header text-center">
+        <h2 class="section-title">The <span class="text-gradient-green">Friendly &amp; Fair</span> Way of Business</h2>
+        <p class="section-subtitle">We run our agency under simple principles that prioritize transparency, trust, and exceptional results.</p>
+      </div>
+
+      <div class="grid-3 mt-space-6">
+        <!-- Value Card 1 -->
+        <div class="value-card card-glass">
+          <div class="value-icon">🤝</div>
+          <h3 class="value-title">Absolute Transparency</h3>
+          <p class="value-desc">
+            No hidden support fees, surprise monthly additions, or proprietary hosting markups. Every project receives a fixed-scope, fully itemized invoice. You know exactly where every dollar goes.
+          </p>
+        </div>
+
+        <!-- Value Card 2 -->
+        <div class="value-card card-glass">
+          <div class="value-icon">🏗️</div>
+          <h3 class="value-title">Bespoke Clean Code</h3>
+          <p class="value-desc">
+            We write clean, semantic HTML and CSS using the modern Astro framework. This means your website is incredibly fast, secure, search-engine accessible, and scalable for years to come.
+          </p>
+        </div>
+
+        <!-- Value Card 3 -->
+        <div class="value-card card-glass">
+          <div class="value-icon">🌵</div>
+          <h3 class="value-title">Arizona-Focused Support</h3>
+          <p class="value-desc">
+            We understand the Arizona economy, geographic service markets, and local small business demographics. We build strategies customized to attract physical phone calls and local walk-ins.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Code Ownership manifesto -->
+  <section class="manifesto-section section-spacing relative overflow-hidden">
+    <div class="glow-blob glow-blob-2"></div>
+    <div class="container card-glass manifesto-box">
+      <h2 class="section-title text-center">Our Small Business <span class="text-gradient-sunset">Code of Ethics</span></h2>
+      <div class="manifesto-content mt-space-4">
+        <p>
+          Many template builders and large marketing agencies make it incredibly difficult to cancel their services. If you leave, they cancel your site and hold your domain name hostage, forcing you to pay thousands of dollars in buyout fees.
+        </p>
+        <p>
+          <strong>At 928Tech, we believe this is wrong.</strong> When you work with us, you receive a modern asset that is fully yours. We believe in earning your business through exceptional service and results, not through lock-in contracts and proprietary software.
+        </p>
+        <div class="checklist grid-2 mt-space-3">
+          <div class="check-item">
+            <span class="check-icon">✓</span>
+            <span>You own 100% of the domain name registrations.</span>
+          </div>
+          <div class="check-item">
+            <span class="check-icon">✓</span>
+            <span>You own 100% of the graphic assets, branding, and copy.</span>
+          </div>
+          <div class="check-item">
+            <span class="check-icon">✓</span>
+            <span>You own the Astro source code files in a standard Git repository.</span>
+          </div>
+          <div class="check-item">
+            <span class="check-icon">✓</span>
+            <span>You can host your site anywhere for pennies (we help you deploy on free CDNs!).</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA banner -->
+  <section class="cta-banner section-spacing">
+    <div class="container text-center card-glass cta-card relative overflow-hidden">
+      <div class="glow-blob glow-blob-3"></div>
+      <h2 class="cta-title">Ready to Experience a Fair Partnership?</h2>
+      <p class="cta-subtitle">Let's build a fast, high-ranking digital asset your Arizona small business fully owns. Call or text the founder directly.</p>
+      <div class="cta-actions">
+        <a href="/contact" class="btn btn-sunset">Request Custom Blueprint</a>
+        <a href="/pricing" class="btn btn-secondary">Calculate Build Quote</a>
+      </div>
+      <p class="phone-disclaimer mt-space-2">Or call the founder directly at: <a href="tel:928-458-8121" class="text-gradient-green"><strong>928-458-8121</strong></a></p>
+    </div>
+  </section>
+
+  <Footer slot="footer" />
+</Layout>
+
+<style>
+  .mt-space-2 { margin-top: var(--space-2); }
+  .mt-space-3 { margin-top: var(--space-3); }
+  .mt-space-4 { margin-top: var(--space-4); }
+  .mt-space-6 { margin-top: var(--space-6); }
+  .text-center { text-align: center; }
+  .align-center { align-items: center; }
+
+  /* Hero Section */
+  .about-hero {
+    padding-top: var(--space-12);
+  }
+  .hero-title {
+    font-size: clamp(2.2rem, 5vw, 3.5rem);
+    margin-bottom: var(--space-3);
+  }
+  .hero-lead {
+    font-size: 1.25rem;
+    color: var(--color-text-secondary);
+    margin-bottom: var(--space-3);
+    max-width: 580px;
+    font-weight: 500;
+  }
+  .hero-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+    margin-top: var(--space-4);
+  }
+
+  /* Code Freedom visual badge */
+  .code-freedom-badge {
+    border-radius: var(--radius-lg);
+    background: rgba(13, 21, 39, 0.7);
+    border: var(--border-glow);
+    padding: var(--space-6) var(--space-4);
+    text-align: center;
+    max-width: 440px;
+    margin: var(--space-6) auto 0;
+    box-shadow: var(--shadow-lg), var(--glow-green);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-2);
+  }
+  @media (min-width: 768px) {
+    .code-freedom-badge {
+      margin-top: 0;
+    }
+  }
+
+  .badge-ring {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    background: rgba(11, 181, 92, 0.1);
+    border: 2px solid var(--color-accent-green);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: var(--glow-green);
+    margin-bottom: var(--space-2);
+  }
+  .lock-icon {
+    font-size: 2rem;
+  }
+  .badge-title {
+    font-size: 1.35rem;
+  }
+  .badge-text {
+    font-size: 0.9rem;
+    color: var(--color-text-secondary);
+    line-height: 1.5;
+  }
+  .badge-tag {
+    font-family: var(--font-family-heading);
+    font-size: 0.8rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: var(--color-bg-base);
+    background: var(--gradient-sunset);
+    padding: 0.25rem 0.75rem;
+    border-radius: var(--radius-full);
+    margin-top: var(--space-2);
+  }
+
+  /* Values Section */
+  .section-header {
+    max-width: 700px;
+    margin: 0 auto var(--space-6);
+  }
+  .section-title {
+    font-size: clamp(1.8rem, 4vw, 2.5rem);
+    margin-bottom: var(--space-2);
+  }
+  .section-subtitle {
+    font-size: 1.05rem;
+    color: var(--color-text-secondary);
+  }
+
+  .value-card {
+    padding: var(--space-4);
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .value-icon {
+    font-size: 2rem;
+    margin-bottom: var(--space-2);
+  }
+  .value-title {
+    margin-bottom: var(--space-2);
+  }
+  .value-desc {
+    font-size: 0.95rem;
+    color: var(--color-text-secondary);
+    line-height: 1.6;
+    margin-bottom: 0;
+  }
+
+  /* Manifesto Section */
+  .manifesto-box {
+    padding: var(--space-6) var(--space-4);
+    max-width: 900px;
+    margin: 0 auto;
+    border-color: rgba(11, 181, 92, 0.2);
+  }
+  @media (min-width: 768px) {
+    .manifesto-box {
+      padding: var(--space-8) var(--space-6);
+    }
+  }
+
+  .manifesto-content p {
+    font-size: 1.1rem;
+    line-height: 1.7;
+    margin-bottom: var(--space-3);
+  }
+
+  .checklist {
+    border-top: 1px dashed rgba(255, 255, 255, 0.08);
+    padding-top: var(--space-4);
+  }
+  .check-item {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    font-size: 0.95rem;
+    color: var(--color-text-secondary);
+  }
+  .check-icon {
+    color: var(--color-accent-green);
+    font-weight: bold;
+    font-size: 1.25rem;
+  }
+
+  /* Bottom CTA Banner */
+  .cta-card {
+    padding: var(--space-6) var(--space-4);
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+  @media (min-width: 768px) {
+    .cta-card {
+      padding: var(--space-8) var(--space-6);
+    }
+  }
+  .cta-title {
+    font-size: clamp(1.8rem, 4vw, 2.5rem);
+    margin-bottom: var(--space-2);
+  }
+  .cta-subtitle {
+    font-size: 1.1rem;
+    color: var(--color-text-secondary);
+    max-width: 600px;
+    margin: 0 auto var(--space-4);
+  }
+  .cta-actions {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+  }
+  .phone-disclaimer {
+    font-size: 0.95rem;
+    color: var(--color-text-secondary);
+  }
+</style>

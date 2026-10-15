@@ -1,0 +1,232 @@
+---
+interface FaqItem {
+  question: string;
+  answer: string;
+}
+
+interface Props {
+  items: FaqItem[];
+}
+
+const { items } = Astro.props;
+---
+
+<div class="faq-accordion-container">
+  {items.map((item, index) => (
+    <details class="faq-details card-glass" data-index={index}>
+      <summary class="faq-summary">
+        <span class="faq-question">{item.question}</span>
+        <span class="faq-toggle-icon">
+          <svg class="plus-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="12" y1="5" x2="12" y2="19"></line>
+            <line x1="5" y1="12" x2="19" y2="12"></line>
+          </svg>
+        </span>
+      </summary>
+      <div class="faq-content-wrapper">
+        <div class="faq-answer">
+          <p set:html={item.answer} />
+        </div>
+      </div>
+    </details>
+  ))}
+</div>
+
+<style>
+  .faq-accordion-container {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  .faq-details {
+    padding: 0;
+    transition: all var(--transition-normal);
+  }
+  .faq-details[open] {
+    border-color: rgba(11, 181, 92, 0.3);
+    box-shadow: var(--shadow-lg), var(--glow-green);
+  }
+
+  .faq-summary {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-3);
+    padding: var(--space-3) var(--space-4);
+    font-family: var(--font-family-heading);
+    font-size: 1.15rem;
+    font-weight: 600;
+    cursor: pointer;
+    list-style: none; /* Hide default summary arrow */
+    user-select: none;
+  }
+  /* Hide summary marker for Safari */
+  .faq-summary::-webkit-details-marker {
+    display: none;
+  }
+
+  .faq-question {
+    color: var(--color-text-primary);
+    transition: color var(--transition-fast);
+  }
+  .faq-summary:hover .faq-question {
+    color: var(--color-accent-green);
+  }
+
+  .faq-toggle-icon {
+    width: 32px;
+    height: 32px;
+    border-radius: var(--radius-full);
+    background: rgba(255, 255, 255, 0.03);
+    border: var(--border-glow);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-text-secondary);
+    transition: all var(--transition-normal);
+    flex-shrink: 0;
+  }
+  .faq-summary:hover .faq-toggle-icon {
+    color: var(--color-accent-green);
+    border-color: rgba(11, 181, 92, 0.3);
+    background: rgba(11, 181, 92, 0.08);
+  }
+
+  .plus-icon {
+    width: 16px;
+    height: 16px;
+    transition: transform var(--transition-normal);
+  }
+
+  /* When accordion is open, rotate the plus into a minus/cross */
+  .faq-details[open] .plus-icon {
+    transform: rotate(45deg);
+    color: var(--color-accent-green);
+  }
+  .faq-details[open] .faq-toggle-icon {
+    border-color: rgba(11, 181, 92, 0.4);
+    background: rgba(11, 181, 92, 0.1);
+  }
+
+  /* Answer segment containing sliding effect wrapper */
+  .faq-content-wrapper {
+    overflow: hidden;
+  }
+
+  .faq-answer {
+    padding: 0 var(--space-4) var(--space-4);
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    animation: slideDown 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+
+  .faq-answer p {
+    font-size: 1rem;
+    line-height: 1.7;
+    color: var(--color-text-secondary);
+    margin-bottom: 0;
+  }
+
+  @keyframes slideDown {
+    from {
+      opacity: 0;
+      transform: translateY(-8px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+</style>
+
+<script>
+  // Dynamic smooth height toggle logic for `<details>` element (progressive enhancement)
+  class Accordion {
+    el: HTMLDetailsElement;
+    summary: HTMLElement;
+    content: HTMLElement;
+    animation: Animation | null = null;
+    isClosing = false;
+    isExpanding = false;
+
+    constructor(el: HTMLDetailsElement) {
+      this.el = el;
+      this.summary = el.querySelector('summary')!;
+      this.content = el.querySelector('.faq-content-wrapper')!;
+      
+      this.summary.addEventListener('click', (e) => this.onClick(e));
+    }
+
+    onClick(e: Event) {
+      e.preventDefault();
+      this.el.style.overflow = 'hidden';
+      if (this.isClosing || !this.el.open) {
+        this.open();
+      } else if (this.isExpanding || this.el.open) {
+        this.shrink();
+      }
+    }
+
+    shrink() {
+      this.isClosing = true;
+      const startHeight = `${this.el.offsetHeight}px`;
+      const endHeight = `${this.summary.offsetHeight}px`;
+      
+      if (this.animation) {
+        this.animation.cancel();
+      }
+      
+      this.animation = this.el.animate({
+        height: [startHeight, endHeight]
+      }, {
+        duration: 250,
+        easing: 'ease-out'
+      });
+      
+      this.animation.onfinish = () => this.onAnimationFinish(false);
+      this.animation.oncancel = () => this.isClosing = false;
+    }
+
+    open() {
+      this.el.style.height = `${this.el.offsetHeight}px`;
+      this.el.open = true;
+      window.requestAnimationFrame(() => this.expand());
+    }
+
+    expand() {
+      this.isExpanding = true;
+      const startHeight = `${this.el.offsetHeight}px`;
+      const endHeight = `${this.summary.offsetHeight + this.content.offsetHeight}px`;
+      
+      if (this.animation) {
+        this.animation.cancel();
+      }
+      
+      this.animation = this.el.animate({
+        height: [startHeight, endHeight]
+      }, {
+        duration: 300,
+        easing: 'cubic-bezier(0.16, 1, 0.3, 1)'
+      });
+      
+      this.animation.onfinish = () => this.onAnimationFinish(true);
+      this.animation.oncancel = () => this.isExpanding = false;
+    }
+
+    onAnimationFinish(open: boolean) {
+      this.el.open = open;
+      this.animation = null;
+      this.isClosing = false;
+      this.isExpanding = false;
+      this.el.style.height = '';
+      this.el.style.overflow = '';
+    }
+  }
+
+  document.querySelectorAll('.faq-details').forEach((el) => {
+    new Accordion(el as HTMLDetailsElement);
+  });
+</script>

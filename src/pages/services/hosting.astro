@@ -1,0 +1,473 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import ArizonaBadge from '../../components/ArizonaBadge.astro';
+
+const pageTitle = "Ultra-Fast Managed Website Hosting Arizona | 928Tech";
+const pageDescription = "Stress-free, high-speed secure website hosting built on Cloudflare CDN edges. Daily backups, standard SSL, DDoS security, and local support. Host your website today.";
+---
+
+<Layout title={pageTitle} description={pageDescription}>
+  <Header slot="header" />
+
+  <!-- Hero Section -->
+  <section class="hosting-hero section-spacing relative overflow-hidden">
+    <div class="glow-blob glow-blob-1"></div>
+    <div class="container hero-container grid-2">
+      <div class="hero-content animate-slide-up">
+        <ArizonaBadge />
+        <h1 class="hero-title mt-space-2">High-Speed, Secure <span class="text-gradient-green">Managed Hosting</span></h1>
+        <p class="hero-lead">
+          Stop renting slow shared server space from GoDaddy or HostGator. We deliver lightning-fast, ultra-secure hosting backed by global Cloudflare Edge networks and responsive local Arizona support.
+        </p>
+        <div class="hero-actions">
+          <a href="/contact?pages=5&hosting=managed" class="btn btn-sunset">Request Server Audit</a>
+          <a href="#hosting-features" class="btn btn-secondary">Explore Security Features</a>
+        </div>
+      </div>
+
+      <div class="hero-visual animate-fade-in">
+        <!-- Visual widget representing a server chassis -->
+        <div class="server-chassis card-glass">
+          <div class="chassis-header">
+            <span class="pulse-indicator"></span>
+            <span class="chassis-title">928TECH EDGE-NODE-01</span>
+          </div>
+          <div class="chassis-body">
+            <div class="chassis-drive active">
+              <span class="drive-led"></span>
+              <span class="drive-label">SSD DRIVE 01: CACHED SYSTEM</span>
+              <span class="drive-status">99.9% Uptime</span>
+            </div>
+            <div class="chassis-drive active">
+              <span class="drive-led"></span>
+              <span class="drive-label">SSD DRIVE 02: AUTOMATED BACKUPS</span>
+              <span class="drive-status">Secure Daily</span>
+            </div>
+            <div class="chassis-drive active">
+              <span class="drive-led"></span>
+              <span class="drive-label">FIREWALL SHIELD: DDOS GUARD</span>
+              <span class="drive-status">Active</span>
+            </div>
+          </div>
+          <div class="chassis-stats">
+            <div class="stat-box">
+              <span class="stat-num text-gradient-green">&lt; 0.2s</span>
+              <span class="stat-lbl">Time to First Byte</span>
+            </div>
+            <div class="stat-box">
+              <span class="stat-num text-gradient-green">100%</span>
+              <span class="stat-lbl">Edge CDN Caching</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Core Features Section -->
+  <section class="hosting-features section-spacing" id="hosting-features">
+    <div class="container">
+      <div class="section-header text-center">
+        <h2 class="section-title">Enterprise Security, <span class="text-gradient-green">Local Support</span></h2>
+        <p class="section-subtitle">We manage the infrastructure completely, so you can focus entirely on running your business.</p>
+      </div>
+
+      <div class="grid-3 mt-space-6">
+        <!-- Feature 1 -->
+        <div class="feature-card card-glass">
+          <div class="feature-icon-circle">🛡️</div>
+          <h3 class="feature-title">SSL &amp; DDoS Protection</h3>
+          <p class="feature-desc">
+            We wrap your site in modern encryption protocols. Every website includes standard HTTPS SSL certificates and advanced security layers protecting your site from spam bots and hackers.
+          </p>
+        </div>
+
+        <!-- Feature 2 -->
+        <div class="feature-card card-glass">
+          <div class="feature-icon-circle">💾</div>
+          <h3 class="feature-title">Daily Cloud Backups</h3>
+          <p class="feature-desc">
+            We take off-site snapshot backups of your entire website every 24 hours. If you ever accidentally delete a page or make an error, we can restore it with a single click.
+          </p>
+        </div>
+
+        <!-- Feature 3 -->
+        <div class="feature-card card-glass">
+          <div class="feature-icon-circle">📞</div>
+          <h3 class="feature-title">Direct Local Support</h3>
+          <p class="feature-desc">
+            No endless support ticket queues, AI chat bots, or overseas call centers. If you have an update or a question, you call or text our direct Arizona number at **928-458-8121**.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Core Infrastructure Grid -->
+  <section class="infra-section section-spacing relative overflow-hidden">
+    <div class="glow-blob glow-blob-2"></div>
+    <div class="container">
+      <div class="grid-2 align-center">
+        <div class="infra-content">
+          <h2 class="section-title">Why Server Uptime and <span class="text-gradient-sunset">Page Speed Matter</span></h2>
+          <p>
+            Slow websites lose clients. According to industry studies, every 1-second delay in page load time causes a **7% loss in conversions** and leads to dramatic drop-offs in Google search results.
+          </p>
+          <p>
+            Traditional hosting companies stack thousands of websites onto a single "shared server" to maximize profits. When one site gets high traffic, every other site slows to a crawl.
+          </p>
+          <div class="spec-checklist mt-space-3">
+            <div class="check-item">
+              <span class="check-mark">✓</span>
+              <span><strong>Cloudflare Edge CDN:</strong> We distribute your website globally, caching copies close to where your Arizona customers are searching.</span>
+            </div>
+            <div class="check-item">
+              <span class="check-mark">✓</span>
+              <span><strong>Isolated Environments:</strong> Zero risk of neighboring site security breaches slowing down your local asset.</span>
+            </div>
+            <div class="check-item">
+              <span class="check-mark">✓</span>
+              <span><strong>Professional Business Emails:</strong> Set up secure `name@mybusiness.com` accounts linked to Apple Mail, Outlook, or Gmail.</span>
+            </div>
+          </div>
+        </div>
+        
+        <div class="infra-graphic">
+          <div class="network-chart card-glass">
+            <h4 class="chart-title">Global Edge Response Times (ms)</h4>
+            <div class="chart-bars">
+              <div class="chart-row">
+                <span class="chart-label">928Tech CDN</span>
+                <div class="chart-bar-container">
+                  <div class="chart-bar green-bar" style="width: 25%;"></div>
+                </div>
+                <span class="chart-val">12ms</span>
+              </div>
+              <div class="chart-row">
+                <span class="chart-label">Bluehost Shared</span>
+                <div class="chart-bar-container">
+                  <div class="chart-bar red-bar" style="width: 75%;"></div>
+                </div>
+                <span class="chart-val">340ms</span>
+              </div>
+              <div class="chart-row">
+                <span class="chart-label">GoDaddy Deluxe</span>
+                <div class="chart-bar-container">
+                  <div class="chart-bar red-bar" style="width: 90%;"></div>
+                </div>
+                <span class="chart-val">420ms</span>
+              </div>
+            </div>
+            <p class="chart-footer">Source: Independent CDN TTFB Benchmark Audits, 2026.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ and Bottom CTA Banner -->
+  <section class="cta-banner section-spacing">
+    <div class="container text-center card-glass cta-card relative overflow-hidden">
+      <div class="glow-blob glow-blob-3"></div>
+      <h2 class="cta-title">Tired of Slow Support and Hidden Platform Fees?</h2>
+      <p class="cta-subtitle">Let us handle your migrations completely free. We will move your site, set up your CDN, and verify perfect speeds.</p>
+      <div class="cta-actions">
+        <a href="/contact?hosting=managed" class="btn btn-sunset">Claim Free Site Migration</a>
+        <a href="/pricing" class="btn btn-secondary">Compare Pricing Plans</a>
+      </div>
+      <p class="phone-disclaimer mt-space-2">Or call the founder directly at: <a href="tel:928-458-8121" class="text-gradient-green"><strong>928-458-8121</strong></a></p>
+    </div>
+  </section>
+
+  <Footer slot="footer" />
+</Layout>
+
+<style>
+  .mt-space-2 { margin-top: var(--space-2); }
+  .mt-space-3 { margin-top: var(--space-3); }
+  .mt-space-6 { margin-top: var(--space-6); }
+  .text-center { text-align: center; }
+  .align-center { align-items: center; }
+
+  /* Hero Section */
+  .hosting-hero {
+    padding-top: var(--space-12);
+  }
+  .hero-container {
+    align-items: center;
+  }
+  .hero-title {
+    font-size: clamp(2.2rem, 5vw, 3.5rem);
+    margin-bottom: var(--space-3);
+  }
+  .hero-lead {
+    font-size: 1.2rem;
+    color: var(--color-text-secondary);
+    margin-bottom: var(--space-4);
+    max-width: 580px;
+  }
+  .hero-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+  }
+
+  /* Server Visual widget */
+  .server-chassis {
+    border-radius: var(--radius-lg);
+    background: rgba(13, 21, 39, 0.7);
+    border: var(--border-glow);
+    padding: var(--space-4);
+    max-width: 480px;
+    margin: var(--space-4) auto 0;
+    box-shadow: var(--shadow-lg), var(--glow-blue);
+  }
+  @media (min-width: 768px) {
+    .server-chassis {
+      margin-top: 0;
+    }
+  }
+
+  .chassis-header {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    padding-bottom: var(--space-2);
+    margin-bottom: var(--space-3);
+  }
+  .pulse-indicator {
+    width: 10px;
+    height: 10px;
+    background: var(--color-accent-green);
+    border-radius: 50%;
+    box-shadow: 0 0 8px var(--color-accent-green);
+    animation: pulse 2s infinite;
+  }
+  @keyframes pulse {
+    0% { transform: scale(0.95); opacity: 0.5; }
+    50% { transform: scale(1.1); opacity: 1; }
+    100% { transform: scale(0.95); opacity: 0.5; }
+  }
+  .chassis-title {
+    font-family: monospace;
+    font-size: 0.85rem;
+    color: var(--color-text-primary);
+    font-weight: 700;
+  }
+
+  .chassis-body {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+    margin-bottom: var(--space-4);
+  }
+  .chassis-drive {
+    background: rgba(4, 9, 20, 0.6);
+    border: var(--border-glow);
+    padding: 0.65rem 1rem;
+    border-radius: var(--radius-sm);
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+  }
+  .drive-led {
+    width: 8px;
+    height: 8px;
+    background: var(--color-accent-green);
+    border-radius: 50%;
+  }
+  .drive-label {
+    font-family: monospace;
+    font-size: 0.8rem;
+    color: var(--color-text-secondary);
+    flex-grow: 1;
+  }
+  .drive-status {
+    font-family: monospace;
+    font-size: 0.8rem;
+    color: var(--color-accent-green);
+    font-weight: bold;
+  }
+
+  .chassis-stats {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-2);
+    border-top: 1px dashed rgba(255, 255, 255, 0.05);
+    padding-top: var(--space-3);
+  }
+  .stat-box {
+    text-align: center;
+    background: rgba(255, 255, 255, 0.01);
+    border-radius: var(--radius-sm);
+    padding: var(--space-2);
+  }
+  .stat-num {
+    display: block;
+    font-family: var(--font-family-heading);
+    font-size: 1.5rem;
+    font-weight: 700;
+  }
+  .stat-lbl {
+    font-size: 0.75rem;
+    color: var(--color-text-muted);
+  }
+
+  /* Features Grid Section */
+  .section-header {
+    max-width: 700px;
+    margin: 0 auto var(--space-6);
+  }
+  .section-title {
+    font-size: clamp(1.8rem, 4vw, 2.5rem);
+    margin-bottom: var(--space-2);
+  }
+  .section-subtitle {
+    font-size: 1.05rem;
+    color: var(--color-text-secondary);
+  }
+
+  .feature-card {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: var(--space-4);
+  }
+  .feature-icon-circle {
+    width: 44px;
+    height: 44px;
+    border-radius: var(--radius-md);
+    background: rgba(255, 255, 255, 0.03);
+    border: var(--border-glow);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.35rem;
+    margin-bottom: var(--space-3);
+  }
+  .feature-title {
+    margin-bottom: var(--space-2);
+  }
+  .feature-desc {
+    font-size: 0.95rem;
+    color: var(--color-text-secondary);
+    line-height: 1.6;
+    margin-bottom: 0;
+  }
+
+  /* Infrastructure Grid */
+  .spec-checklist {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+  }
+  .check-item {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--space-2);
+    font-size: 1rem;
+    color: var(--color-text-secondary);
+  }
+  .check-mark {
+    color: var(--color-accent-green);
+    font-weight: bold;
+    font-size: 1.2rem;
+    line-height: 1;
+  }
+
+  /* Network Response Chart */
+  .network-chart {
+    padding: var(--space-4);
+    max-width: 460px;
+    margin: var(--space-4) auto 0;
+  }
+  @media (min-width: 768px) {
+    .network-chart {
+      margin-top: 0;
+    }
+  }
+
+  .chart-title {
+    margin-bottom: var(--space-3);
+    font-size: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--color-text-secondary);
+  }
+  .chart-bars {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+    margin-bottom: var(--space-2);
+  }
+  .chart-row {
+    display: grid;
+    grid-template-columns: 2fr 4fr 1fr;
+    align-items: center;
+    gap: var(--space-2);
+  }
+  .chart-label {
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: var(--color-text-primary);
+  }
+  .chart-bar-container {
+    background: rgba(255, 255, 255, 0.05);
+    height: 8px;
+    border-radius: var(--radius-full);
+    overflow: hidden;
+  }
+  .chart-bar {
+    height: 100%;
+    border-radius: var(--radius-full);
+  }
+  .green-bar { background: var(--color-accent-green); }
+  .red-bar { background: var(--color-accent-red); }
+  .chart-val {
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--color-text-secondary);
+    text-align: right;
+  }
+  .chart-footer {
+    font-size: 0.7rem;
+    color: var(--color-text-muted);
+    margin-top: var(--space-2);
+    margin-bottom: 0;
+  }
+
+  /* Bottom CTA Banner */
+  .cta-card {
+    padding: var(--space-6) var(--space-4);
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+  @media (min-width: 768px) {
+    .cta-card {
+      padding: var(--space-8) var(--space-6);
+    }
+  }
+  .cta-title {
+    font-size: clamp(1.8rem, 4vw, 2.5rem);
+    margin-bottom: var(--space-2);
+  }
+  .cta-subtitle {
+    font-size: 1.1rem;
+    color: var(--color-text-secondary);
+    max-width: 600px;
+    margin: 0 auto var(--space-4);
+  }
+  .cta-actions {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+  }
+  .phone-disclaimer {
+    font-size: 0.95rem;
+    color: var(--color-text-secondary);
+  }
+</style>

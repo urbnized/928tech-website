@@ -1,0 +1,202 @@
+---
+interface Props {
+  title: string;
+  description: string;
+  href: string;
+  iconName: 'web' | 'server' | 'brain' | 'help';
+  badgeText?: string;
+  colorTheme?: 'green' | 'sunset' | 'blue';
+}
+
+const { 
+  title, 
+  description, 
+  href, 
+  iconName, 
+  badgeText, 
+  colorTheme = 'green' 
+} = Astro.props;
+
+// Accent class based on theme
+const borderGlowClass = `theme-${colorTheme}`;
+---
+
+<div class={`card-glass service-card ${borderGlowClass}`}>
+  {badgeText && (
+    <span class="card-badge">{badgeText}</span>
+  )}
+  
+  <div class="card-icon-container">
+    {iconName === 'web' && (
+      <svg class="service-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="2" y="3" width="20" height="14" rx="2" ry="2"/>
+        <line x1="8" y1="21" x2="16" y2="21"/>
+        <line x1="12" y1="17" x2="12" y2="21"/>
+      </svg>
+    )}
+    
+    {iconName === 'server' && (
+      <svg class="service-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="2" y="2" width="20" height="8" rx="2" ry="2"/>
+        <rect x="2" y="14" width="20" height="8" rx="2" ry="2"/>
+        <line x1="6" y1="6" x2="6.01" y2="6"/>
+        <line x1="6" y1="18" x2="6.01" y2="18"/>
+        <line x1="20" y1="6" x2="20.01" y2="6"/>
+        <line x1="20" y1="18" x2="20.01" y2="18"/>
+      </svg>
+    )}
+    
+    {iconName === 'brain' && (
+      <svg class="service-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M9.5 2A2.5 2.5 0 0 1 12 4.5v15a2.5 2.5 0 0 1-4.96-.44 2.5 2.5 0 0 1 0-3.12 3 3 0 0 1 0-4.88 2.5 2.5 0 0 1 0-3.12A2.5 2.5 0 0 1 9.5 2z"/>
+        <path d="M14.5 2A2.5 2.5 0 0 0 12 4.5v15a2.5 2.5 0 0 0 4.96-.44 2.5 2.5 0 0 0 0-3.12 3 3 0 0 0 0-4.88 2.5 2.5 0 0 0 0-3.12A2.5 2.5 0 0 0 14.5 2z"/>
+      </svg>
+    )}
+    
+    {iconName === 'help' && (
+      <svg class="service-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/>
+      </svg>
+    )}
+  </div>
+
+  <h3 class="card-title">{title}</h3>
+  <p class="card-desc">{description}</p>
+  
+  <div class="card-action-container">
+    <a href={href} class="card-cta-link" aria-label={`Learn more about ${title}`}>
+      <span>Discover Details</span>
+      <svg class="arrow-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <line x1="5" y1="12" x2="19" y2="12"/>
+        <polyline points="12 5 19 12 12 19"/>
+      </svg>
+    </a>
+  </div>
+</div>
+
+<style>
+  .service-card {
+    display: flex;
+    flex-direction: column;
+    min-height: 320px;
+    height: 100%;
+    z-index: 2;
+  }
+
+  .card-badge {
+    position: absolute;
+    top: var(--space-2);
+    right: var(--space-2);
+    font-family: var(--font-family-heading);
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--color-bg-base);
+    background: var(--gradient-sunset);
+    padding: 0.25rem 0.75rem;
+    border-radius: var(--radius-full);
+    z-index: 5;
+  }
+
+  .card-icon-container {
+    width: 54px;
+    height: 54px;
+    border-radius: var(--radius-md);
+    background: rgba(255, 255, 255, 0.03);
+    border: var(--border-glow);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: var(--space-3);
+    transition: all var(--transition-normal);
+  }
+
+  .service-icon {
+    width: 24px;
+    height: 24px;
+    transition: transform var(--transition-normal);
+  }
+
+  .card-title {
+    margin-bottom: var(--space-2);
+  }
+
+  .card-desc {
+    font-size: 0.95rem;
+    color: var(--color-text-secondary);
+    line-height: 1.6;
+    margin-bottom: var(--space-4);
+    flex-grow: 1;
+  }
+
+  /* CTA Trigger link */
+  .card-action-container {
+    margin-top: auto;
+    padding-top: var(--space-2);
+  }
+
+  .card-cta-link {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-1);
+    font-family: var(--font-family-heading);
+    font-size: 0.95rem;
+    font-weight: 600;
+    transition: gap var(--transition-fast);
+  }
+
+  .arrow-icon {
+    width: 16px;
+    height: 16px;
+    transition: transform var(--transition-fast);
+  }
+
+  /* Interaction effects based on color themes */
+  .service-card:hover .service-icon {
+    transform: scale(1.15);
+  }
+  .service-card:hover .card-cta-link {
+    gap: var(--space-2);
+  }
+  .service-card:hover .arrow-icon {
+    transform: translateX(3px);
+  }
+
+  /* Theme-specific custom glows */
+  .theme-green .card-icon-container {
+    color: var(--color-accent-green);
+    box-shadow: 0 0 15px rgba(11, 181, 92, 0.1);
+  }
+  .theme-green .card-cta-link {
+    color: var(--color-accent-green);
+  }
+  .theme-green:hover {
+    border-color: rgba(11, 181, 92, 0.3);
+    box-shadow: var(--shadow-lg), var(--glow-green);
+  }
+
+  .theme-sunset .card-icon-container {
+    color: var(--color-accent-copper);
+    box-shadow: 0 0 15px rgba(206, 92, 23, 0.1);
+  }
+  .theme-sunset .card-cta-link {
+    color: #ffa46a;
+  }
+  .theme-sunset:hover {
+    border-color: rgba(206, 92, 23, 0.3);
+    box-shadow: var(--shadow-lg), var(--glow-sunset);
+  }
+
+  .theme-blue .card-icon-container {
+    color: #00d2ff;
+    box-shadow: 0 0 15px rgba(0, 210, 255, 0.1);
+  }
+  .theme-blue .card-cta-link {
+    color: #00d2ff;
+  }
+  .theme-blue:hover {
+    border-color: rgba(0, 210, 255, 0.3);
+    box-shadow: var(--shadow-lg), var(--glow-blue);
+  }
+</style>

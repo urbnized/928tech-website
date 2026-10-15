@@ -1,0 +1,76 @@
+---
+interface Props {
+  size?: 'small' | 'standard';
+}
+
+const { size = 'standard' } = Astro.props;
+---
+
+<div class={`arizona-trust-badge ${size}`}>
+  <img src="/az-icon.png" alt="Arizona State Icon" class="az-badge-icon" />
+  <div class="badge-text-group">
+    <span class="badge-tagline">Arizona Native</span>
+    <span class="badge-main-text">100% Local Specialist</span>
+  </div>
+</div>
+
+<style>
+  .arizona-trust-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    background: rgba(45, 65, 105, 0.96); /* Match header background */
+    border: 1px solid rgba(11, 181, 92, 0.25); /* Elegant thin saguaro border outline */
+    border-radius: var(--radius-md);
+    padding: 0.5rem 1rem;
+    max-width: max-content;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.35); /* Premium depth shadow */
+  }
+
+  .az-badge-icon {
+    width: 20px;
+    height: 20px;
+    flex-shrink: 0;
+    object-fit: contain;
+    filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.3));
+  }
+
+  .badge-text-group {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.2;
+  }
+
+  .badge-tagline {
+    font-size: 0.75rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--color-accent-green);
+  }
+
+  .badge-main-text {
+    font-family: var(--font-family-heading);
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: var(--color-text-primary);
+  }
+
+  /* Small Badge Variant for footers/sidebars */
+  .arizona-trust-badge.small {
+    padding: 0.35rem 0.75rem;
+    background: rgba(45, 65, 105, 0.96); /* Match header background */
+    border: 1px solid rgba(255, 255, 255, 0.05);
+  }
+  .arizona-trust-badge.small .az-badge-icon {
+    width: 14px;
+    height: 14px;
+  }
+  .arizona-trust-badge.small .badge-tagline {
+    font-size: 0.65rem;
+    color: var(--color-text-secondary);
+  }
+  .arizona-trust-badge.small .badge-main-text {
+    font-size: 0.8rem;
+  }
+</style>

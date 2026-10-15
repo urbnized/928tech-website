@@ -1,0 +1,200 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import ArizonaBadge from '../components/ArizonaBadge.astro';
+import ContactForm from '../components/ContactForm.astro';
+
+const pageTitle = "Schedule a Free Digital Strategy Consultation | 928Tech";
+const pageDescription = "Get a fixed quote on high-speed web design, hosting, or local SEO/AEO/GEO in Arizona. Call/text 928-458-8121 or submit our request form online.";
+---
+
+<Layout title={pageTitle} description={pageDescription}>
+  <Header slot="header" />
+
+  <!-- Contact Hero Segment -->
+  <section class="contact-hero section-spacing relative overflow-hidden">
+    <div class="glow-blob glow-blob-1"></div>
+    <div class="container text-center animate-slide-up">
+      <ArizonaBadge />
+      <h1 class="hero-title mt-space-2">Let's Build Something <span class="text-gradient-green">Exceptional</span></h1>
+      <p class="hero-lead">
+        Have a project in mind? We'd love to help. Submit your details below to lock in an online estimate rate, or call/text the founder directly at <a href="tel:928-458-8121" class="text-gradient-green"><strong>928-458-8121</strong></a>.
+      </p>
+    </div>
+  </section>
+
+  <!-- Form and Citations Segment -->
+  <section class="contact-body-section section-spacing pt-space-2 relative overflow-hidden">
+    <div class="glow-blob glow-blob-2"></div>
+    <div class="container grid-2">
+      <!-- Left Hand Side: Citations -->
+      <div class="contact-info-col animate-slide-up">
+        <h2 class="section-title">Arizona Local <span class="text-gradient-sunset">Direct Desk</span></h2>
+        <p class="contact-intro">
+          We prioritize honest, professional communication. You won't get automated voice filters. When you call, you reach the direct desk of our founder.
+        </p>
+
+        <div class="direct-contact-cards mt-space-4">
+          <div class="contact-meta-card card-glass">
+            <span class="meta-icon">📞</span>
+            <div>
+              <span class="meta-lbl">Direct Call or Text</span>
+              <a href="tel:928-458-8121" class="meta-val">928-458-8121</a>
+            </div>
+          </div>
+
+          <div class="contact-meta-card card-glass">
+            <span class="meta-icon">✉️</span>
+            <div>
+              <span class="meta-lbl">General Inquiries</span>
+              <a href="mailto:928techaz@gmail.com" class="meta-val">928techaz@gmail.com</a>
+            </div>
+          </div>
+
+          <div class="contact-meta-card card-glass">
+            <span class="meta-icon">⏰</span>
+            <div>
+              <span class="meta-lbl">Desk Hours (Mountain Standard Time)</span>
+              <span class="meta-val">Mon - Fri: 8:00 AM - 6:00 PM</span>
+            </div>
+          </div>
+
+          <div class="contact-meta-card card-glass">
+            <span class="meta-icon">📍</span>
+            <div>
+              <span class="meta-lbl">Physical Location</span>
+              <span class="meta-val">Fort Mohave, Arizona</span>
+            </div>
+          </div>
+
+          <!-- Beautiful 5th Card Highlighting Coverage Area -->
+          <div class="contact-meta-card card-glass highlight-border-copper">
+            <span class="meta-icon">🌵</span>
+            <div>
+              <span class="meta-lbl">Service Coverage Area</span>
+              <span class="meta-val text-gradient-sunset">Statewide Arizona</span>
+              <span class="meta-desc">Focusing primarily on Northern Arizona & Yavapai County</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Lead Quote Form -->
+      <div class="contact-form-col animate-fade-in">
+        <ContactForm />
+      </div>
+    </div>
+  </section>
+
+  <Footer slot="footer" />
+</Layout>
+
+<style>
+  .mt-space-2 { margin-top: var(--space-2); }
+  .mt-space-4 { margin-top: var(--space-4); }
+  .pt-space-2 { padding-top: var(--space-2); }
+  .text-center { text-align: center; }
+
+  /* Hero */
+  .contact-hero {
+    padding-top: var(--space-12);
+    padding-bottom: var(--space-4);
+  }
+  .hero-title {
+    font-size: clamp(2.2rem, 5vw, 3.5rem);
+    margin-bottom: var(--space-3);
+  }
+  .hero-lead {
+    font-size: 1.25rem;
+    color: var(--color-text-secondary);
+    max-width: 680px;
+    margin: 0 auto;
+  }
+  .hero-lead strong {
+    color: var(--color-text-primary);
+  }
+
+  /* Service Coverage Highlights */
+  .coverage-statement {
+    font-size: 0.95rem;
+    color: var(--color-text-secondary);
+    line-height: 1.6;
+    background: rgba(206, 92, 23, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.03);
+    border-left: 3px solid var(--color-accent-copper);
+    border-radius: var(--radius-sm);
+    padding: var(--space-3) var(--space-4);
+    max-width: 480px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+  }
+  .coverage-statement strong {
+    color: var(--color-text-primary);
+  }
+  .highlight-border-copper {
+    border: 1px dashed rgba(206, 92, 23, 0.4) !important;
+    background: rgba(206, 92, 23, 0.02) !important;
+    box-shadow: var(--shadow-sm), 0 0 15px rgba(206, 92, 23, 0.04);
+  }
+  .meta-desc {
+    display: block;
+    font-size: 0.78rem;
+    color: var(--color-text-muted);
+    margin-top: 2px;
+    font-weight: 500;
+  }
+
+  /* Citations Column */
+  .contact-intro {
+    font-size: 1.05rem;
+    color: var(--color-text-secondary);
+    line-height: 1.6;
+    max-width: 480px;
+  }
+
+  .direct-contact-cards {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+  }
+
+  .contact-meta-card {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+    padding: var(--space-3);
+    border-color: rgba(255, 255, 255, 0.04);
+  }
+  .meta-icon {
+    font-size: 1.5rem;
+    width: 40px;
+    height: 40px;
+    border-radius: var(--radius-sm);
+    background: rgba(255, 255, 255, 0.03);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+  .meta-lbl {
+    display: block;
+    font-size: 0.75rem;
+    color: var(--color-text-muted);
+    text-transform: uppercase;
+    font-weight: 600;
+  }
+  .meta-val {
+    font-family: var(--font-family-heading);
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: var(--color-text-primary);
+  }
+  a.meta-val:hover {
+    color: var(--color-accent-green);
+  }
+
+  /* Form and Citations body */
+  .contact-details-section {
+    padding-top: var(--space-2);
+  }
+</style>

@@ -1,0 +1,623 @@
+---
+import '../styles/global.css';
+
+interface Props {
+  title: string;
+  description: string;
+  canonicalURL?: string;
+  ogImage?: string;
+  pageType?: 'website' | 'article';
+}
+
+const {
+  title = '928Tech | Premium Arizona Web Design & SEO/AEO/GEO',
+  description = 'High-performance web design, hosting, and AI-optimized SEO/AEO/GEO services for local Arizona small businesses. Get found on Google, Siri, Alexa, and ChatGPT.',
+  canonicalURL = Astro.url.href,
+  ogImage = '/images/og-image.jpg',
+  pageType = 'website'
+} = Astro.props;
+
+// Structure local business Schema data
+const localBusinessSchema = {
+  "@context": "https://schema.org",
+  "@type": "ProfessionalService",
+  "name": "928Tech",
+  "image": "https://928tech.dev/images/og-image.jpg",
+  "@id": "https://928tech.dev/#928tech",
+  "url": "https://928tech.dev",
+  "telephone": "928-458-8121",
+  "priceRange": "$$",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Fort Mohave Area",
+    "addressLocality": "Fort Mohave",
+    "addressRegion": "AZ",
+    "postalCode": "86426",
+    "addressCountry": "US"
+  },
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": 35.0069,
+    "longitude": -114.6186
+  },
+  "openingHoursSpecification": {
+    "@type": "OpeningHoursSpecification",
+    "dayOfWeek": [
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday"
+    ],
+    "opens": "08:00",
+    "closes": "18:00"
+  },
+  "sameAs": [
+    "https://facebook.com/928tech",
+    "https://twitter.com/928tech",
+    "https://linkedin.com/company/928tech"
+  ]
+};
+---
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Base Meta Tags -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" href="/favicon.ico" />
+    <meta name="generator" content={Astro.generator} />
+    
+    <!-- Primary SEO Meta Tags -->
+    <title>{title}</title>
+    <meta name="title" content={title} />
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonicalURL} />
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content={pageType} />
+    <meta property="og:url" content={canonicalURL} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={ogImage} />
+    
+    <!-- Twitter / X -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content={canonicalURL} />
+    <meta property="twitter:title" content={title} />
+    <meta property="twitter:description" content={description} />
+    <meta property="twitter:image" content={ogImage} />
+
+    <!-- Performance Optimizations -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json" set:html={JSON.stringify(localBusinessSchema)} />
+  </head>
+  <body>
+    <!-- AI Visual Edit Status Bar -->
+    <div class="admin-visual-bar" id="admin-bar" aria-live="polite">
+      <div class="admin-status-indicator">
+        <span class="admin-status-dot"></span>
+        <span class="admin-status-msg">AI Visual Edit Mode Active</span>
+        <span class="admin-status-help">(Click any highlighted element to compile edits)</span>
+      </div>
+      <button type="button" class="admin-exit-btn" id="exit-admin-btn">Exit Edit Mode</button>
+    </div>
+
+    <!-- Accessibility Skip Link -->
+    <a href="#main-content" class="skip-link">Skip to content</a>
+    
+    <slot name="header" />
+    
+    <main id="main-content" tabindex="-1">
+      <slot />
+    </main>
+    
+    <slot name="footer" />
+    
+    <!-- Admin Login Modal -->
+    <div class="admin-modal-overlay" id="admin-login-modal" aria-hidden="true" role="dialog">
+      <div class="admin-login-card card-glass">
+        <button type="button" class="admin-close-btn" id="close-login-btn" aria-label="Close login">×</button>
+        <div class="admin-login-header">
+          <span class="admin-login-logo">🔑</span>
+          <h3 class="admin-login-title text-gradient-sunset">Admin Portal</h3>
+          <p class="admin-login-subtitle">Unlock interactive AI Visual Editing</p>
+        </div>
+        <div class="form-group">
+          <label for="admin-pass" class="form-label">Portal Password</label>
+          <input type="password" id="admin-pass" class="form-control" placeholder="••••••••" required />
+        </div>
+        <div class="form-status-alert error" id="login-error-msg" style="display: none; padding: 0.5rem; margin-bottom: 12px; font-size: 0.85rem; border-radius: 4px; background: rgba(191, 10, 48, 0.1); border: 1px solid rgba(191, 10, 48, 0.3); color: #ff8c9f;">
+          Incorrect password. Please try again.
+        </div>
+        <button type="button" class="btn btn-sunset btn-full" id="login-submit-btn">Authorize Edit Mode</button>
+      </div>
+    </div>
+
+    <!-- AI Change Drawer overlay -->
+    <div class="ai-edit-drawer-overlay" id="ai-edit-drawer" aria-hidden="true" role="dialog">
+      <div class="drawer-header">
+        <h3 class="drawer-title">✏️ AI Visual Editor</h3>
+        <button type="button" class="drawer-close-btn" id="close-drawer-btn" aria-label="Close panel">×</button>
+      </div>
+      <div class="drawer-body">
+        <div class="selected-element-preview">
+          <span class="preview-label">Selected Element</span>
+          <div class="preview-text" id="selected-el-type" style="font-family: monospace; color: var(--color-accent-green); font-weight: bold;">h1</div>
+        </div>
+        <div class="selected-element-preview">
+          <span class="preview-label">Current Wording</span>
+          <div class="preview-text" id="selected-el-content" style="max-height: 80px; overflow-y: auto;">"High-Performance Web Design"</div>
+        </div>
+        <div class="form-group">
+          <label for="drawer-prompt-input" class="form-label">What changes would you like to make?</label>
+          <textarea id="drawer-prompt-input" class="form-control prompt-textarea" placeholder="Explain the wording change (e.g., 'Change Prescott to Sedona', 'Make it sound friendlier', 'Rewrite to say...')"></textarea>
+        </div>
+        <div class="generated-prompt-box">
+          <span class="preview-label">Prompt for Antigravity (Copy &amp; Paste)</span>
+          <div class="generated-prompt-text" id="compiled-prompt-text" style="font-family: monospace; font-size: 0.75rem; background: rgba(4, 9, 20, 0.6); padding: var(--space-2); border-radius: 4px; max-height: 150px; overflow-y: auto; white-space: pre-wrap; word-break: break-all;">Please select an element...</div>
+          <button type="button" class="btn btn-primary copy-prompt-btn" id="copy-prompt-btn" style="min-height: 38px; padding: 0.5rem 1rem; font-size: 0.9rem;">📋 Copy Prompt</button>
+        </div>
+      </div>
+      <div class="drawer-footer-note">
+        Click Copy, paste it into our **Antigravity Chat window**, and I will immediately write the code change for you!
+      </div>
+    </div>
+
+    <!-- Floating Key Button -->
+    <button type="button" class="admin-key-trigger" id="admin-key-trigger" aria-label="Open Admin Visual Login">🔑</button>
+
+    <!-- Custom Scroll Hover Highlight Logic -->
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+        // 1. Mouse coordinates for glass card glow effects
+        const cards = document.querySelectorAll('.card-glass');
+        cards.forEach(card => {
+          card.addEventListener('mousemove', (e) => {
+            const rect = card.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+            card.style.setProperty('--x', `${x}px`);
+            card.style.setProperty('--y', `${y}px`);
+          });
+        });
+
+        // ==========================================
+        // 2. AI VISUAL EDITOR INTERACTIVE ENGINE
+        // ==========================================
+        const trigger = document.getElementById('admin-key-trigger');
+        const loginModal = document.getElementById('admin-login-modal');
+        const closeLogin = document.getElementById('close-login-btn');
+        const passInput = document.getElementById('admin-pass');
+        const loginSubmit = document.getElementById('login-submit-btn');
+        const errorMsg = document.getElementById('login-error-msg');
+        
+        const adminBar = document.getElementById('admin-bar');
+        const exitAdmin = document.getElementById('exit-admin-btn');
+        
+        const drawer = document.getElementById('ai-edit-drawer');
+        const closeDrawer = document.getElementById('close-drawer-btn');
+        const drawerInput = document.getElementById('drawer-prompt-input');
+        const promptText = document.getElementById('compiled-prompt-text');
+        const copyBtn = document.getElementById('copy-prompt-btn');
+
+        const elTypePreview = document.getElementById('selected-el-type');
+        const elContentPreview = document.getElementById('selected-el-content');
+
+        let selectedElement = null;
+
+        // Auto-assign data-editable and unique descriptive data-labels to all elements across the page
+        const setupEditableElements = () => {
+          // Select headings, paragraphs, links, buttons, lists, text inputs, textareas, selects, images, SVGs, spans, inline elements, labels, and custom layout containers
+          const elements = document.querySelectorAll(
+            'h1, h2, h3, h4, h5, h6, p, li, button, input, textarea, select, img, svg, a, span, strong, em, b, i, small, label, .btn, .badge, .nav-link, .contact-link, .contact-text, .card-glass, .hero-visual, .macbook-mockup, .perf-metric-circle, .screen-stat-box, .speed-bars'
+          );
+
+          let counter = 1;
+
+          elements.forEach(el => {
+            const tag = el.tagName.toLowerCase();
+
+            // Lock out all admin/editor-related elements from being selected or editable
+            if (el.closest('#admin-bar, #admin-login-modal, #ai-edit-drawer, #admin-key-trigger') !== null) {
+              return;
+            }
+
+            // Custom containers that we explicitly allow to be editable (bypassing the leaf-only rule)
+            const isCustomContainer = el.classList.contains('card-glass') || 
+                                       el.classList.contains('hero-visual') || 
+                                       el.classList.contains('macbook-mockup') || 
+                                       el.classList.contains('perf-metric-circle') || 
+                                       el.classList.contains('screen-stat-box') || 
+                                       el.classList.contains('speed-bars');
+
+            // Filter out empty text elements (except elements with visual children or inputs/selects or custom containers)
+            const isTextTag = ['h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'p', 'li', 'span', 'strong', 'em', 'b', 'i', 'small', 'a', 'label', 'button'].includes(tag);
+            const hasVisualChild = el.querySelector('img, svg') !== null;
+            if (isTextTag && el.innerText.trim() === '' && !hasVisualChild && !isCustomContainer) {
+              return;
+            }
+
+            // Filter out layout sections, grids, forms or headers themselves - only leaf elements or explicitly allowed containers are editable
+            if (isCustomContainer || tag === 'svg' || tag === 'img' || el.children.length === 0 || (el.children.length > 0 && !['DIV', 'SECTION', 'FORM', 'HEADER', 'FOOTER', 'MAIN', 'BODY'].includes(el.children[0].tagName))) {
+              
+              el.setAttribute('data-editable', 'true');
+              
+              let typeLabel = '';
+              let descLabel = '';
+
+              // Assign clear labels based on tag types and classes
+              if (el.classList.contains('card-glass')) {
+                typeLabel = 'Glass Container Card';
+                descLabel = el.querySelector('h3, h4, h2')?.innerText.trim() || el.id || 'Glass Card';
+              } else if (el.classList.contains('hero-visual')) {
+                typeLabel = 'Hero Visual Block';
+                descLabel = 'Macbook Mockup Display';
+              } else if (el.classList.contains('macbook-mockup')) {
+                typeLabel = 'Laptop Mockup Container';
+                descLabel = 'Performance Analytics Macbook';
+              } else if (el.classList.contains('perf-metric-circle')) {
+                typeLabel = 'Radial Speed Metric';
+                descLabel = el.innerText.trim().replace(/\s+/g, ' ') || 'Speed Score Circle';
+              } else if (el.classList.contains('screen-stat-box')) {
+                typeLabel = 'Mockup Stat Box';
+                descLabel = el.innerText.trim().replace(/\s+/g, ' ') || 'Metric Display';
+              } else if (el.classList.contains('speed-bars')) {
+                typeLabel = 'Lighthouse Speed Comparison';
+                descLabel = 'Performance Ratings Chart';
+              } else if (tag.startsWith('h')) {
+                typeLabel = `Heading ${tag.substring(1)}`;
+                descLabel = el.innerText.trim();
+              } else if (tag === 'p') {
+                typeLabel = 'Paragraph';
+                descLabel = el.innerText.trim();
+              } else if (tag === 'li') {
+                typeLabel = 'List Item';
+                descLabel = el.innerText.trim();
+              } else if (tag === 'button' || el.classList.contains('btn')) {
+                typeLabel = 'Button';
+                descLabel = el.innerText.trim() || el.id || el.getAttribute('aria-label') || 'Action Button';
+              } else if (tag === 'a' || el.classList.contains('nav-link')) {
+                typeLabel = 'Link';
+                descLabel = el.innerText.trim() || el.getAttribute('href') || 'Link';
+              } else if (tag === 'img') {
+                typeLabel = 'Photo';
+                descLabel = el.getAttribute('alt') || el.src.substring(el.src.lastIndexOf('/') + 1) || 'Image';
+              } else if (tag === 'svg') {
+                typeLabel = 'Graphic';
+                descLabel = el.getAttribute('aria-label') || el.id || el.className.baseVal || 'SVG Vector';
+              } else if (tag === 'input') {
+                typeLabel = 'Text Input Field';
+                descLabel = el.getAttribute('placeholder') || el.getAttribute('name') || el.id || 'Input';
+              } else if (tag === 'textarea') {
+                typeLabel = 'Multi-line Text Field';
+                descLabel = el.getAttribute('placeholder') || el.getAttribute('name') || el.id || 'Textarea';
+              } else if (tag === 'select') {
+                typeLabel = 'Dropdown Options Menu';
+                descLabel = el.getAttribute('name') || el.id || 'Select Dropdown';
+              } else if (tag === 'span') {
+                typeLabel = 'Text Snippet';
+                descLabel = el.innerText.trim();
+              } else if (tag === 'strong' || tag === 'b') {
+                typeLabel = 'Bold Text';
+                descLabel = el.innerText.trim();
+              } else if (tag === 'em' || tag === 'i') {
+                typeLabel = 'Italic Text';
+                descLabel = el.innerText.trim();
+              } else if (tag === 'label') {
+                typeLabel = 'Form Label';
+                descLabel = el.innerText.trim();
+              } else if (tag === 'small') {
+                typeLabel = 'Small Print';
+                descLabel = el.innerText.trim();
+              } else {
+                typeLabel = 'Element';
+                descLabel = el.innerText.trim().substring(0, 15);
+              }
+
+              // Truncate descriptions if too long to keep tooltips compact
+              if (descLabel.length > 25) {
+                descLabel = descLabel.substring(0, 22) + '...';
+              }
+
+              // Find closest section name or container to create a unique path
+              let containerName = 'Page';
+              const closestSection = el.closest('section, header, footer, form, .card-glass, .direct-contact-cards');
+              if (closestSection) {
+                if (closestSection.id) {
+                  containerName = closestSection.id;
+                } else {
+                  containerName = closestSection.className.split(' ')[0] || closestSection.tagName.toLowerCase();
+                }
+              }
+
+              // Build a 100% unique sequence label
+              const finalLabel = `[#${counter}] ${containerName.replace(/-/g, ' ')} > ${typeLabel}: "${descLabel.replace(/"/g, "'")}"`;
+              el.setAttribute('data-label', finalLabel);
+              
+              counter++;
+            }
+          });
+        };
+
+        setupEditableElements();
+
+        // Create Global Floating Hover Tooltip dynamically in JS to fully support self-closing tags (img, inputs)
+        const tooltip = document.createElement('div');
+        tooltip.id = 'admin-tooltip';
+        tooltip.style.position = 'absolute';
+        tooltip.style.display = 'none';
+        tooltip.style.background = 'var(--color-accent-green)';
+        tooltip.style.color = 'var(--color-bg-base)';
+        tooltip.style.fontFamily = 'var(--font-family-heading)';
+        tooltip.style.fontSize = '0.75rem';
+        tooltip.style.fontWeight = '700';
+        tooltip.style.padding = '3px 8px';
+        tooltip.style.borderRadius = 'var(--radius-sm)';
+        tooltip.style.zIndex = '99999';
+        tooltip.style.pointerEvents = 'none';
+        tooltip.style.whiteSpace = 'nowrap';
+        tooltip.style.boxShadow = '0 4px 15px rgba(0,0,0,0.6)';
+        tooltip.style.opacity = '0';
+        tooltip.style.transition = 'opacity 0.1s ease';
+        document.body.appendChild(tooltip);
+
+        // Add Hover Outline & Tooltip Positioning listeners
+        document.addEventListener('mouseover', (e) => {
+          if (!document.body.classList.contains('admin-edit-active')) return;
+          
+          const editable = e.target.closest('[data-editable="true"]');
+          if (editable) {
+            const rect = editable.getBoundingClientRect();
+            const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+            const scrollLeft = window.pageXOffset || document.documentElement.scrollLeft;
+            
+            tooltip.textContent = '✏️ ' + (editable.getAttribute('data-label') || 'Edit Element');
+            tooltip.style.display = 'block';
+            tooltip.style.opacity = '1';
+            
+            const tooltipRect = tooltip.getBoundingClientRect();
+            tooltip.style.left = `${rect.left + scrollLeft}px`;
+            tooltip.style.top = `${rect.top + scrollTop - tooltipRect.height - 6}px`;
+          }
+        });
+
+        document.addEventListener('mouseout', (e) => {
+          if (!document.body.classList.contains('admin-edit-active')) return;
+          
+          const editable = e.target.closest('[data-editable="true"]');
+          if (editable) {
+            tooltip.style.display = 'none';
+            tooltip.style.opacity = '0';
+          }
+        });
+
+        // Check if admin session is already active
+        if (sessionStorage.getItem('admin_edit_active') === 'true') {
+          activateEditMode();
+        }
+
+        // Toggle Login Modal
+        if (trigger && loginModal) {
+          trigger.addEventListener('click', () => {
+            if (document.body.classList.contains('admin-edit-active')) {
+              deactivateEditMode();
+            } else {
+              loginModal.classList.add('open');
+              loginModal.setAttribute('aria-hidden', 'false');
+              if (passInput) passInput.focus();
+            }
+          });
+        }
+
+        if (closeLogin && loginModal) {
+          closeLogin.addEventListener('click', () => {
+            loginModal.classList.remove('open');
+            loginModal.setAttribute('aria-hidden', 'true');
+            if (errorMsg) errorMsg.style.display = 'none';
+            if (passInput) passInput.value = '';
+          });
+        }
+
+        // Handle Login Submission
+        const handleLogin = () => {
+          if (!passInput) return;
+          const password = passInput.value.trim();
+          
+          if (password === 'Urbnized2014!') {
+            sessionStorage.setItem('admin_edit_active', 'true');
+            if (loginModal) loginModal.classList.remove('open');
+            if (passInput) passInput.value = '';
+            if (errorMsg) errorMsg.style.display = 'none';
+            activateEditMode();
+          } else {
+            if (errorMsg) errorMsg.style.display = 'block';
+            if (passInput) {
+              passInput.value = '';
+              passInput.focus();
+            }
+          }
+        };
+
+        if (loginSubmit) {
+          loginSubmit.addEventListener('click', handleLogin);
+        }
+        if (passInput) {
+          passInput.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter') handleLogin();
+          });
+        }
+
+        function activateEditMode() {
+          document.body.classList.add('admin-edit-active');
+          if (adminBar) adminBar.style.display = 'flex';
+          if (trigger) {
+            trigger.textContent = '🔒';
+            trigger.style.background = 'var(--color-accent-red)';
+            trigger.style.borderColor = 'var(--color-accent-red)';
+          }
+        }
+
+        function deactivateEditMode() {
+          document.body.classList.remove('admin-edit-active');
+          sessionStorage.removeItem('admin_edit_active');
+          if (adminBar) adminBar.style.display = 'none';
+          if (drawer) drawer.classList.remove('open');
+          if (trigger) {
+            trigger.textContent = '🔑';
+            trigger.style.background = '';
+            trigger.style.borderColor = '';
+          }
+          // Remove outlines
+          document.querySelectorAll('[data-editable]').forEach(el => {
+            el.style.outline = '';
+          });
+        }
+
+        if (exitAdmin) {
+          exitAdmin.addEventListener('click', deactivateEditMode);
+        }
+
+        // Element Selection Handler
+        document.addEventListener('click', (e) => {
+          if (!document.body.classList.contains('admin-edit-active')) return;
+
+          const target = e.target;
+          const editable = target.closest('[data-editable="true"]');
+          
+          if (editable) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            selectedElement = editable;
+            
+            // Highlight selected element visually
+            document.querySelectorAll('[data-editable]').forEach(el => {
+              el.style.outline = '';
+            });
+            editable.style.outline = '2px dashed var(--color-accent-green)';
+
+            // Populate Drawer content
+            const uniqueLabel = editable.getAttribute('data-label') || '';
+            if (elTypePreview) elTypePreview.textContent = uniqueLabel || `<${editable.tagName.toLowerCase()}> Element`;
+            
+            let rawContent = '';
+            const tag = editable.tagName.toLowerCase();
+            if (tag === 'img') {
+              rawContent = `Image Source: "${editable.src.substring(editable.src.lastIndexOf('/') + 1)}" | Alt text: "${editable.getAttribute('alt') || ''}"`;
+            } else if (tag === 'svg') {
+              rawContent = `SVG Graphic: ${editable.getAttribute('aria-label') || editable.id || editable.className.baseVal || 'Vector icon'}`;
+            } else if (tag === 'input' || tag === 'textarea') {
+              rawContent = `Input Field Value: "${editable.value || ''}" (Placeholder: "${editable.getAttribute('placeholder') || ''}")`;
+            } else if (tag === 'select') {
+              rawContent = `Selected Menu Option: "${editable.value || ''}"`;
+            } else {
+              rawContent = editable.innerText.trim();
+            }
+
+            if (elContentPreview) elContentPreview.textContent = `"${rawContent}"`;
+
+            if (drawerInput) {
+              drawerInput.value = '';
+              drawerInput.placeholder = `Describe customized changes for this element...`;
+            }
+
+            // Open Drawer
+            if (drawer) {
+              drawer.classList.add('open');
+              drawer.setAttribute('aria-hidden', 'false');
+            }
+
+            updatePrompt();
+            if (drawerInput) drawerInput.focus();
+          }
+        });
+
+        if (closeDrawer && drawer) {
+          closeDrawer.addEventListener('click', () => {
+            drawer.classList.remove('open');
+            drawer.setAttribute('aria-hidden', 'true');
+            if (selectedElement) {
+              selectedElement.style.outline = '';
+              selectedElement = null;
+            }
+          });
+        }
+
+        // Dynamic Prompt Compiler
+        const updatePrompt = () => {
+          if (!selectedElement || !promptText) return;
+          
+          const tagName = selectedElement.tagName.toLowerCase();
+          const uniqueLabel = selectedElement.getAttribute('data-label') || '';
+          
+          let oldText = '';
+          const tag = selectedElement.tagName.toLowerCase();
+          if (tag === 'img') {
+            oldText = `Image path: "${selectedElement.getAttribute('src') || ''}" | Alt text: "${selectedElement.getAttribute('alt') || ''}"`;
+          } else if (tag === 'svg') {
+            oldText = `SVG Class/ID: "${selectedElement.className.baseVal || selectedElement.id || ''}" | OuterHTML Snippet: "${selectedElement.outerHTML.substring(0, 120)}..."`;
+          } else if (tag === 'input' || tag === 'textarea') {
+            oldText = `Name: "${selectedElement.getAttribute('name') || ''}" | Placeholder: "${selectedElement.getAttribute('placeholder') || ''}" | Value: "${selectedElement.value || ''}"`;
+          } else if (tag === 'select') {
+            oldText = `Name: "${selectedElement.getAttribute('name') || ''}" | Selected Options Value: "${selectedElement.value || ''}"`;
+          } else {
+            oldText = selectedElement.innerText.trim();
+          }
+
+          const pagePath = window.location.pathname;
+          
+          // Map URL subpaths to actual Astro files
+          let pageFile = 'src/pages/index.astro';
+          if (pagePath.includes('/about')) pageFile = 'src/pages/about.astro';
+          else if (pagePath.includes('/pricing')) pageFile = 'src/pages/pricing.astro';
+          else if (pagePath.includes('/portfolio')) pageFile = 'src/pages/portfolio.astro';
+          else if (pagePath.includes('/contact')) pageFile = 'src/pages/contact.astro';
+          else if (pagePath.includes('/blog')) pageFile = 'src/pages/blog/index.astro';
+          else if (pagePath.includes('/services/web-design')) pageFile = 'src/pages/services/web-design.astro';
+          else if (pagePath.includes('/services/hosting')) pageFile = 'src/pages/services/hosting.astro';
+          else if (pagePath.includes('/services/seo-aeo-geo')) pageFile = 'src/pages/services/seo-aeo-geo.astro';
+          else if (pagePath.includes('/services/tech-help')) pageFile = 'src/pages/services/tech-help.astro';
+          else if (pagePath.includes('/privacy')) pageFile = 'src/pages/privacy.astro';
+          else if (pagePath.includes('/terms')) pageFile = 'src/pages/terms.astro';
+          
+          const editRequest = drawerInput ? drawerInput.value.trim() : '';
+          
+          const compiledPrompt = `[AI VISUAL EDIT REQUEST]
+File: ${pageFile}
+Element: <${tagName}> with unique Label: "${uniqueLabel}"
+Current Content/State: "${oldText.replace(/"/g, "'")}"
+Request: ${editRequest ? editRequest : "(Please rewrite or customize this element)"}`;
+
+          promptText.textContent = compiledPrompt;
+        };
+
+        if (drawerInput) {
+          drawerInput.addEventListener('input', updatePrompt);
+        }
+
+        // Clipboard Copy Action
+        if (copyBtn && promptText) {
+          copyBtn.addEventListener('click', () => {
+            navigator.clipboard.writeText(promptText.textContent || '').then(() => {
+              copyBtn.textContent = '✅ Copied to Clipboard!';
+              copyBtn.classList.add('success');
+              
+              setTimeout(() => {
+                copyBtn.textContent = '📋 Copy Prompt';
+                copyBtn.classList.remove('success');
+              }, 2000);
+            });
+          });
+        }
+      });
+    </script>
+  </body>
+</html>
+

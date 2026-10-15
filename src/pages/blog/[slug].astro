@@ -1,0 +1,326 @@
+---
+import { getCollection, render } from 'astro:content';
+import Layout from '../../layouts/Layout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import ArizonaBadge from '../../components/ArizonaBadge.astro';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('blog');
+  return posts.map(post => ({
+    // In Astro v6, files fetched via loaders use the 'id' parameter as their routing identifier
+    params: { slug: post.id },
+    props: { post },
+  }));
+}
+
+const { post } = Astro.props;
+const { title, description, pubDate, author, readingTime, tags } = post.data;
+
+// Render the compiled markdown content using Astro v6 render API
+const { Content } = await render(post);
+
+// Structure Article JSON-LD Schema
+const articleSchema = {
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": title,
+  "description": description,
+  "datePublished": pubDate.toISOString(),
+  "author": {
+    "@type": "Organization",
+    "name": "928Tech",
+    "url": "https://928tech.dev"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "928Tech",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://928tech.dev/images/og-image.jpg"
+    }
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": Astro.url.href
+  }
+};
+---
+
+<Layout title={`${title} | 928Tech Blog`} description={description} pageType="article">
+  <!-- Inject blog schema inside the head slot -->
+  <script type="application/ld+json" set:html={JSON.stringify(articleSchema)} slot="head" />
+  
+  <Header slot="header" />
+
+  <article class="article-section section-spacing">
+    <div class="container article-container">
+      
+      <!-- Back Link -->
+      <div class="back-link-wrapper animate-slide-up">
+        <a href="/blog" class="back-link">
+          <svg class="back-arrow-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <line x1="19" y1="12" x2="5" y2="12"></line>
+            <polyline points="12 19 5 12 12 5"></polyline>
+          </svg>
+          <span>Back to All Guides</span>
+        </a>
+      </div>
+
+      <!-- Article Header -->
+      <header class="article-header animate-slide-up">
+        <div class="article-meta">
+          <span class="meta-item">{readingTime}</span>
+          <span class="meta-item-dot"></span>
+          <span class="meta-item">
+            {pubDate.toLocaleDateString('en-US', {
+              month: 'long',
+              day: 'numeric',
+              year: 'numeric'
+            })}
+          </span>
+        </div>
+        
+        <h1 class="article-title">{title}</h1>
+        <p class="article-subtitle-lead">{description}</p>
+        
+        <div class="article-author-badge">
+          <span class="author-icon">✍️</span>
+          <span class="author-name">Written by <strong>{author}</strong></span>
+        </div>
+      </header>
+
+      <!-- Markdown Render Content -->
+      <div class="article-body-content card-glass animate-fade-in">
+        <Content />
+      </div>
+
+      <!-- Article Footer Tags -->
+      <footer class="article-footer animate-fade-in">
+        <div class="footer-tags">
+          <span class="tags-label">Tagged:</span>
+          {tags.map(t => (
+            <a href={`/blog?tag=${t}`} class="tag-pill">#{t}</a>
+          ))}
+        </div>
+      </footer>
+    </div>
+  </article>
+
+  <!-- Bottom Quote Banner -->
+  <section class="cta-banner section-spacing">
+    <div class="container text-center card-glass cta-card relative overflow-hidden">
+      <div class="glow-blob glow-blob-3"></div>
+      <h2 class="cta-title">Need a High-Performance Site Built?</h2>
+      <p class="cta-subtitle">Let's discuss how we can put these speed, SEO, and AI citation principles to work for your business.</p>
+      <div class="cta-actions">
+        <a href="/contact" class="btn btn-sunset">Consult Our Team</a>
+        <a href="/pricing" class="btn btn-secondary">Calculate Build Estimate</a>
+      </div>
+      <p class="phone-disclaimer mt-space-2">Or call the founder directly at: <a href="tel:928-458-8121" class="text-gradient-green"><strong>928-458-8121</strong></a></p>
+    </div>
+  </section>
+
+  <Footer slot="footer" />
+</Layout>
+
+<style>
+  .mt-space-2 { margin-top: var(--space-2); }
+  .text-center { text-align: center; }
+
+  /* Article Wrapper Layout */
+  .article-container {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  .back-link-wrapper {
+    margin-bottom: var(--space-3);
+  }
+  .back-link {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-1);
+    font-family: var(--font-family-heading);
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--color-text-secondary);
+    transition: color var(--transition-fast);
+  }
+  .back-link:hover {
+    color: var(--color-accent-green);
+  }
+  .back-arrow-icon {
+    width: 16px;
+    height: 16px;
+  }
+
+  /* Header */
+  .article-header {
+    margin-bottom: var(--space-4);
+  }
+  .article-meta {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    font-size: 0.85rem;
+    color: var(--color-text-secondary);
+    font-weight: 500;
+    margin-bottom: var(--space-2);
+  }
+  .meta-item-dot {
+    width: 4px;
+    height: 4px;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+  }
+
+  .article-title {
+    font-size: clamp(2rem, 4vw, 3rem);
+    line-height: 1.2;
+    margin-bottom: var(--space-2);
+  }
+
+  .article-subtitle-lead {
+    font-size: 1.15rem;
+    color: var(--color-text-secondary);
+    line-height: 1.6;
+    margin-bottom: var(--space-3);
+  }
+
+  .article-author-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-1);
+    background: rgba(255, 255, 255, 0.03);
+    border: var(--border-glow);
+    padding: 0.35rem 0.75rem;
+    border-radius: var(--radius-sm);
+  }
+  .author-icon {
+    font-size: 1rem;
+  }
+  .author-name {
+    font-size: 0.85rem;
+    color: var(--color-text-secondary);
+  }
+  .author-name strong {
+    color: var(--color-text-primary);
+  }
+
+  /* Rendered content body styles */
+  .article-body-content {
+    padding: var(--space-4);
+    margin-bottom: var(--space-4);
+  }
+  @media (min-width: 768px) {
+    .article-body-content {
+      padding: var(--space-6);
+    }
+  }
+
+  /* Markdown prose scoping */
+  .article-body-content :global(h2) {
+    font-size: 1.75rem;
+    margin-top: var(--space-4);
+    margin-bottom: var(--space-2);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    padding-bottom: 4px;
+  }
+  .article-body-content :global(h3) {
+    font-size: 1.35rem;
+    margin-top: var(--space-3);
+    margin-bottom: var(--space-2);
+  }
+  .article-body-content :global(p) {
+    font-size: 1.05rem;
+    line-height: 1.8;
+    color: var(--color-text-secondary);
+    margin-bottom: var(--space-3);
+  }
+  .article-body-content :global(ul), 
+  .article-body-content :global(ol) {
+    margin-left: var(--space-4);
+    margin-bottom: var(--space-3);
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .article-body-content :global(li) {
+    font-size: 1.05rem;
+    color: var(--color-text-secondary);
+    line-height: 1.6;
+  }
+  .article-body-content :global(strong) {
+    color: var(--color-text-primary);
+  }
+  .article-body-content :global(hr) {
+    border: none;
+    height: 1px;
+    background: rgba(255, 255, 255, 0.05);
+    margin: var(--space-4) 0;
+  }
+
+  /* Footer */
+  .article-footer {
+    border-top: 1px dashed rgba(255, 255, 255, 0.08);
+    padding-top: var(--space-3);
+  }
+  .footer-tags {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: var(--space-1);
+  }
+  .tags-label {
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: var(--color-text-secondary);
+    margin-right: var(--space-1);
+  }
+  .tag-pill {
+    font-size: 0.85rem;
+    color: var(--color-accent-green);
+    background: rgba(11, 181, 92, 0.05);
+    border: 1px solid rgba(11, 181, 92, 0.15);
+    padding: 0.15rem 0.5rem;
+    border-radius: var(--radius-sm);
+    transition: all var(--transition-fast);
+  }
+  .tag-pill:hover {
+    background: rgba(11, 181, 92, 0.1);
+    border-color: var(--color-accent-green);
+  }
+
+  /* Bottom CTA Banner */
+  .cta-card {
+    padding: var(--space-6) var(--space-4);
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+  @media (min-width: 768px) {
+    .cta-card {
+      padding: var(--space-8) var(--space-6);
+    }
+  }
+  .cta-title {
+    font-size: clamp(1.8rem, 4vw, 2.5rem);
+    margin-bottom: var(--space-2);
+  }
+  .cta-subtitle {
+    font-size: 1.1rem;
+    color: var(--color-text-secondary);
+    max-width: 600px;
+    margin: 0 auto var(--space-4);
+  }
+  .cta-actions {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+  }
+  .phone-disclaimer {
+    font-size: 0.95rem;
+    color: var(--color-text-secondary);
+  }
+</style>

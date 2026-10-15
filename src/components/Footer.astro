@@ -1,0 +1,323 @@
+---
+import ArizonaBadge from './ArizonaBadge.astro';
+
+const currentYear = new Date().getFullYear();
+---
+
+<footer class="site-footer">
+  <div class="container footer-top section-spacing">
+    <div class="footer-grid">
+      <!-- Brand Segment -->
+      <div class="footer-brand-col">
+        <a href="/" class="footer-logo-link" aria-label="928Tech Home">
+          <span class="brand-text">928<span class="tech-text">TECH</span></span>
+        </a>
+        <p class="brand-description">
+          Building high-performance, conversion-optimized custom websites and organic search authority (SEO/AEO/GEO) for local Arizona small businesses.
+        </p>
+        <!-- Reusable High-Trust Arizona Badge -->
+        <ArizonaBadge size="small" />
+      </div>
+
+      <!-- Navigation Segment -->
+      <div class="footer-links-col">
+        <h3 class="footer-heading">Services</h3>
+        <ul class="footer-links-list">
+          <li><a href="/services/web-design" class="footer-link">Web Design</a></li>
+          <li><a href="/services/hosting" class="footer-link">Managed Hosting</a></li>
+          <li><a href="/services/seo-aeo-geo" class="footer-link">SEO / AEO / GEO</a></li>
+          <li><a href="/pricing" class="footer-link">Transparent Pricing</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-links-col">
+        <h3 class="footer-heading">Company</h3>
+        <ul class="footer-links-list">
+          <li><a href="/about" class="footer-link">Our Story</a></li>
+          <li><a href="/portfolio" class="footer-link">Portfolio Cases</a></li>
+          <li><a href="/blog" class="footer-link">Local Business Blog</a></li>
+          <li><a href="/contact" class="footer-link">Request Quote</a></li>
+        </ul>
+      </div>
+
+      <!-- Citations & Contact Segment -->
+      <div class="footer-contact-col">
+        <h3 class="footer-heading">Get in Touch</h3>
+        <ul class="footer-contact-list">
+          <li class="contact-item">
+            <svg class="contact-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+            </svg>
+            <a href="tel:928-458-8121" class="contact-link">928-458-8121</a>
+          </li>
+          <li class="contact-item">
+            <svg class="contact-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+              <polyline points="22,6 12,13 2,6"/>
+            </svg>
+            <a href="mailto:928techaz@gmail.com" class="contact-link">928techaz@gmail.com</a>
+          </li>
+          <li class="contact-item">
+            <svg class="contact-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+              <circle cx="12" cy="10" r="3"/>
+            </svg>
+            <span class="contact-text">Fort Mohave, AZ 86426</span>
+          </li>
+        </ul>
+
+        <!-- Newsletter Sign-up Capture -->
+        <form class="footer-newsletter" id="newsletter-form" aria-label="Newsletter sign-up">
+          <label for="newsletter-email" class="newsletter-label">Subscribe to local growth insights</label>
+          <div class="newsletter-input-group">
+            <input type="email" id="newsletter-email" class="form-control newsletter-input" placeholder="Your business email" required />
+            <button type="submit" class="btn btn-primary newsletter-submit" aria-label="Subscribe">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" class="arrow-icon">
+                <line x1="5" y1="12" x2="19" y2="12"></line>
+                <polyline points="12 5 19 12 12 19"></polyline>
+              </svg>
+            </button>
+          </div>
+          <p class="newsletter-status" id="newsletter-status" aria-live="polite"></p>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bottom Segment -->
+  <div class="footer-bottom">
+    <div class="container footer-bottom-container">
+      <p class="copyright-text">&copy; {currentYear} 928Tech. All rights reserved. Made in Arizona.</p>
+      
+      <!-- Trust-building micro-proof indicators -->
+      <div class="trust-indicators" aria-label="Technical standards">
+        <span class="trust-badge">⚡ 100/100 Speed</span>
+        <span class="trust-badge">♿ WCAG 2.2 AA</span>
+        <span class="trust-badge">🔒 Secure Cloudflare Edge</span>
+      </div>
+
+      <!-- Legal Links -->
+      <div class="footer-bottom-links">
+        <a href="/privacy" class="footer-sublink">Privacy Policy</a>
+        <a href="/terms" class="footer-sublink">Terms of Service</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .site-footer {
+    background: #02050b;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    margin-top: auto;
+  }
+
+  .footer-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-6);
+  }
+  @media (min-width: 768px) {
+    .footer-grid {
+      grid-template-columns: repeat(2, 1fr);
+      gap: var(--space-8);
+    }
+  }
+  @media (min-width: 1024px) {
+    .footer-grid {
+      grid-template-columns: 2fr 1fr 1fr 2fr;
+    }
+  }
+
+  /* Brand Column */
+  .footer-brand-col {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+  }
+  .footer-logo-link {
+    display: inline-block;
+  }
+  .brand-text {
+    font-family: var(--font-family-heading);
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: var(--color-accent-green);
+    letter-spacing: -1px;
+  }
+  .tech-text {
+    color: var(--color-text-primary);
+    font-weight: 800;
+  }
+  .brand-description {
+    font-size: 0.95rem;
+    color: var(--color-text-secondary);
+    line-height: 1.6;
+    max-width: 320px;
+  }
+
+  /* Link & Contact Columns */
+  .footer-heading {
+    font-size: 1.1rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--color-text-primary);
+    margin-bottom: var(--space-3);
+  }
+  .footer-links-list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+  }
+  .footer-link {
+    font-size: 0.95rem;
+    color: var(--color-text-secondary);
+  }
+  .footer-link:hover {
+    color: var(--color-accent-green);
+    transform: translateX(3px);
+  }
+
+  .footer-contact-list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+    margin-bottom: var(--space-4);
+  }
+  .contact-item {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    font-size: 0.95rem;
+    color: var(--color-text-secondary);
+  }
+  .contact-icon {
+    width: 16px;
+    height: 16px;
+    color: var(--color-accent-green);
+    flex-shrink: 0;
+  }
+  .contact-link:hover {
+    color: var(--color-accent-green);
+  }
+
+  /* Newsletter Widget */
+  .footer-newsletter {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-1);
+    max-width: 320px;
+  }
+  .newsletter-label {
+    font-size: 0.85rem;
+    color: var(--color-text-secondary);
+    font-weight: 500;
+  }
+  .newsletter-input-group {
+    display: flex;
+    gap: var(--space-1);
+  }
+  .newsletter-input {
+    flex-grow: 1;
+    padding: 0.5rem 0.75rem;
+    font-size: 0.9rem;
+    border-radius: var(--radius-sm);
+  }
+  .newsletter-submit {
+    padding: 0 0.75rem;
+    min-height: 38px;
+    border-radius: var(--radius-sm);
+  }
+  .arrow-icon {
+    width: 16px;
+    height: 16px;
+  }
+  .newsletter-status {
+    font-size: 0.8rem;
+    margin-top: 4px;
+  }
+  .newsletter-status.success {
+    color: var(--color-accent-green);
+  }
+
+  /* Footer Bottom */
+  .footer-bottom {
+    background: #010307;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    padding: var(--space-3) 0;
+  }
+  .footer-bottom-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-3);
+    text-align: center;
+  }
+  @media (min-width: 1024px) {
+    .footer-bottom-container {
+      flex-direction: row;
+      text-align: left;
+    }
+  }
+
+  .copyright-text {
+    font-size: 0.85rem;
+    color: var(--color-text-muted);
+    margin-bottom: 0;
+  }
+
+  .trust-indicators {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: var(--space-2);
+  }
+  .trust-badge {
+    font-size: 0.8rem;
+    color: var(--color-text-muted);
+    background: rgba(255, 255, 255, 0.02);
+    padding: 0.2rem 0.6rem;
+    border-radius: var(--radius-sm);
+    border: 1px solid rgba(255, 255, 255, 0.03);
+  }
+
+  .footer-bottom-links {
+    display: flex;
+    gap: var(--space-3);
+  }
+  .footer-sublink {
+    font-size: 0.85rem;
+    color: var(--color-text-muted);
+  }
+  .footer-sublink:hover {
+    color: var(--color-accent-green);
+  }
+</style>
+
+<script>
+  // Handlers for newsletter subscriptions
+  const form = document.getElementById('newsletter-form');
+  const statusEl = document.getElementById('newsletter-status');
+
+  if (form && statusEl) {
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const emailInput = document.getElementById('newsletter-email') as HTMLInputElement;
+      const email = emailInput?.value || '';
+
+      if (!email) return;
+
+      // Loading state simulation
+      statusEl.textContent = 'Registering email...';
+      statusEl.className = 'newsletter-status';
+
+      setTimeout(() => {
+        statusEl.textContent = 'Success! Welcome to our local insights.';
+        statusEl.className = 'newsletter-status success';
+        if (emailInput) emailInput.value = '';
+      }, 1000);
+    });
+  }
+</script>

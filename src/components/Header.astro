@@ -1,0 +1,580 @@
+---
+const currentPath = Astro.url.pathname;
+
+const navLinks = [
+  { name: 'Home', href: '/' },
+  { name: 'Pricing', href: '/pricing' },
+  { name: 'Portfolio', href: '/portfolio' },
+  { name: 'Blog', href: '/blog' }
+];
+
+const isLinkActive = (href: string) => {
+  if (href === '/' && currentPath === '/') return true;
+  if (href !== '/' && currentPath.startsWith(href)) return true;
+  return false;
+};
+
+const isServicesActive = () => {
+  return currentPath.startsWith('/services/');
+};
+---
+
+<header class="site-header">
+  <div class="container header-container">
+    <!-- Logo with Official Corporate Logo Image -->
+    <a href="/" class="logo-link" aria-label="928Tech Home">
+      <img src="/logo.png" alt="928Tech Logo" class="logo-image" />
+    </a>
+
+    <!-- Desktop Navigation Links -->
+    <nav class="desktop-nav" aria-label="Primary Navigation">
+      <ul class="nav-list">
+        <li>
+          <a href="/" class={`nav-link ${isLinkActive('/') ? 'active' : ''}`} aria-current={isLinkActive('/') ? 'page' : undefined}>
+            Home
+          </a>
+        </li>
+        
+        <!-- Services Nested Dropdown tab -->
+        <li class="nav-item-dropdown">
+          <button 
+            class={`nav-link dropdown-trigger ${isServicesActive() ? 'active' : ''}`} 
+            aria-expanded="false" 
+            aria-controls="services-desktop-menu"
+          >
+            <span>Services</span>
+            <svg class="chevron-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="6 9 12 15 18 9"></polyline>
+            </svg>
+          </button>
+          
+          <ul class="dropdown-menu card-glass" id="services-desktop-menu">
+            <li>
+              <a href="/services/web-design" class={`dropdown-link ${currentPath === '/services/web-design' ? 'active' : ''}`}>
+                ✏️ Bespoke Web Design
+              </a>
+            </li>
+            <li>
+              <a href="/services/hosting" class={`dropdown-link ${currentPath === '/services/hosting' ? 'active' : ''}`}>
+                ☁️ Managed Edge Hosting
+              </a>
+            </li>
+            <li>
+              <a href="/services/seo-aeo-geo" class={`dropdown-link ${currentPath === '/services/seo-aeo-geo' ? 'active' : ''}`}>
+                🤖 SEO / AEO / GEO Engine
+              </a>
+            </li>
+            <li>
+              <a href="/services/tech-help" class={`dropdown-link ${currentPath === '/services/tech-help' ? 'active' : ''}`}>
+                🔧 In-Home Tech Help
+              </a>
+            </li>
+          </ul>
+        </li>
+
+        <li>
+          <a href="/pricing" class={`nav-link ${isLinkActive('/pricing') ? 'active' : ''}`} aria-current={isLinkActive('/pricing') ? 'page' : undefined}>
+            Pricing
+          </a>
+        </li>
+        <li>
+          <a href="/portfolio" class={`nav-link ${isLinkActive('/portfolio') ? 'active' : ''}`} aria-current={isLinkActive('/portfolio') ? 'page' : undefined}>
+            Portfolio
+          </a>
+        </li>
+        <li>
+          <a href="/blog" class={`nav-link ${isLinkActive('/blog') ? 'active' : ''}`} aria-current={isLinkActive('/blog') ? 'page' : undefined}>
+            Blog
+          </a>
+        </li>
+        <li>
+          <a href="/contact" class={`nav-link ${isLinkActive('/contact') ? 'active' : ''}`} aria-current={isLinkActive('/contact') ? 'page' : undefined}>
+            Contact
+          </a>
+        </li>
+      </ul>
+    </nav>
+
+    <!-- Header Actions (Contact Phone CTA) -->
+    <div class="header-actions">
+      <a href="tel:928-458-8121" class="phone-link" aria-label="Call 928Tech at 928-458-8121">
+        <svg class="phone-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+        </svg>
+        <span class="phone-number">928-458-8121</span>
+      </a>
+      <a href="/contact" class="btn btn-primary btn-sm header-cta">Get a Quote</a>
+      
+      <!-- Hamburger Toggle Button -->
+      <button 
+        class="mobile-menu-toggle" 
+        aria-label="Toggle menu" 
+        aria-controls="mobile-nav-drawer" 
+        aria-expanded="false"
+      >
+        <span class="bar bar-1"></span>
+        <span class="bar bar-2"></span>
+        <span class="bar bar-3"></span>
+      </button>
+    </div>
+  </div>
+
+  <!-- Mobile Drawer Menu -->
+  <div class="mobile-nav-drawer" id="mobile-nav-drawer" aria-hidden="true">
+    <nav class="mobile-nav" aria-label="Mobile Navigation">
+      <ul class="mobile-nav-list">
+        <li>
+          <a href="/" class={`mobile-nav-link ${currentPath === '/' ? 'active' : ''}`}>Home</a>
+        </li>
+        
+        <!-- Mobile Services collapsible segment -->
+        <li class="mobile-nav-dropdown-item">
+          <button class="mobile-dropdown-trigger" aria-expanded="false">
+            <span>Services</span>
+            <svg class="chevron-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polyline points="6 9 12 15 18 9"></polyline>
+            </svg>
+          </button>
+          <ul class="mobile-nested-links" style="display: none;">
+            <li><a href="/services/web-design" class="mobile-nested-link">✏️ Bespoke Web Design</a></li>
+            <li><a href="/services/hosting" class="mobile-nested-link">☁️ Managed Edge Hosting</a></li>
+            <li><a href="/services/seo-aeo-geo" class="mobile-nested-link">🤖 SEO / AEO / GEO Engine</a></li>
+            <li><a href="/services/tech-help" class="mobile-nested-link">🔧 In-Home Tech Help</a></li>
+          </ul>
+        </li>
+
+        <li>
+          <a href="/pricing" class={`mobile-nav-link ${currentPath.startsWith('/pricing') ? 'active' : ''}`}>Pricing</a>
+        </li>
+        <li>
+          <a href="/portfolio" class={`mobile-nav-link ${currentPath.startsWith('/portfolio') ? 'active' : ''}`}>Portfolio</a>
+        </li>
+        <li>
+          <a href="/blog" class={`mobile-nav-link ${currentPath.startsWith('/blog') ? 'active' : ''}`}>Blog</a>
+        </li>
+        <li>
+          <a href="/contact" class={`mobile-nav-link ${currentPath.startsWith('/contact') ? 'active' : ''}`}>Contact</a>
+        </li>
+        <li class="mobile-nav-cta-item">
+          <a href="tel:928-458-8121" class="mobile-phone-link">
+            Call Now: 928-458-8121
+          </a>
+        </li>
+        <li>
+          <a href="/contact" class="btn btn-primary btn-full">Get a Quote</a>
+        </li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<style>
+  /* Premium Elevated Lightened Header Background to Stand Out completely from Logo */
+  .site-header {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(45, 65, 105, 0.96); /* Lightened contrasting background */
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+    border-bottom: 2px solid rgba(11, 181, 92, 0.35); /* Saguaro Green bottom border accent */
+    padding: var(--space-2) 0;
+    transition: all var(--transition-normal);
+    box-shadow: 0 10px 40px -5px rgba(0, 0, 0, 0.95), 0 0 25px rgba(11, 181, 92, 0.15); /* Strong shadow definition */
+  }
+
+  .header-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-4);
+  }
+
+  /* Logo */
+  .logo-link {
+    display: flex;
+    align-items: center;
+    width: 200px;
+    height: 45px;
+    flex-shrink: 0;
+    filter: none;
+  }
+  .logo-image {
+    height: 100%;
+    width: auto;
+    object-fit: contain;
+    display: block;
+  }
+
+  /* Desktop Nav */
+  .desktop-nav {
+    display: none;
+  }
+  .nav-list {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+  }
+  .nav-link {
+    font-family: var(--font-family-heading);
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: #000000; /* Coordinated black to match logo */
+    padding: 0.5rem 0.75rem;
+    border-radius: var(--radius-sm);
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    text-shadow: none; /* Crisp flat black text */
+    transition: all var(--transition-fast);
+  }
+  .nav-link:hover {
+    color: var(--color-text-primary);
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 1), 0 4px 16px rgba(0, 0, 0, 0.95), 0 0 2px rgba(0, 0, 0, 1);
+  }
+  .nav-link.active {
+    color: var(--color-accent-green);
+    font-weight: 700;
+    text-shadow: 0 2px 8px rgba(11, 181, 92, 0.8), 0 4px 16px rgba(0, 0, 0, 0.95), 0 0 2px rgba(0, 0, 0, 1);
+  }
+  .nav-link.active::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 0.75rem;
+    right: 0.75rem;
+    height: 2px;
+    background: var(--color-accent-green);
+    border-radius: var(--radius-full);
+    box-shadow: var(--glow-green);
+  }
+
+  /* Dropdown trigger adjustments */
+  .dropdown-trigger {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+  }
+  .chevron-icon {
+    width: 14px;
+    height: 14px;
+    transition: transform var(--transition-fast);
+  }
+  .nav-item-dropdown:hover .chevron-icon {
+    transform: rotate(180deg);
+  }
+
+  /* Desktop Dropdown Menu Panel */
+  .nav-item-dropdown {
+    position: relative;
+  }
+
+  .dropdown-menu {
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%) translateY(10px);
+    width: 260px;
+    padding: var(--space-2);
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    opacity: 0;
+    pointer-events: none;
+    transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    background: rgba(13, 21, 39, 0.98);
+    border: 1px solid rgba(11, 181, 92, 0.2);
+    box-shadow: var(--shadow-lg), var(--glow-blue);
+    z-index: 120;
+    border-radius: var(--radius-md);
+  }
+  
+  .nav-item-dropdown:hover .dropdown-menu,
+  .nav-item-dropdown:focus-within .dropdown-menu {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateX(-50%) translateY(4px);
+  }
+
+  .dropdown-link {
+    display: block;
+    padding: 0.75rem 1rem;
+    font-family: var(--font-family-heading);
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: #ffffff; /* bright white for contrast */
+    border-radius: var(--radius-sm);
+    transition: all var(--transition-fast);
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 1), 0 4px 16px rgba(0, 0, 0, 0.95), 0 0 2px rgba(0, 0, 0, 1);
+  }
+  .dropdown-link:hover {
+    color: var(--color-text-primary);
+    background: rgba(11, 181, 92, 0.08);
+    padding-left: 1.25rem;
+  }
+  .dropdown-link.active {
+    color: var(--color-accent-green);
+    background: rgba(11, 181, 92, 0.05);
+  }
+
+  /* Actions & Call CTA */
+  .header-actions {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+  }
+  
+  .phone-link {
+    display: none;
+    align-items: center;
+    gap: var(--space-1);
+    color: #000000; /* Coordinated black */
+    font-family: var(--font-family-heading);
+    font-weight: 700;
+    font-size: 1.05rem;
+    transition: color var(--transition-fast);
+    text-shadow: none; /* Crisp flat black */
+  }
+  .phone-icon {
+    width: 18px;
+    height: 18px;
+    color: var(--color-accent-green);
+  }
+  .phone-link:hover {
+    color: var(--color-accent-green);
+    text-shadow: 0 2px 8px rgba(11, 181, 92, 0.8), 0 0 2px rgba(0, 0, 0, 1);
+  }
+
+  .btn-sm {
+    padding: 0.5rem 1.25rem;
+    font-size: 0.9rem;
+    min-height: 38px;
+  }
+  
+  .header-cta {
+    display: none;
+  }
+
+  /* Hamburger menu button */
+  .mobile-menu-toggle {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 30px;
+    height: 20px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    z-index: 110;
+    padding: 0;
+  }
+  .bar {
+    width: 100%;
+    height: 2px;
+    background-color: var(--color-text-primary);
+    border-radius: var(--radius-full);
+    transition: transform var(--transition-normal), opacity var(--transition-normal);
+  }
+
+  /* Mobile Drawer Menu */
+  .mobile-nav-drawer {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 100%;
+    height: 100vh;
+    background: var(--color-bg-base);
+    z-index: 95;
+    padding: var(--space-16) var(--space-6) var(--space-6);
+    display: flex;
+    flex-direction: column;
+    transition: right var(--transition-normal);
+    border-left: 1px solid rgba(255, 255, 255, 0.05);
+  }
+  .mobile-nav-drawer.open {
+    right: 0;
+  }
+  
+  .mobile-nav-list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+  }
+  .mobile-nav-link {
+    font-family: var(--font-family-heading);
+    font-size: 1.35rem;
+    font-weight: 600;
+    color: #ffffff; /* Bright white for high mobile contrast */
+    display: block;
+    padding: var(--space-2) 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 1), 0 4px 16px rgba(0, 0, 0, 0.95), 0 0 2px rgba(0, 0, 0, 1);
+  }
+  .mobile-nav-link.active {
+    color: var(--color-accent-green);
+  }
+
+  /* Mobile nested links styles */
+  .mobile-nav-dropdown-item {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  }
+  .mobile-dropdown-trigger {
+    width: 100%;
+    text-align: left;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: transparent;
+    border: none;
+    padding: var(--space-2) 0;
+    font-family: var(--font-family-heading);
+    font-size: 1.35rem;
+    font-weight: 600;
+    color: #ffffff; /* Bright white */
+    cursor: pointer;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 1), 0 4px 16px rgba(0, 0, 0, 0.95), 0 0 2px rgba(0, 0, 0, 1);
+  }
+  .mobile-dropdown-trigger.open {
+    color: var(--color-accent-green);
+  }
+  .mobile-dropdown-trigger.open .chevron-icon {
+    transform: rotate(180deg);
+  }
+  .mobile-nested-links {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+    padding-left: var(--space-3);
+    padding-bottom: var(--space-2);
+  }
+  .mobile-nested-link {
+    font-family: var(--font-family-heading);
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: #e2e8f0; /* Crisp light gray */
+    display: block;
+    padding: 0.35rem 0;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 1), 0 4px 16px rgba(0, 0, 0, 0.95), 0 0 2px rgba(0, 0, 0, 1);
+  }
+  .mobile-nested-link:hover {
+    color: var(--color-accent-green);
+  }
+
+  .mobile-nav-cta-item {
+    margin-top: var(--space-3);
+  }
+  .mobile-phone-link {
+    display: block;
+    text-align: center;
+    font-family: var(--font-family-heading);
+    font-weight: bold;
+    font-size: 1.25rem;
+    color: var(--color-text-primary);
+    margin-bottom: var(--space-2);
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 1), 0 4px 16px rgba(0, 0, 0, 0.95), 0 0 2px rgba(0, 0, 0, 1);
+  }
+  .btn-full {
+    width: 100%;
+  }
+
+  /* Hamburger Animations */
+  .mobile-menu-toggle.open .bar-1 {
+    transform: translateY(9px) rotate(45deg);
+  }
+  .mobile-menu-toggle.open .bar-2 {
+    opacity: 0;
+  }
+  .mobile-menu-toggle.open .bar-3 {
+    transform: translateY(-9px) rotate(-45deg);
+  }
+
+  /* Media Queries */
+  @media (min-width: 768px) {
+    .logo-link {
+      width: 220px;
+    }
+    .phone-link {
+      display: inline-flex;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .desktop-nav {
+      display: block;
+    }
+    .header-cta {
+      display: inline-flex;
+    }
+    .mobile-menu-toggle {
+      display: none;
+    }
+    .mobile-nav-drawer {
+      display: none;
+    }
+  }
+</style>
+
+<script>
+  // Handlers for mobile hamburger navigation
+  const toggleBtn = document.querySelector('.mobile-menu-toggle');
+  const drawer = document.querySelector('.mobile-nav-drawer');
+  const navLinks = document.querySelectorAll('.mobile-nav-link');
+
+  if (toggleBtn && drawer) {
+    const toggleMenu = () => {
+      const isOpen = drawer.classList.toggle('open');
+      toggleBtn.classList.toggle('open');
+      toggleBtn.setAttribute('aria-expanded', String(isOpen));
+      drawer.setAttribute('aria-hidden', String(!isOpen));
+      document.body.style.overflow = isOpen ? 'hidden' : '';
+    };
+
+    toggleBtn.addEventListener('click', toggleMenu);
+
+    navLinks.forEach(link => {
+      link.addEventListener('click', () => {
+        if (drawer.classList.contains('open')) {
+          toggleMenu();
+        }
+      });
+    });
+  }
+
+  // Collapsible nested menus on Mobile
+  const mobileDropdownBtn = document.querySelector('.mobile-dropdown-trigger');
+  const mobileNestedList = document.querySelector('.mobile-nested-links') as HTMLElement;
+
+  if (mobileDropdownBtn && mobileNestedList) {
+    mobileDropdownBtn.addEventListener('click', () => {
+      const isExpanded = mobileDropdownBtn.getAttribute('aria-expanded') === 'true';
+      mobileDropdownBtn.setAttribute('aria-expanded', String(!isExpanded));
+      mobileDropdownBtn.classList.toggle('open');
+      
+      if (!isExpanded) {
+        mobileNestedList.style.display = 'flex';
+      } else {
+        mobileNestedList.style.display = 'none';
+      }
+    });
+  }
+
+  // Accessibility dropdown focus checks on Desktop
+  const dropdownTrigger = document.querySelector('.dropdown-trigger');
+  const dropdownMenu = document.getElementById('services-desktop-menu');
+
+  if (dropdownTrigger && dropdownMenu) {
+    dropdownTrigger.addEventListener('focus', () => {
+      dropdownTrigger.setAttribute('aria-expanded', 'true');
+    });
+
+    const dropdownLinks = dropdownMenu.querySelectorAll('a');
+    const lastLink = dropdownLinks[dropdownLinks.length - 1];
+
+    if (lastLink) {
+      lastLink.addEventListener('blur', () => {
+        dropdownTrigger.setAttribute('aria-expanded', 'false');
+      });
+    }
+  }
+</script>

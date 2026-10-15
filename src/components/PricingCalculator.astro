@@ -1,0 +1,515 @@
+---
+---
+
+<div class="calculator-card card-glass">
+  <div class="calculator-header">
+    <span class="calculator-badge badge badge-sunset">Interactive</span>
+    <h3 class="calculator-title text-gradient-sunset">Arizona Business Price &amp; ROI Estimator</h3>
+    <p class="calculator-subtitle">Customize your build in seconds. Get an honest, fair projection with zero sales pressure.</p>
+  </div>
+
+  <div class="calculator-body">
+    <!-- Slider element for Pages -->
+    <div class="calculator-section">
+      <div class="section-label-group">
+        <label for="pages-slider" class="form-label">Number of Custom Pages</label>
+        <span class="value-display"><span id="pages-count">5</span> Pages</span>
+      </div>
+      <input 
+        type="range" 
+        id="pages-slider" 
+        class="slider-input" 
+        min="1" 
+        max="20" 
+        value="5" 
+        aria-valuemin="1" 
+        aria-valuemax="20" 
+        aria-valuenow="5" 
+      />
+      <div class="slider-ticks">
+        <span>1 Page (Landing)</span>
+        <span>10 Pages</span>
+        <span>20 Pages</span>
+      </div>
+    </div>
+
+    <!-- Toggle options for SEO/AEO/GEO -->
+    <div class="calculator-section">
+      <span class="form-label">Organic Reach &amp; AI Search (SEO/AEO/GEO)</span>
+      <div class="radio-card-grid">
+        <label class="radio-card active">
+          <input type="radio" name="seo-tier" value="none" />
+          <span class="radio-title">Foundational Only</span>
+          <span class="radio-desc">Clean semantic structures ready for indexing. Included free.</span>
+        </label>
+        
+        <label class="radio-card">
+          <input type="radio" name="seo-tier" value="local" checked />
+          <span class="radio-title">Local SEO Engine</span>
+          <span class="radio-desc">Google Maps ranking, citation syncing, and local Schema markup.</span>
+          <span class="radio-price">+$199/mo</span>
+        </label>
+        
+        <label class="radio-card">
+          <input type="radio" name="seo-tier" value="aeo-geo" />
+          <span class="radio-title">AI Citation &amp; GEO Engine</span>
+          <span class="radio-desc">Optimized for ChatGPT, Claude, Perplexity citations + Siri/Alexa.</span>
+          <span class="radio-price">+$399/mo</span>
+        </label>
+      </div>
+    </div>
+
+    <!-- Toggle options for Secure Hosting -->
+    <div class="calculator-section">
+      <span class="form-label">Managed Hosting &amp; Uptime Support</span>
+      <div class="toggle-group">
+        <label class="toggle-pill active">
+          <input type="radio" name="hosting-toggle" value="managed" checked />
+          <span>Managed AZ Edge (Daily Backups, Cloudflare CDN, Support) <strong>+$49/mo</strong></span>
+        </label>
+        <label class="toggle-pill">
+          <input type="radio" name="hosting-toggle" value="self" />
+          <span>I will handle my own hosting (Free)</span>
+        </label>
+      </div>
+    </div>
+  </div>
+
+  <div class="calculator-summary">
+    <div class="summary-card">
+      <div class="summary-col">
+        <span class="summary-label">Estimated One-Time Build</span>
+        <span class="summary-price text-gradient-green" id="one-time-cost">$1,599</span>
+        <span class="summary-detail">Design, Copywriting, Coding &amp; Launch</span>
+      </div>
+      <div class="summary-col border-left">
+        <span class="summary-label">Monthly Support &amp; Growth</span>
+        <span class="summary-price text-gradient-sunset" id="monthly-cost">$248/mo</span>
+        <span class="summary-detail">SEO/AEO &amp; Managed High-Speed Edge</span>
+      </div>
+    </div>
+
+    <!-- Interactive ROI projection based on selections -->
+    <div class="roi-bar">
+      <div class="roi-metric">
+        <span class="roi-icon">🚀</span>
+        <div>
+          <span class="roi-title">Est. Performance Grade</span>
+          <span class="roi-value" id="roi-speed">100/100 A+</span>
+        </div>
+      </div>
+      <div class="roi-metric">
+        <span class="roi-icon">🤖</span>
+        <div>
+          <span class="roi-title">Generative AI Citation Ready</span>
+          <span class="roi-value" id="roi-ai">Foundation Ready</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="calculator-footer-cta">
+      <a href="/contact?ref=calculator" class="btn btn-sunset btn-full" id="calc-cta-btn">Lock In This Quote Rate</a>
+      <p class="cta-disclaimer">Values are transparent estimates. Actual projects receive fixed scopes &amp; 100% itemized invoices.</p>
+    </div>
+  </div>
+</div>
+
+<style>
+  .calculator-card {
+    max-width: 900px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+  }
+  @media (min-width: 1024px) {
+    .calculator-card {
+      padding: var(--space-6);
+    }
+  }
+
+  .calculator-header {
+    text-align: center;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    padding-bottom: var(--space-3);
+  }
+  .calculator-badge {
+    margin-bottom: var(--space-1);
+  }
+  .calculator-title {
+    margin-bottom: var(--space-1);
+    font-size: clamp(1.5rem, 3vw, 2.25rem);
+  }
+  .calculator-subtitle {
+    font-size: 0.95rem;
+    color: var(--color-text-secondary);
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  .calculator-body {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+  }
+
+  .calculator-section {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+  }
+
+  .section-label-group {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .value-display {
+    font-family: var(--font-family-heading);
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: var(--color-accent-green);
+  }
+
+  /* Custom Range Slider */
+  .slider-input {
+    -webkit-appearance: none;
+    width: 100%;
+    height: 6px;
+    border-radius: var(--radius-full);
+    background: rgba(255, 255, 255, 0.1);
+    outline: none;
+    margin: var(--space-2) 0;
+  }
+  .slider-input::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background: var(--color-accent-green);
+    cursor: pointer;
+    box-shadow: 0 0 10px rgba(11, 181, 92, 0.5);
+    transition: transform 0.1s ease;
+  }
+  .slider-input::-webkit-slider-thumb:hover {
+    transform: scale(1.15);
+  }
+  .slider-ticks {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.8rem;
+    color: var(--color-text-muted);
+  }
+
+  /* Custom Radio Cards */
+  .radio-card-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-2);
+  }
+  @media (min-width: 768px) {
+    .radio-card-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  .radio-card {
+    background: rgba(4, 9, 20, 0.4);
+    border: var(--border-glow);
+    border-radius: var(--radius-md);
+    padding: var(--space-3);
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    position: relative;
+    transition: all var(--transition-fast);
+  }
+  .radio-card input[type="radio"] {
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+  .radio-card:hover {
+    border-color: rgba(255, 255, 255, 0.15);
+    background: rgba(255, 255, 255, 0.02);
+  }
+  .radio-card.active {
+    border-color: var(--color-accent-green);
+    background: rgba(11, 181, 92, 0.05);
+    box-shadow: 0 0 15px rgba(11, 181, 92, 0.05);
+  }
+
+  .radio-title {
+    font-family: var(--font-family-heading);
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--color-text-primary);
+  }
+  .radio-desc {
+    font-size: 0.8rem;
+    color: var(--color-text-secondary);
+    line-height: 1.4;
+  }
+  .radio-price {
+    font-family: var(--font-family-heading);
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: var(--color-accent-green);
+    margin-top: auto;
+    padding-top: var(--space-1);
+  }
+
+  /* Toggle Groups */
+  .toggle-group {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-1);
+  }
+  .toggle-pill {
+    background: rgba(4, 9, 20, 0.4);
+    border: var(--border-glow);
+    border-radius: var(--radius-md);
+    padding: var(--space-2) var(--space-3);
+    cursor: pointer;
+    font-size: 0.9rem;
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    transition: all var(--transition-fast);
+  }
+  .toggle-pill input[type="radio"] {
+    accent-color: var(--color-accent-green);
+  }
+  .toggle-pill.active {
+    border-color: var(--color-accent-green);
+    background: rgba(11, 181, 92, 0.03);
+  }
+
+  /* Summary Section */
+  .calculator-summary {
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    padding-top: var(--space-4);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+  }
+
+  .summary-card {
+    display: grid;
+    grid-template-columns: 1fr;
+    background: rgba(255, 255, 255, 0.02);
+    border: var(--border-glow);
+    border-radius: var(--radius-md);
+    padding: var(--space-4);
+    text-align: center;
+  }
+  @media (min-width: 768px) {
+    .summary-card {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    .border-left {
+      border-left: 1px solid rgba(255, 255, 255, 0.05);
+    }
+  }
+
+  .summary-col {
+    display: flex;
+    flex-direction: column;
+    padding: var(--space-2);
+  }
+
+  .summary-label {
+    font-size: 0.9rem;
+    color: var(--color-text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    font-weight: 500;
+  }
+  .summary-price {
+    font-family: var(--font-family-heading);
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 800;
+    margin: var(--space-1) 0;
+  }
+  .summary-detail {
+    font-size: 0.8rem;
+    color: var(--color-text-muted);
+  }
+
+  /* ROI metrics */
+  .roi-bar {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-2);
+    background: rgba(11, 181, 92, 0.02);
+    border: 1px dashed rgba(11, 181, 92, 0.2);
+    border-radius: var(--radius-md);
+    padding: var(--space-3);
+  }
+  @media (min-width: 768px) {
+    .roi-bar {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+
+  .roi-metric {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+  }
+  .roi-icon {
+    font-size: 1.5rem;
+  }
+  .roi-title {
+    display: block;
+    font-size: 0.75rem;
+    color: var(--color-text-secondary);
+    text-transform: uppercase;
+    font-weight: 600;
+  }
+  .roi-value {
+    font-family: var(--font-family-heading);
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: var(--color-text-primary);
+  }
+
+  .calculator-footer-cta {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-1);
+  }
+  .cta-disclaimer {
+    font-size: 0.75rem;
+    color: var(--color-text-muted);
+  }
+</style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const slider = document.getElementById('pages-slider') as HTMLInputElement;
+    const pagesCount = document.getElementById('pages-count');
+    const oneTimeEl = document.getElementById('one-time-cost');
+    const monthlyEl = document.getElementById('monthly-cost');
+    const roiSpeedEl = document.getElementById('roi-speed');
+    const roiAiEl = document.getElementById('roi-ai');
+    const ctaBtn = document.getElementById('calc-cta-btn') as HTMLAnchorElement;
+
+    const radioCards = document.querySelectorAll('.radio-card');
+    const togglePills = document.querySelectorAll('.toggle-pill');
+
+    const updateCalculator = () => {
+      if (!slider) return;
+      const pages = parseInt(slider.value);
+      if (pagesCount) pagesCount.textContent = String(pages);
+
+      // Selected radio for SEO
+      let seoPrice = 0;
+      let seoTier = 'none';
+      const checkedSeo = document.querySelector('input[name="seo-tier"]:checked') as HTMLInputElement;
+      if (checkedSeo) {
+        seoTier = checkedSeo.value;
+        if (seoTier === 'local') seoPrice = 199;
+        if (seoTier === 'aeo-geo') seoPrice = 399;
+      }
+
+      // Selected hosting toggle
+      let hostingPrice = 0;
+      let hostingTier = 'self';
+      const checkedHosting = document.querySelector('input[name="hosting-toggle"]:checked') as HTMLInputElement;
+      if (checkedHosting) {
+        hostingTier = checkedHosting.value;
+        if (hostingTier === 'managed') hostingPrice = 49;
+      }
+
+      // 1. One-time build calculation
+      // Baseline cost is $999 (up to 3 pages) + $150 per additional page
+      const basePages = 3;
+      const baseCost = 999;
+      const costPerExtraPage = 150;
+      let oneTimeCost = baseCost;
+      if (pages > basePages) {
+        oneTimeCost += (pages - basePages) * costPerExtraPage;
+      }
+
+      // Apply minor visual multiplier if high SEO tiers are selected (reflecting initial setups)
+      if (seoTier === 'local') oneTimeCost += 100;
+      if (seoTier === 'aeo-geo') oneTimeCost += 250;
+
+      // 2. Monthly cost
+      const monthlyCost = seoPrice + hostingPrice;
+
+      // Format output
+      if (oneTimeEl) oneTimeEl.textContent = `$${oneTimeCost.toLocaleString()}`;
+      if (monthlyEl) monthlyEl.textContent = `$${monthlyCost}/mo`;
+
+      // 3. ROI projections
+      if (roiSpeedEl) {
+        if (pages <= 5) {
+          roiSpeedEl.textContent = '100/100 A+ Grade (<0.3s)';
+        } else if (pages <= 12) {
+          roiSpeedEl.textContent = '99/100 A Grade (<0.5s)';
+        } else {
+          roiSpeedEl.textContent = '98/100 A Grade (<0.7s)';
+        }
+      }
+
+      if (roiAiEl) {
+        if (seoTier === 'none') {
+          roiAiEl.textContent = 'Standard Semantic Indexing';
+          roiAiEl.className = 'roi-value';
+        } else if (seoTier === 'local') {
+          roiAiEl.textContent = 'Google Maps Synced + Citations';
+          roiAiEl.className = 'roi-value text-gradient-green';
+        } else {
+          roiAiEl.textContent = 'ChatGPT, Claude & Perplexity Citations';
+          roiAiEl.className = 'roi-value text-gradient-sunset';
+        }
+      }
+
+      // Update CTA Link URL with query parameters
+      if (ctaBtn) {
+        ctaBtn.href = `/contact?pages=${pages}&seo=${seoTier}&hosting=${hostingTier}&total=${oneTimeCost}&monthly=${monthlyCost}`;
+      }
+    };
+
+    // Add listeners
+    if (slider) {
+      slider.addEventListener('input', () => {
+        slider.setAttribute('aria-valuenow', slider.value);
+        updateCalculator();
+      });
+    }
+
+    radioCards.forEach(card => {
+      card.addEventListener('click', () => {
+        radioCards.forEach(c => c.classList.remove('active'));
+        card.classList.add('active');
+        const input = card.querySelector('input[type="radio"]') as HTMLInputElement;
+        if (input) {
+          input.checked = true;
+          updateCalculator();
+        }
+      });
+    });
+
+    togglePills.forEach(pill => {
+      pill.addEventListener('click', () => {
+        togglePills.forEach(p => p.classList.remove('active'));
+        pill.classList.add('active');
+        const input = pill.querySelector('input[type="radio"]') as HTMLInputElement;
+        if (input) {
+          input.checked = true;
+          updateCalculator();
+        }
+      });
+    });
+
+    // Initialize values
+    updateCalculator();
+  });
+</script>

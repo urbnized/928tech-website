@@ -1,0 +1,119 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import ArizonaBadge from '../components/ArizonaBadge.astro';
+
+const pageTitle = "Terms of Service | 928Tech";
+const pageDescription = "Transparent and fair terms of service for custom website contracts, development guidelines, and asset ownership rights.";
+---
+
+<Layout title={pageTitle} description={pageDescription}>
+  <Header slot="header" />
+
+  <section class="legal-section section-spacing">
+    <div class="container legal-container">
+      <div class="legal-header animate-slide-up">
+        <ArizonaBadge size="small" />
+        <h1 class="legal-title mt-space-2">Terms of Service</h1>
+        <p class="legal-meta">Last Updated: May 26, 2026</p>
+      </div>
+
+      <div class="legal-body card-glass animate-fade-in">
+        <h2>1. Fixed Scopes &amp; Fair Estimating</h2>
+        <p>
+          All website design and digital optimization projects are governed by clear, itemized scopes of work. We deliver a flat setup fee proposal based on custom requirements. Once a quote rate is locked and signed, the price is guaranteed.
+        </p>
+
+        <h2>2. Code &amp; Asset Ownership</h2>
+        <p>
+          We firmly stand by small business ownership values. Upon receipt of full project payment:
+        </p>
+        <ul class="legal-checklist">
+          <li>✓ You own **100% of the domain registrations**.</li>
+          <li>✓ You own **100% of custom graphics, branding, and text copy**.</li>
+          <li>✓ You own **100% of compiled Astro files and source repositories**.</li>
+        </ul>
+
+        <h2>3. Independent Deployment Choices</h2>
+        <p>
+          We do not require you to host your website with 928Tech. Because we code using static-first Astro standards, your site is designed to compile to open formats. You can choose to deploy your site on any third-party host or use free edge-CDNs like Cloudflare Pages.
+        </p>
+
+        <h2>4. Transparent Hourly Services</h2>
+        <p>
+          For custom maintenance modifications, software expansions, or content editing requested outside our fixed monthly support plans, we charge a flat, transparent rate of **$125 per hour**, itemized to the minute.
+        </p>
+
+        <h2>5. Content Collection and Compliance</h2>
+        <p>
+          Clients are solely responsible for verifying the legal compliance and professional credentials of their local business details, certifications, and licenses cited on their websites.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <Footer slot="footer" />
+</Layout>
+
+<style>
+  .mt-space-2 { margin-top: var(--space-2); }
+  
+  .legal-container {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  
+  .legal-header {
+    margin-bottom: var(--space-4);
+  }
+  .legal-title {
+    font-size: clamp(2rem, 5vw, 3rem);
+    margin-bottom: 4px;
+  }
+  .legal-meta {
+    font-size: 0.9rem;
+    color: var(--color-text-muted);
+    font-weight: 500;
+  }
+
+  .legal-body {
+    padding: var(--space-4);
+  }
+  @media (min-width: 768px) {
+    .legal-body {
+      padding: var(--space-6);
+    }
+  }
+
+  .legal-body h2 {
+    font-size: 1.35rem;
+    margin-top: var(--space-4);
+    margin-bottom: var(--space-2);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    padding-bottom: var(--space-1);
+    color: var(--color-text-primary);
+  }
+  .legal-body h2:first-of-type {
+    margin-top: 0;
+  }
+
+  .legal-body p {
+    font-size: 1rem;
+    color: var(--color-text-secondary);
+    line-height: 1.7;
+    margin-bottom: var(--space-3);
+  }
+
+  .legal-checklist {
+    margin-left: var(--space-3);
+    margin-bottom: var(--space-4);
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .legal-checklist li {
+    font-size: 0.95rem;
+    color: var(--color-text-secondary);
+  }
+</style>

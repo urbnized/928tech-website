@@ -1,0 +1,299 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import ArizonaBadge from '../components/ArizonaBadge.astro';
+
+const pageTitle = "Bespoke Design Cases & Concepts | 928Tech";
+const pageDescription = "Explore our premium, high-speed custom web design case studies for Arizona businesses. 100/100 speed scores, responsive mobile-first layouts.";
+
+const projects = [
+  {
+    title: "Sedona Jeep Outfitters",
+    category: "Tourism & Outdoor Adventure",
+    stats: { speed: "100/100 Perfect", conversion: "+42% Bookings", ttfb: "45ms" },
+    tech: ["Astro static", "Vanilla CSS", "Stripe Checkout"],
+    desc: "Bespoke high-contrast booking portal with custom route scheduling integrations. Replaced a bloated WordPress setup to slash load times and capture immediate mobile tourists.",
+    colorTheme: "sunset"
+  },
+  {
+    title: "Flagstaff Cozy Cabins",
+    category: "Luxury Cabin Rentals",
+    stats: { speed: "99/100 A Grade", conversion: "+35% Direct Calls", ttfb: "60ms" },
+    tech: ["Astro Layer", "Local Schema", "Google Maps Sync"],
+    desc: "Premium, typography-centric real estate showcase. Optimized with advanced Schema markup, achieving cited recommendations on ChatGPT voice-searched holiday queries.",
+    colorTheme: "green"
+  },
+  {
+    title: "Prescott Plumbing & Gas",
+    category: "Residential Trades",
+    stats: { speed: "100/100 Perfect", conversion: "x2 Call Volumes", ttfb: "30ms" },
+    tech: ["Astro", "Mobile-first Tap UI", "Local GBP Sync"],
+    desc: "High-converting single-purpose leads funnel. Tailored with strict focus on mobile tap targets to double emergency call rates from local homeowners.",
+    colorTheme: "blue"
+  },
+  {
+    title: "Mohave Valley Dental",
+    category: "Professional Medical Practice",
+    stats: { speed: "100/100 Perfect", conversion: "+50% New Patients", ttfb: "55ms" },
+    tech: ["Astro", "Vanilla JS Scheduler", "WCAG 2.2 AA"],
+    desc: "Fully accessible professional practice website. Structured for total compliance, allowing frictionless mobile-to-calendar bookings.",
+    colorTheme: "green"
+  }
+];
+---
+
+<Layout title={pageTitle} description={pageDescription}>
+  <Header slot="header" />
+
+  <!-- Portfolio Hero Segment -->
+  <section class="portfolio-hero section-spacing relative overflow-hidden">
+    <div class="glow-blob glow-blob-1"></div>
+    <div class="container text-center animate-slide-up">
+      <ArizonaBadge />
+      <h1 class="hero-title mt-space-2">High-Performance <span class="text-gradient-green">Case Studies &amp; Concepts</span></h1>
+      <p class="hero-lead">
+        Proof beats promises. Explore how clean, custom-coded web architectures achieve perfect performance scores, outrank massive national competitors, and turn clicks into loyal local calls.
+      </p>
+    </div>
+  </section>
+
+  <!-- Portfolio Grid Segment -->
+  <section class="portfolio-grid section-spacing">
+    <div class="container">
+      <div class="grid-2">
+        {projects.map(proj => (
+          <div class={`card-glass project-card theme-${proj.colorTheme}`}>
+            <div class="project-header">
+              <div>
+                <span class="project-category">{proj.category}</span>
+                <h3 class="project-title">{proj.title}</h3>
+              </div>
+              <div class="project-metrics" aria-label="Performance Metrics">
+                <div class="metric-badge">
+                  <span class="metric-lbl">Speed Score</span>
+                  <span class="metric-val text-gradient-green">{proj.stats.speed}</span>
+                </div>
+              </div>
+            </div>
+            
+            <p class="project-desc">{proj.desc}</p>
+            
+            <!-- Tech stacks used -->
+            <div class="project-tech-tags">
+              {proj.tech.map(t => (
+                <span class="tech-tag">{t}</span>
+              ))}
+            </div>
+
+            <!-- Stats Bar -->
+            <div class="project-stats-row">
+              <div class="stats-item">
+                <span class="stats-item-lbl">ROI Metric</span>
+                <span class="stats-item-val">{proj.stats.conversion}</span>
+              </div>
+              <div class="stats-item">
+                <span class="stats-item-lbl">Edge TTFB</span>
+                <span class="stats-item-val">{proj.stats.ttfb}</span>
+              </div>
+            </div>
+            
+            <div class="project-footer">
+              <a href="/contact?ref=portfolio" class="btn btn-secondary btn-full">Inquire About This Build Blueprint</a>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ and Bottom CTA Banner -->
+  <section class="cta-banner section-spacing">
+    <div class="container text-center card-glass cta-card relative overflow-hidden">
+      <div class="glow-blob glow-blob-3"></div>
+      <h2 class="cta-title">Want a Fast, Accessible Web Asset Built for You?</h2>
+      <p class="cta-subtitle">Let's sketch a tailored blueprint showing exactly how we would structure, copywrite, and deploy your business site.</p>
+      <div class="cta-actions">
+        <a href="/contact" class="btn btn-sunset">Claim Free Site Blueprint</a>
+        <a href="/pricing" class="btn btn-secondary">Calculate Build Pricing</a>
+      </div>
+      <p class="phone-disclaimer mt-space-2">Or call the founder directly at: <a href="tel:928-458-8121" class="text-gradient-green"><strong>928-458-8121</strong></a></p>
+    </div>
+  </section>
+
+  <Footer slot="footer" />
+</Layout>
+
+<style>
+  .mt-space-2 { margin-top: var(--space-2); }
+  .text-center { text-align: center; }
+
+  /* Hero */
+  .portfolio-hero {
+    padding-top: var(--space-12);
+    padding-bottom: var(--space-4);
+  }
+  .hero-title {
+    font-size: clamp(2.2rem, 5vw, 3.5rem);
+    margin-bottom: var(--space-3);
+  }
+  .hero-lead {
+    font-size: 1.25rem;
+    color: var(--color-text-secondary);
+    max-width: 680px;
+    margin: 0 auto;
+  }
+
+  /* Portfolio Cards Grid */
+  .project-card {
+    display: flex;
+    flex-direction: column;
+    padding: var(--space-4);
+    gap: var(--space-3);
+    border-color: rgba(255, 255, 255, 0.05);
+  }
+  @media (min-width: 768px) {
+    .project-card {
+      padding: var(--space-5);
+    }
+  }
+
+  .project-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: var(--space-3);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    padding-bottom: var(--space-3);
+  }
+
+  .project-category {
+    font-size: 0.8rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: var(--color-text-muted);
+    letter-spacing: 0.05em;
+  }
+  .project-title {
+    font-size: 1.5rem;
+    margin-bottom: 0;
+  }
+
+  /* Metrics badges */
+  .metric-badge {
+    background: rgba(11, 181, 92, 0.06);
+    border: 1px dashed rgba(11, 181, 92, 0.2);
+    padding: 0.25rem 0.65rem;
+    border-radius: var(--radius-sm);
+    text-align: right;
+  }
+  .metric-lbl {
+    display: block;
+    font-size: 0.65rem;
+    color: var(--color-text-secondary);
+    text-transform: uppercase;
+    font-weight: 600;
+  }
+  .metric-val {
+    font-family: var(--font-family-heading);
+    font-size: 0.85rem;
+    font-weight: 700;
+  }
+
+  .project-desc {
+    font-size: 0.95rem;
+    color: var(--color-text-secondary);
+    line-height: 1.6;
+    margin-bottom: 0;
+  }
+
+  .project-tech-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-1);
+  }
+  .tech-tag {
+    font-family: monospace;
+    font-size: 0.75rem;
+    color: var(--color-text-secondary);
+    background: rgba(255, 255, 255, 0.03);
+    border: var(--border-glow);
+    padding: 0.15rem 0.5rem;
+    border-radius: var(--radius-sm);
+  }
+
+  /* Stat bar items */
+  .project-stats-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-3);
+    background: rgba(255, 255, 255, 0.01);
+    border: var(--border-glow);
+    border-radius: var(--radius-sm);
+    padding: var(--space-2) var(--space-3);
+  }
+  .stats-item-lbl {
+    display: block;
+    font-size: 0.7rem;
+    color: var(--color-text-muted);
+    text-transform: uppercase;
+    font-weight: 600;
+  }
+  .stats-item-val {
+    font-family: var(--font-family-heading);
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--color-text-primary);
+  }
+
+  /* Themes */
+  .theme-sunset:hover {
+    border-color: rgba(206, 92, 23, 0.3);
+    box-shadow: var(--shadow-lg), var(--glow-sunset);
+  }
+  .theme-green:hover {
+    border-color: rgba(11, 181, 92, 0.3);
+    box-shadow: var(--shadow-lg), var(--glow-green);
+  }
+  .theme-blue:hover {
+    border-color: rgba(0, 210, 255, 0.3);
+    box-shadow: var(--shadow-lg), var(--glow-blue);
+  }
+
+  .project-footer {
+    margin-top: auto;
+    padding-top: var(--space-2);
+  }
+
+  /* Bottom CTA Banner */
+  .cta-card {
+    padding: var(--space-6) var(--space-4);
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+  @media (min-width: 768px) {
+    .cta-card {
+      padding: var(--space-8) var(--space-6);
+    }
+  }
+  .cta-title {
+    font-size: clamp(1.8rem, 4vw, 2.5rem);
+    margin-bottom: var(--space-2);
+  }
+  .cta-subtitle {
+    font-size: 1.1rem;
+    color: var(--color-text-secondary);
+    max-width: 600px;
+    margin: 0 auto var(--space-4);
+  }
+  .cta-actions {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+  }
+  .phone-disclaimer {
+    font-size: 0.95rem;
+    color: var(--color-text-secondary);
+  }
+</style>

@@ -1,0 +1,597 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import ArizonaBadge from '../../components/ArizonaBadge.astro';
+
+const pageTitle = "Affordable In-Home Tech Help & Setup in Arizona | 928Tech";
+const pageDescription = "Patience-first in-home tech help, setup, and teaching for phones, tablets, smart TVs, routers, and computers in local Arizona. Professional service undercutting Geek Squad by over 50%.";
+---
+
+<Layout title={pageTitle} description={pageDescription}>
+  <Header slot="header" />
+  
+  <!-- Hero Section -->
+  <section class="service-hero section-spacing relative overflow-hidden">
+    <div class="glow-blob glow-blob-1"></div>
+    <div class="container hero-container grid-2">
+      <div class="hero-content animate-slide-up">
+        <ArizonaBadge />
+        <h1 class="hero-title mt-space-2">Patience-First <span class="text-gradient-sunset">In-Home Tech Help</span> &amp; Teaching</h1>
+        <p class="hero-lead">
+          Technology should make your life easier, not more frustrating. We come directly to your home in Arizona to set up your devices and patiently teach you how to use them—in plain English with zero confusing jargon.
+        </p>
+        <div class="hero-actions">
+          <a href="/contact?service=tech-help" class="btn btn-sunset">Schedule a Friendly Visit</a>
+          <a href="#pricing" class="btn btn-secondary">View Affordable Rates</a>
+        </div>
+      </div>
+      
+      <!-- Interactive Support Ticket Visual Card -->
+      <div class="hero-visual animate-fade-in">
+        <div class="spec-card card-glass theme-sunset">
+          <div class="spec-header">
+            <span class="spec-dot red"></span>
+            <span class="spec-dot yellow"></span>
+            <span class="spec-dot green"></span>
+            <span class="spec-title">Competitive Pricing</span>
+          </div>
+          <div class="spec-body">
+            <div class="spec-row">
+              <span class="spec-label">Service Type</span>
+              <span class="spec-val text-gradient-sunset">In-Home Care &amp; Learning</span>
+            </div>
+            <div class="spec-row">
+              <span class="spec-label">1-Hour Flat Rate</span>
+              <span class="spec-val text-gradient-sunset">$69.00 Flat</span>
+            </div>
+            <div class="spec-row">
+              <span class="spec-label">Geek Squad Rate</span>
+              <span class="spec-val text-gradient-red" style="text-decoration: line-through; opacity: 0.65;">$149.00+</span>
+            </div>
+            <div class="spec-row">
+              <span class="spec-label">Patience &amp; Kindness</span>
+              <span class="spec-val text-gradient-green">100% Guaranteed</span>
+            </div>
+          </div>
+          <div class="spec-footer">
+            <span class="spec-status-pill">Local AZ Technicians</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Core Services We Teach / Set Up -->
+  <section class="features-section section-spacing">
+    <div class="container">
+      <div class="section-header text-center">
+        <h2 class="section-title">We Master the Tech So <span class="text-gradient-sunset">You Can Enjoy It</span></h2>
+        <p class="section-subtitle">No question is too simple. We love helping you gain confidence using the devices you already own.</p>
+      </div>
+
+      <div class="grid-4 mt-space-6">
+        <!-- Phone & Tablet Card -->
+        <div class="feature-card card-glass">
+          <div class="feature-icon-circle">📱</div>
+          <h3 class="feature-title">Phones &amp; Tablets</h3>
+          <p class="feature-desc">
+            Master your iPhone, iPad, or Android. We'll show you how to text photos to family, make FaceTime or video calls, manage storage, and organize your favorite apps.
+          </p>
+        </div>
+
+        <!-- Computer & Printer Card -->
+        <div class="feature-card card-glass">
+          <div class="feature-icon-circle">💻</div>
+          <h3 class="feature-title">Computers &amp; Printers</h3>
+          <p class="feature-desc">
+            Get your new computer set up correctly. We configure email accounts, transfer old files, install safe security software, and make sure your printer works every single time.
+          </p>
+        </div>
+
+        <!-- Smart TV & Streaming Card -->
+        <div class="feature-card card-glass">
+          <div class="feature-icon-circle">📺</div>
+          <h3 class="feature-title">Smart TVs &amp; Streaming</h3>
+          <p class="feature-desc">
+            Ditch the confusion of three different remote controls. We'll set up your streaming services like Netflix, Hulu, or YouTube, and organize them so they are simple to use.
+          </p>
+        </div>
+
+        <!-- Wi-Fi & Smart Home Card -->
+        <div class="feature-card card-glass">
+          <div class="feature-icon-circle">📶</div>
+          <h3 class="feature-title">Wi-Fi &amp; Smart Home</h3>
+          <p class="feature-desc">
+            Eliminate internet dead zones. We'll optimize your Wi-Fi router, secure your network, and connect smart home devices like Ring doorbells, cameras, or smart thermostats.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Comparison Section -->
+  <section class="comparison-section section-spacing relative overflow-hidden">
+    <div class="glow-blob glow-blob-2"></div>
+    <div class="container">
+      <div class="section-header text-center">
+        <h2 class="section-title">An Honest Local Service vs. <span class="text-gradient-sunset">Big Tech Giants</span></h2>
+        <p class="section-subtitle">We believe local Arizona seniors and families shouldn't be overcharged just to understand their technology.</p>
+      </div>
+
+      <div class="comparison-table-wrapper card-glass mt-space-6">
+        <table class="comparison-table" aria-label="928Tech vs Big Tech giants comparison">
+          <thead>
+            <tr>
+              <th scope="col" class="th-feature">Service Standard</th>
+              <th scope="col" class="th-custom">928Tech Personal Tech Help</th>
+              <th scope="col" class="th-builders">Geek Squad &amp; Big Tech Firms</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row" class="row-hdr">Hourly / Visit Rate</th>
+              <td class="td-custom">✅ $69 flat-rate (Affordable &amp; Fair)</td>
+              <td class="td-builders">❌ $149 - $199 per visit or task fee</td>
+            </tr>
+            <tr>
+              <th scope="row" class="row-hdr">Teaching Temperament</th>
+              <td class="td-custom">✅ Extremely patient, plain English, zero jargon</td>
+              <td class="td-builders">❌ Rushed, confusing technical jargon</td>
+            </tr>
+            <tr>
+              <th scope="row" class="row-hdr">Booking Experience</th>
+              <td class="td-custom">✅ Direct local line to an Arizona professional</td>
+              <td class="td-builders">❌ Automated phone trees &amp; global call centers</td>
+            </tr>
+            <tr>
+              <th scope="row" class="row-hdr">Pricing Honesty</th>
+              <td class="td-custom">✅ Pay only if we successfully solve your problem</td>
+              <td class="td-builders">❌ Upfront booking fees, mandatory subscriptions</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pricing Cards Section -->
+  <section id="pricing" class="pricing-section section-spacing">
+    <div class="container">
+      <div class="section-header text-center">
+        <h2 class="section-title">Affordable, <span class="text-gradient-sunset">Transparent Pricing</span></h2>
+        <p class="section-subtitle">No travel fees, no hidden additions, and a strict **No Solution, No Fee** policy.</p>
+      </div>
+
+      <div class="grid-3 mt-space-6">
+        <!-- Plan 1 -->
+        <div class="pricing-card card-glass">
+          <div class="price-header">
+            <span class="plan-badge">Quick Fix</span>
+            <h3 class="plan-title">1-Hour Tech Visit</h3>
+            <div class="price-value-container">
+              <span class="currency">$</span>
+              <span class="price-num">69</span>
+              <span class="period">/ session</span>
+            </div>
+          </div>
+          <div class="price-body">
+            <ul class="price-features">
+              <li>✓ In-home service visit included</li>
+              <li>✓ Setup or troubleshooting for 1-2 devices</li>
+              <li>✓ Patient, 1-on-1 personalized teaching</li>
+              <li>✓ Plain-English written cheat sheet</li>
+              <li>✓ Phones, tablets, computers, smart TVs</li>
+            </ul>
+          </div>
+          <div class="price-footer">
+            <a href="/contact?service=tech-help-1h" class="btn btn-secondary btn-full">Book Quick Fix</a>
+          </div>
+        </div>
+
+        <!-- Plan 2 -->
+        <div class="pricing-card card-glass featured-card">
+          <span class="card-badge">Popular Service</span>
+          <div class="price-header">
+            <span class="plan-badge">Comprehensive</span>
+            <h3 class="plan-title">2-Hour Deep Dive</h3>
+            <div class="price-value-container">
+              <span class="currency">$</span>
+              <span class="price-num">119</span>
+              <span class="period">/ session</span>
+            </div>
+          </div>
+          <div class="price-body">
+            <ul class="price-features">
+              <li>✓ Full device setup &amp; data transfer</li>
+              <li>✓ Complete home Wi-Fi audit &amp; secure config</li>
+              <li>✓ Deep dive training (multiple family members)</li>
+              <li>✓ Organization of passwords &amp; security</li>
+              <li>✓ Smart home device setup (Ring, Alexa, Nest)</li>
+            </ul>
+          </div>
+          <div class="price-footer">
+            <a href="/contact?service=tech-help-2h" class="btn btn-sunset btn-full">Book Deep Dive</a>
+          </div>
+        </div>
+
+        <!-- Plan 3 -->
+        <div class="pricing-card card-glass">
+          <div class="price-header">
+            <span class="plan-badge">Ongoing Care</span>
+            <h3 class="plan-title">Peace of Mind Plan</h3>
+            <div class="price-value-container">
+              <span class="currency">$</span>
+              <span class="price-num">29</span>
+              <span class="period">/ month</span>
+            </div>
+          </div>
+          <div class="price-body">
+            <ul class="price-features">
+              <li>✓ One 45-min in-home session / month</li>
+              <li>✓ Unlimited quick phone &amp; remote support</li>
+              <li>✓ Automated remote security check-ups</li>
+              <li>✓ Perfect gift for parents or grandparents</li>
+              <li>✓ 15% discount on additional hourly visits</li>
+            </ul>
+          </div>
+          <div class="price-footer">
+            <a href="/contact?service=tech-help-care" class="btn btn-secondary btn-full">Enroll in Ongoing Care</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Bottom CTA Banner -->
+  <section class="cta-banner section-spacing">
+    <div class="container text-center card-glass cta-card relative overflow-hidden">
+      <div class="glow-blob glow-blob-3"></div>
+      <h2 class="cta-title">Tired of Struggling with Your Technology?</h2>
+      <p class="cta-subtitle">Give us a call today. No pushy tech sales, no judgments, just friendly and patient local help.</p>
+      <div class="cta-actions">
+        <a href="/contact?service=tech-help" class="btn btn-sunset">Request In-Home Visit</a>
+        <a href="tel:928-458-8121" class="btn btn-secondary">Call 928-458-8121</a>
+      </div>
+      <p class="phone-disclaimer mt-space-2">Speak directly to an Arizona tech specialist. No automated voice trees!</p>
+    </div>
+  </section>
+
+  <Footer slot="footer" />
+</Layout>
+
+<style>
+  .mt-space-2 { margin-top: var(--space-2); }
+  .mt-space-6 { margin-top: var(--space-6); }
+  .text-center { text-align: center; }
+
+  /* Hero Section */
+  .service-hero {
+    padding-top: var(--space-12);
+  }
+  .hero-container {
+    align-items: center;
+  }
+  .hero-title {
+    font-size: clamp(2.2rem, 5vw, 3.5rem);
+    margin-bottom: var(--space-3);
+  }
+  .hero-lead {
+    font-size: 1.2rem;
+    color: var(--color-text-secondary);
+    margin-bottom: var(--space-4);
+    max-width: 580px;
+  }
+  .hero-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+  }
+
+  /* Interactive Spec Card */
+  .spec-card {
+    border-radius: var(--radius-lg);
+    border: var(--border-glow);
+    background: rgba(13, 21, 39, 0.7);
+    overflow: hidden;
+    box-shadow: var(--shadow-lg), var(--glow-sunset);
+    max-width: 480px;
+    margin: var(--space-4) auto 0;
+  }
+  @media (min-width: 768px) {
+    .spec-card {
+      margin-top: 0;
+    }
+  }
+
+  .spec-header {
+    background: rgba(4, 9, 20, 0.8);
+    padding: var(--space-2) var(--space-3);
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  }
+  .spec-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+  }
+  .spec-dot.red { background: #ff5f56; }
+  .spec-dot.yellow { background: #ffbd2e; }
+  .spec-dot.green { background: #27c93f; }
+  
+  .spec-title {
+    font-family: monospace;
+    font-size: 0.8rem;
+    color: var(--color-text-muted);
+    margin-left: var(--space-1);
+  }
+
+  .spec-body {
+    padding: var(--space-4);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+  }
+
+  .spec-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px dashed rgba(255, 255, 255, 0.05);
+    padding-bottom: var(--space-2);
+  }
+  .spec-row:last-child {
+    border: none;
+    padding-bottom: 0;
+  }
+  .spec-label {
+    font-size: 0.95rem;
+    color: var(--color-text-secondary);
+    font-weight: 500;
+  }
+  .spec-val {
+    font-family: var(--font-family-heading);
+    font-size: 1.1rem;
+    font-weight: 700;
+  }
+
+  .spec-footer {
+    background: rgba(4, 9, 20, 0.4);
+    padding: var(--space-2) var(--space-4);
+    display: flex;
+    justify-content: flex-end;
+  }
+  .spec-status-pill {
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: var(--color-accent-copper);
+    background: rgba(206, 92, 23, 0.1);
+    padding: 0.15rem 0.5rem;
+    border-radius: var(--radius-sm);
+    border: 1px solid rgba(206, 92, 23, 0.2);
+  }
+
+  /* Features Grid Section */
+  .section-header {
+    max-width: 700px;
+    margin: 0 auto var(--space-6);
+  }
+  .section-title {
+    font-size: clamp(1.8rem, 4vw, 2.5rem);
+    margin-bottom: var(--space-2);
+  }
+  .section-subtitle {
+    font-size: 1.05rem;
+    color: var(--color-text-secondary);
+  }
+
+  .feature-card {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: var(--space-4);
+  }
+  .feature-icon-circle {
+    width: 44px;
+    height: 44px;
+    border-radius: var(--radius-md);
+    background: rgba(255, 255, 255, 0.03);
+    border: var(--border-glow);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.35rem;
+    margin-bottom: var(--space-3);
+  }
+  .feature-title {
+    margin-bottom: var(--space-2);
+  }
+  .feature-desc {
+    font-size: 0.95rem;
+    color: var(--color-text-secondary);
+    line-height: 1.6;
+    margin-bottom: 0;
+  }
+
+  /* Comparison Section */
+  .comparison-table-wrapper {
+    overflow-x: auto;
+    padding: var(--space-3);
+  }
+  .comparison-table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+    min-width: 600px;
+  }
+  .comparison-table th, 
+  .comparison-table td {
+    padding: var(--space-3) var(--space-4);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  }
+  .comparison-table thead tr th {
+    font-family: var(--font-family-heading);
+    font-size: 1.05rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: var(--color-text-primary);
+    border-bottom: 2px solid rgba(255, 255, 255, 0.1);
+  }
+  .th-feature { width: 30%; }
+  .th-custom { width: 35%; color: var(--color-accent-copper) !important; }
+  .th-builders { width: 35%; color: var(--color-accent-red) !important; }
+  
+  .row-hdr {
+    font-family: var(--font-family-heading);
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--color-text-primary);
+  }
+  .td-custom {
+    color: var(--color-text-primary);
+    font-weight: 500;
+  }
+  .td-builders {
+    color: var(--color-text-secondary);
+  }
+
+  /* Pricing Cards */
+  .pricing-card {
+    display: flex;
+    flex-direction: column;
+    padding: var(--space-6) var(--space-4);
+    height: 100%;
+    position: relative;
+    border-radius: var(--radius-lg);
+  }
+  .featured-card {
+    border-color: rgba(206, 92, 23, 0.3) !important;
+    box-shadow: var(--shadow-lg), var(--glow-sunset);
+  }
+  .card-badge {
+    position: absolute;
+    top: var(--space-3);
+    right: var(--space-3);
+    font-family: var(--font-family-heading);
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: var(--color-bg-base);
+    background: var(--gradient-sunset);
+    padding: 0.25rem 0.75rem;
+    border-radius: var(--radius-full);
+  }
+  
+  .price-header {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    padding-bottom: var(--space-4);
+    margin-bottom: var(--space-4);
+  }
+  .plan-badge {
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: var(--color-text-muted);
+    letter-spacing: 0.05em;
+    display: block;
+    margin-bottom: var(--space-1);
+  }
+  .plan-title {
+    margin-bottom: var(--space-2);
+  }
+  
+  .price-value-container {
+    display: flex;
+    align-items: baseline;
+    gap: 2px;
+  }
+  .currency {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--color-text-primary);
+  }
+  .price-num {
+    font-family: var(--font-family-heading);
+    font-size: 3.25rem;
+    font-weight: 800;
+    line-height: 1;
+    color: var(--color-text-primary);
+  }
+  .period {
+    font-size: 0.95rem;
+    color: var(--color-text-muted);
+  }
+
+  .price-body {
+    flex-grow: 1;
+  }
+  .price-features {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+  }
+  .price-features li {
+    font-size: 0.95rem;
+    color: var(--color-text-secondary);
+    line-height: 1.5;
+  }
+
+  .price-footer {
+    margin-top: var(--space-6);
+  }
+
+  /* Grid 4 for layout */
+  .grid-4 {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-4);
+  }
+  @media (min-width: 576px) {
+    .grid-4 {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  @media (min-width: 992px) {
+    .grid-4 {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+
+  /* Bottom CTA Banner */
+  .cta-card {
+    padding: var(--space-6) var(--space-4);
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+  @media (min-width: 768px) {
+    .cta-card {
+      padding: var(--space-8) var(--space-6);
+    }
+  }
+  .cta-title {
+    font-size: clamp(1.8rem, 4vw, 2.5rem);
+    margin-bottom: var(--space-2);
+  }
+  .cta-subtitle {
+    font-size: 1.1rem;
+    color: var(--color-text-secondary);
+    max-width: 600px;
+    margin: 0 auto var(--space-4);
+  }
+  .cta-actions {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+  }
+  .phone-disclaimer {
+    font-size: 0.95rem;
+    color: var(--color-text-secondary);
+  }
+</style>

@@ -1,0 +1,395 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import ArizonaBadge from '../../components/ArizonaBadge.astro';
+
+const pageTitle = "Bespoke Web Design Services in Arizona | 928Tech";
+const pageDescription = "Fast, mobile-optimized, custom-coded web design for local small businesses. Perfect scores, 100% custom code, no slow builder templates. Grow your business today.";
+---
+
+<Layout title={pageTitle} description={pageDescription}>
+  <Header slot="header" />
+  
+  <!-- Hero Section -->
+  <section class="service-hero section-spacing relative overflow-hidden">
+    <div class="glow-blob glow-blob-1"></div>
+    <div class="container hero-container grid-2">
+      <div class="hero-content animate-slide-up">
+        <ArizonaBadge />
+        <h1 class="hero-title mt-space-2">High-Performance <span class="text-gradient-green">Web Design</span> Built to Convert</h1>
+        <p class="hero-lead">
+          We don't rent you bloated generic templates. We code bespoke, lighting-fast, beautiful websites from scratch that turn local Arizona search traffic into paying customers.
+        </p>
+        <div class="hero-actions">
+          <a href="/contact?pages=5&seo=local" class="btn btn-sunset">Get a Free Custom Blueprint</a>
+          <a href="/portfolio" class="btn btn-secondary">See Design Cases</a>
+        </div>
+      </div>
+      
+      <!-- Interactive Visual Card Representing perfect specs -->
+      <div class="hero-visual animate-fade-in">
+        <div class="spec-card card-glass">
+          <div class="spec-header">
+            <span class="spec-dot red"></span>
+            <span class="spec-dot yellow"></span>
+            <span class="spec-dot green"></span>
+            <span class="spec-title">928tech-performance-audit.json</span>
+          </div>
+          <div class="spec-body">
+            <div class="spec-row">
+              <span class="spec-label">Mobile Page Load Speed</span>
+              <span class="spec-val text-gradient-green">0.24 seconds</span>
+            </div>
+            <div class="spec-row">
+              <span class="spec-label">Lighthouse Performance</span>
+              <span class="spec-val text-gradient-green">100/100 Perfect</span>
+            </div>
+            <div class="spec-row">
+              <span class="spec-label">Accessibility (WCAG 2.2)</span>
+              <span class="spec-val text-gradient-green">Compliant</span>
+            </div>
+            <div class="spec-row">
+              <span class="spec-label">Platform Code Rent Bloat</span>
+              <span class="spec-val text-gradient-sunset">0.00% Zero</span>
+            </div>
+          </div>
+          <div class="spec-footer">
+            <span class="spec-status-pill">Active Edge Delivery</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Core Deliverables Grid Section -->
+  <section class="features-section section-spacing">
+    <div class="container">
+      <div class="section-header text-center">
+        <h2 class="section-title">Designed for <span class="text-gradient-green">Arizona Small Businesses</span></h2>
+        <p class="section-subtitle">Why a professional custom coded site wins more phone calls and local leads than a DIY template site.</p>
+      </div>
+
+      <div class="grid-3 mt-space-6">
+        <!-- Card 1 -->
+        <div class="feature-card card-glass">
+          <div class="feature-icon-circle">⚡</div>
+          <h3 class="feature-title">Lightning Speed Loads</h3>
+          <p class="feature-desc">
+            When a customer clicks your link on a weak cellular connection in Sedona or Lake Havasu, our sites load in milliseconds. No bloated template plugins to slow them down.
+          </p>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="feature-card card-glass">
+          <div class="feature-icon-circle">📱</div>
+          <h3 class="feature-title">Mobile-First Layouts</h3>
+          <p class="feature-desc">
+            Over 65% of local service queries happen on phones. We design our sites specifically to look premium, read easily, and have quick tap targets on mobile viewports.
+          </p>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="feature-card card-glass">
+          <div class="feature-icon-circle">✍️</div>
+          <h3 class="feature-title">Conversion Copywriting</h3>
+          <p class="feature-desc">
+            Beautiful layouts are useless without persuasive copy. We write every word focused on benefits before features, providing clear conversion pathways for local customers.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Comparison Grid: Custom Code vs. Platform Builders -->
+  <section class="comparison-section section-spacing relative overflow-hidden">
+    <div class="glow-blob glow-blob-2"></div>
+    <div class="container">
+      <div class="section-header text-center">
+        <h2 class="section-title">Custom Code vs. <span class="text-gradient-sunset">Generic Rent Templates</span></h2>
+        <p class="section-subtitle">We build assets you fully own, not temporary sites rented from proprietary companies.</p>
+      </div>
+
+      <div class="comparison-table-wrapper card-glass mt-space-6">
+        <table class="comparison-table" aria-label="Custom code vs generic builders comparison">
+          <thead>
+            <tr>
+              <th scope="col" class="th-feature">Core Parameter</th>
+              <th scope="col" class="th-custom">928Tech Custom Code</th>
+              <th scope="col" class="th-builders">Squarespace / Wix / GoDaddy</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row" class="row-hdr">Load Speeds</th>
+              <td class="td-custom">✅ Under 0.5 seconds (Lightning fast)</td>
+              <td class="td-builders">❌ 4 to 8 seconds (Bloated javascript)</td>
+            </tr>
+            <tr>
+              <th scope="row" class="row-hdr">Ownership</th>
+              <td class="td-custom">✅ You own 100% of files &amp; code assets</td>
+              <td class="td-builders">❌ Rented (Deleted if subscription cancels)</td>
+            </tr>
+            <tr>
+              <th scope="row" class="row-hdr">AI Engine Search Ready</th>
+              <td class="td-custom">✅ High precision Schema markup built-in</td>
+              <td class="td-builders">❌ Restricted or non-existent metadata</td>
+            </tr>
+            <tr>
+              <th scope="row" class="row-hdr">Monthly Platform Cost</th>
+              <td class="td-custom">✅ $0/mo (Free Cloudflare Pages CDN hosting)</td>
+              <td class="td-builders">❌ $25 - $70/mo locked proprietary fees</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ and Bottom CTA Banner -->
+  <section class="cta-banner section-spacing">
+    <div class="container text-center card-glass cta-card relative overflow-hidden">
+      <div class="glow-blob glow-blob-3"></div>
+      <h2 class="cta-title">Ready for an Honest, Professional Website?</h2>
+      <p class="cta-subtitle">No pushy sales calls. Get an itemized, fair roadmap custom-crafted for your local Arizona business.</p>
+      <div class="cta-actions">
+        <a href="/pricing" class="btn btn-sunset">Calculate Quote Online</a>
+        <a href="/contact" class="btn btn-secondary">Get in Touch</a>
+      </div>
+      <p class="phone-disclaimer mt-space-2">Or call the founder directly at: <a href="tel:928-458-8121" class="text-gradient-green"><strong>928-458-8121</strong></a></p>
+    </div>
+  </section>
+
+  <Footer slot="footer" />
+</Layout>
+
+<style>
+  .mt-space-2 { margin-top: var(--space-2); }
+  .mt-space-6 { margin-top: var(--space-6); }
+  .text-center { text-align: center; }
+
+  /* Hero Section */
+  .service-hero {
+    padding-top: var(--space-12);
+  }
+  .hero-container {
+    align-items: center;
+  }
+  .hero-title {
+    font-size: clamp(2.2rem, 5vw, 3.5rem);
+    margin-bottom: var(--space-3);
+  }
+  .hero-lead {
+    font-size: 1.2rem;
+    color: var(--color-text-secondary);
+    margin-bottom: var(--space-4);
+    max-width: 580px;
+  }
+  .hero-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+  }
+
+  /* Interactive Spec Card */
+  .spec-card {
+    border-radius: var(--radius-lg);
+    border: var(--border-glow);
+    background: rgba(13, 21, 39, 0.7);
+    overflow: hidden;
+    box-shadow: var(--shadow-lg), var(--glow-green);
+    max-width: 480px;
+    margin: var(--space-4) auto 0;
+  }
+  @media (min-width: 768px) {
+    .spec-card {
+      margin-top: 0;
+    }
+  }
+
+  .spec-header {
+    background: rgba(4, 9, 20, 0.8);
+    padding: var(--space-2) var(--space-3);
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  }
+  .spec-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+  }
+  .spec-dot.red { background: #ff5f56; }
+  .spec-dot.yellow { background: #ffbd2e; }
+  .spec-dot.green { background: #27c93f; }
+  
+  .spec-title {
+    font-family: monospace;
+    font-size: 0.8rem;
+    color: var(--color-text-muted);
+    margin-left: var(--space-1);
+  }
+
+  .spec-body {
+    padding: var(--space-4);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+  }
+
+  .spec-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px dashed rgba(255, 255, 255, 0.05);
+    padding-bottom: var(--space-2);
+  }
+  .spec-row:last-child {
+    border: none;
+    padding-bottom: 0;
+  }
+  .spec-label {
+    font-size: 0.95rem;
+    color: var(--color-text-secondary);
+    font-weight: 500;
+  }
+  .spec-val {
+    font-family: var(--font-family-heading);
+    font-size: 1.1rem;
+    font-weight: 700;
+  }
+
+  .spec-footer {
+    background: rgba(4, 9, 20, 0.4);
+    padding: var(--space-2) var(--space-4);
+    display: flex;
+    justify-content: flex-end;
+  }
+  .spec-status-pill {
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: var(--color-accent-green);
+    background: rgba(11, 181, 92, 0.1);
+    padding: 0.15rem 0.5rem;
+    border-radius: var(--radius-sm);
+    border: 1px solid rgba(11, 181, 92, 0.2);
+  }
+
+  /* Features Grid Section */
+  .section-header {
+    max-width: 700px;
+    margin: 0 auto var(--space-6);
+  }
+  .section-title {
+    font-size: clamp(1.8rem, 4vw, 2.5rem);
+    margin-bottom: var(--space-2);
+  }
+  .section-subtitle {
+    font-size: 1.05rem;
+    color: var(--color-text-secondary);
+  }
+
+  .feature-card {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: var(--space-4);
+  }
+  .feature-icon-circle {
+    width: 44px;
+    height: 44px;
+    border-radius: var(--radius-md);
+    background: rgba(255, 255, 255, 0.03);
+    border: var(--border-glow);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.35rem;
+    margin-bottom: var(--space-3);
+  }
+  .feature-title {
+    margin-bottom: var(--space-2);
+  }
+  .feature-desc {
+    font-size: 0.95rem;
+    color: var(--color-text-secondary);
+    line-height: 1.6;
+    margin-bottom: 0;
+  }
+
+  /* Comparison Section */
+  .comparison-table-wrapper {
+    overflow-x: auto;
+    padding: var(--space-3);
+  }
+  .comparison-table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+    min-width: 600px;
+  }
+  .comparison-table th, 
+  .comparison-table td {
+    padding: var(--space-3) var(--space-4);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  }
+  .comparison-table thead tr th {
+    font-family: var(--font-family-heading);
+    font-size: 1.05rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: var(--color-text-primary);
+    border-bottom: 2px solid rgba(255, 255, 255, 0.1);
+  }
+  .th-feature { width: 30%; }
+  .th-custom { width: 35%; color: var(--color-accent-green) !important; }
+  .th-builders { width: 35%; color: var(--color-accent-red) !important; }
+  
+  .row-hdr {
+    font-family: var(--font-family-heading);
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--color-text-primary);
+  }
+  .td-custom {
+    color: var(--color-text-primary);
+    font-weight: 500;
+  }
+  .td-builders {
+    color: var(--color-text-secondary);
+  }
+
+  /* Bottom CTA Banner */
+  .cta-card {
+    padding: var(--space-6) var(--space-4);
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+  @media (min-width: 768px) {
+    .cta-card {
+      padding: var(--space-8) var(--space-6);
+    }
+  }
+  .cta-title {
+    font-size: clamp(1.8rem, 4vw, 2.5rem);
+    margin-bottom: var(--space-2);
+  }
+  .cta-subtitle {
+    font-size: 1.1rem;
+    color: var(--color-text-secondary);
+    max-width: 600px;
+    margin: 0 auto var(--space-4);
+  }
+  .cta-actions {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+  }
+  .phone-disclaimer {
+    font-size: 0.95rem;
+    color: var(--color-text-secondary);
+  }
+</style>

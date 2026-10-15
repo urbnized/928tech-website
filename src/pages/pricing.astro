@@ -1,0 +1,318 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import ArizonaBadge from '../components/ArizonaBadge.astro';
+import PricingCalculator from '../components/PricingCalculator.astro';
+
+const pageTitle = "Transparent, Fixed-Price Website Plans | 928Tech";
+const pageDescription = "Honest, fair pricing tiers for custom web design, hosting, and local SEO/AEO/GEO in Arizona. Try our interactive visual estimate calculator.";
+---
+
+<Layout title={pageTitle} description={pageDescription}>
+  <Header slot="header" />
+
+  <!-- Pricing Hero Segment -->
+  <section class="pricing-hero section-spacing relative overflow-hidden">
+    <div class="glow-blob glow-blob-1"></div>
+    <div class="container text-center animate-slide-up">
+      <ArizonaBadge />
+      <h1 class="hero-title mt-space-2">Friendly, Fair &amp; <span class="text-gradient-green">Transparent Pricing</span></h1>
+      <p class="hero-lead">
+        No mysterious retainer markups or aggressive sales cycles. We provide flat fixed rates and direct itemized scopes of work. Choose a package below or estimate your custom build instantly!
+      </p>
+    </div>
+  </section>
+
+  <!-- Interactive Calculator Segment -->
+  <section class="calculator-section section-spacing bg-surface-shade relative overflow-hidden">
+    <div class="glow-blob glow-blob-2"></div>
+    <div class="container">
+      <div class="section-header text-center">
+        <h2 class="section-title">Design Your <span class="text-gradient-sunset">Custom Package</span></h2>
+        <p class="section-subtitle">Slide the parameters below to compute an honest, transparent estimate immediately.</p>
+      </div>
+      <PricingCalculator />
+    </div>
+  </section>
+
+  <!-- Traditional Pricing Grid Segment -->
+  <section class="pricing-grid-section section-spacing">
+    <div class="container">
+      <div class="section-header text-center">
+        <h2 class="section-title">Standard <span class="text-gradient-green">Performance Tiers</span></h2>
+        <p class="section-subtitle">Pre-packaged frameworks optimized for different stages of business growth.</p>
+      </div>
+
+      <div class="grid-3 mt-space-6">
+        <!-- Tier 1 -->
+        <div class="pricing-card card-glass">
+          <div class="card-header">
+            <span class="card-tier">Launch Build</span>
+            <div class="card-pricing">
+              <span class="price-setup">$999</span>
+              <span class="price-setup-detail">One-Time Setup</span>
+            </div>
+            <div class="price-support">+$49/mo support</div>
+          </div>
+          <div class="card-divider"></div>
+          <div class="card-body">
+            <p class="card-desc">Perfect for fresh local landing pages, micro-services, or single-location contact forms.</p>
+            <ul class="card-features">
+              <li>✓ Up to 3 Bespoke Pages</li>
+              <li>✓ 100% Clean Astro HTML</li>
+              <li>✓ Under 0.5s Loading Speed</li>
+              <li>✓ Standard Technical SEO Setup</li>
+              <li>✓ Direct Call-to-Action copywriting</li>
+              <li>✓ Secure Cloudflare CDN Edge</li>
+            </ul>
+          </div>
+          <div class="card-footer">
+            <a href="/contact?pages=3&seo=none&hosting=managed&total=999&monthly=49" class="btn btn-secondary btn-full">Choose Launch</a>
+          </div>
+        </div>
+
+        <!-- Tier 2 - Recommended! -->
+        <div class="pricing-card card-glass recommended">
+          <span class="badge-recommended">Best Value</span>
+          <div class="card-header">
+            <span class="card-tier text-gradient-sunset">Growth Engine</span>
+            <div class="card-pricing">
+              <span class="price-setup">$1,599</span>
+              <span class="price-setup-detail">One-Time Setup</span>
+            </div>
+            <div class="price-support">+$248/mo support</div>
+          </div>
+          <div class="card-divider"></div>
+          <div class="card-body">
+            <p class="card-desc">Perfect for established contractors, dental practices, real estate teams, and active shops.</p>
+            <ul class="card-features">
+              <li>✓ <strong>Up to 8 Custom Pages</strong></li>
+              <li>✓ Complete GBP Map Listing Sync</li>
+              <li>✓ Local Business Schema injection</li>
+              <li>✓ Weekly Off-Site Daily Backups</li>
+              <li>✓ <strong>Local SEO Citation Synced</strong></li>
+              <li>✓ Direct Founder Call/Text access</li>
+            </ul>
+          </div>
+          <div class="card-footer">
+            <a href="/contact?pages=8&seo=local&hosting=managed&total=1599&monthly=248" class="btn btn-sunset btn-full">Choose Growth Engine</a>
+          </div>
+        </div>
+
+        <!-- Tier 3 -->
+        <div class="pricing-card card-glass">
+          <div class="card-header">
+            <span class="card-tier">Enterprise Dominance</span>
+            <div class="card-pricing">
+              <span class="price-setup">$2,999</span>
+              <span class="price-setup-detail">One-Time Setup</span>
+            </div>
+            <div class="price-support">+$448/mo support</div>
+          </div>
+          <div class="card-divider"></div>
+          <div class="card-body">
+            <p class="card-desc">For high-traffic operations wanting total search domination across Google and LLM citations.</p>
+            <ul class="card-features">
+              <li>✓ Up to 20 Custom Pages</li>
+              <li>✓ Scheduling/Booking Integration</li>
+              <li>✓ Custom CMS Blog setup</li>
+              <li>✓ <strong>AI Generative Citation (AEO/GEO)</strong></li>
+              <li>✓ Monthly Article content writing</li>
+              <li>✓ Premium speed audits</li>
+            </ul>
+          </div>
+          <div class="card-footer">
+            <a href="/contact?pages=20&seo=aeo-geo&hosting=managed&total=2999&monthly=448" class="btn btn-secondary btn-full">Choose Enterprise</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Bottom CTA Banner -->
+  <section class="cta-banner section-spacing">
+    <div class="container text-center card-glass cta-card relative overflow-hidden">
+      <div class="glow-blob glow-blob-3"></div>
+      <h2 class="cta-title">Need a Highly Niche Integration?</h2>
+      <p class="cta-subtitle">From custom booking calendars to secure client databases, we provide direct fair estimates at a flat rate of <strong>$125/hr</strong>.</p>
+      <div class="cta-actions">
+        <a href="/contact" class="btn btn-sunset">Request Custom Estimate</a>
+        <a href="/about" class="btn btn-secondary">Learn Our Story</a>
+      </div>
+      <p class="phone-disclaimer mt-space-2">Or call the founder directly at: <a href="tel:928-458-8121" class="text-gradient-green"><strong>928-458-8121</strong></a></p>
+    </div>
+  </section>
+
+  <Footer slot="footer" />
+</Layout>
+
+<style>
+  .mt-space-2 { margin-top: var(--space-2); }
+  .mt-space-6 { margin-top: var(--space-6); }
+  .text-center { text-align: center; }
+  
+  .bg-surface-shade {
+    background: rgba(4, 9, 20, 0.4);
+    border-top: 1px solid rgba(255, 255, 255, 0.03);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+  }
+
+  /* Hero */
+  .pricing-hero {
+    padding-top: var(--space-12);
+    padding-bottom: var(--space-6);
+  }
+  .hero-title {
+    font-size: clamp(2.2rem, 5vw, 3.5rem);
+    margin-bottom: var(--space-3);
+  }
+  .hero-lead {
+    font-size: 1.25rem;
+    color: var(--color-text-secondary);
+    max-width: 680px;
+    margin: 0 auto;
+  }
+
+  /* Section Header */
+  .section-header {
+    max-width: 700px;
+    margin: 0 auto var(--space-6);
+  }
+  .section-title {
+    font-size: clamp(1.8rem, 4vw, 2.5rem);
+    margin-bottom: var(--space-2);
+  }
+  .section-subtitle {
+    font-size: 1.05rem;
+    color: var(--color-text-secondary);
+  }
+
+  /* Pricing Cards Grid */
+  .pricing-card {
+    display: flex;
+    flex-direction: column;
+    padding: var(--space-4);
+    min-height: 520px;
+    position: relative;
+    border-color: rgba(255, 255, 255, 0.05);
+  }
+
+  /* Special style for recommended card */
+  .pricing-card.recommended {
+    border-color: rgba(206, 92, 23, 0.4);
+    background: rgba(206, 92, 23, 0.03);
+    box-shadow: var(--shadow-lg), var(--glow-sunset);
+  }
+  .badge-recommended {
+    position: absolute;
+    top: var(--space-3);
+    right: var(--space-3);
+    font-family: var(--font-family-heading);
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: var(--color-bg-base);
+    background: var(--gradient-sunset);
+    padding: 0.25rem 0.65rem;
+    border-radius: var(--radius-sm);
+  }
+
+  .card-header {
+    margin-bottom: var(--space-3);
+  }
+  .card-tier {
+    display: block;
+    font-family: var(--font-family-heading);
+    font-size: 1.35rem;
+    font-weight: 700;
+    color: var(--color-text-primary);
+    margin-bottom: var(--space-1);
+  }
+  .card-pricing {
+    display: flex;
+    align-items: baseline;
+    gap: var(--space-1);
+  }
+  .price-setup {
+    font-family: var(--font-family-heading);
+    font-size: 2.75rem;
+    font-weight: 800;
+    color: var(--color-text-primary);
+  }
+  .price-setup-detail {
+    font-size: 0.85rem;
+    color: var(--color-text-secondary);
+  }
+  .price-support {
+    font-family: var(--font-family-heading);
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--color-accent-green);
+  }
+
+  .card-divider {
+    height: 1px;
+    background: rgba(255, 255, 255, 0.05);
+    margin-bottom: var(--space-3);
+  }
+
+  .card-body {
+    flex-grow: 1;
+    margin-bottom: var(--space-4);
+  }
+  .card-desc {
+    font-size: 0.9rem;
+    color: var(--color-text-secondary);
+    line-height: 1.5;
+    margin-bottom: var(--space-3);
+  }
+  .card-features {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .card-features li {
+    font-size: 0.9rem;
+    color: var(--color-text-secondary);
+  }
+  .card-features strong {
+    color: var(--color-text-primary);
+  }
+
+  .card-footer {
+    margin-top: auto;
+  }
+
+  /* Bottom CTA Banner */
+  .cta-card {
+    padding: var(--space-6) var(--space-4);
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+  @media (min-width: 768px) {
+    .cta-card {
+      padding: var(--space-8) var(--space-6);
+    }
+  }
+  .cta-title {
+    font-size: clamp(1.8rem, 4vw, 2.5rem);
+    margin-bottom: var(--space-2);
+  }
+  .cta-subtitle {
+    font-size: 1.1rem;
+    color: var(--color-text-secondary);
+    max-width: 600px;
+    margin: 0 auto var(--space-4);
+  }
+  .cta-actions {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+  }
+  .phone-disclaimer {
+    font-size: 0.95rem;
+    color: var(--color-text-secondary);
+  }
+</style>

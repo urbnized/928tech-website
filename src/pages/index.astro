@@ -1,0 +1,469 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import ArizonaBadge from '../components/ArizonaBadge.astro';
+import ServiceCard from '../components/ServiceCard.astro';
+import FaqAccordion from '../components/FaqAccordion.astro';
+
+const pageTitle = "928Tech | Premium Arizona Web Design & SEO/AEO/GEO";
+const pageDescription = "High-performance web design, hosting, and AI-optimized SEO/AEO/GEO services for local Arizona small businesses. Get found on Google, Siri, Alexa, and ChatGPT.";
+
+const servicesList = [
+  {
+    title: "Bespoke Web Design",
+    description: "Lightning-fast custom-coded sites. No slow page builders. Fully owned code assets designed to maximize client inquiries.",
+    href: "/services/web-design",
+    iconName: "web" as const,
+    colorTheme: "green" as const,
+    badgeText: "Core Service"
+  },
+  {
+    title: "Ultra-Fast Managed Hosting",
+    description: "Uptime secure hosting built on global CDN edge nodes. Daily backups, standard SSL security, and standard local phone support.",
+    href: "/services/hosting",
+    iconName: "server" as const,
+    colorTheme: "blue" as const
+  },
+  {
+    title: "SEO / AEO / GEO Optimization",
+    description: "Don't just rank on Google. We optimize your business to show up inside ChatGPT, Siri, Alexa, Claude, and Perplexity AI citations.",
+    href: "/services/seo-aeo-geo",
+    iconName: "brain" as const,
+    colorTheme: "sunset" as const,
+    badgeText: "Future Ready"
+  },
+  {
+    title: "In-Home Tech Help & Setup",
+    description: "Patience-first, flat-rate help for seniors & families. Set up or learn how to use your phones, tablets, smart TVs, and computers.",
+    href: "/services/tech-help",
+    iconName: "help" as const,
+    colorTheme: "sunset" as const,
+    badgeText: "New Service"
+  }
+];
+
+const homeFaq = [
+  {
+    question: "Why does custom coding beat using a template like Squarespace or Wix?",
+    answer: "Template builders load large quantities of unseen, bloated code to make drag-and-drop interfaces work. This slows your mobile page load to 4-8 seconds, causing local visitors to drop off before they see your services. 928Tech custom-codes sites using modern frameworks like Astro. This produces 100% clean HTML that compiles to global CDN edge hosts, loading in under 0.5 seconds for perfect 100/100 performance scores and superior Google rankings."
+  },
+  {
+    question: "What is AEO & GEO search optimization?",
+    answer: "Traditional Search Engine Optimization (SEO) optimizes for desktop blue search links. Answer Engine Optimization (AEO) and Generative Engine Optimization (GEO) optimize your data structures so AI assistants (Siri, Alexa) and LLMs (ChatGPT, Claude, Perplexity) fetch and explicitly **cite your local business** in conversational results. At 928Tech, we embed hyper-targeted local Schema markup so artificial intelligence systems immediately understand and recommend your services."
+  },
+  {
+    question: "Do I actually own my website files and domain name?",
+    answer: "Yes, 100%. Under our 'Friendly & Fair' pledge, you own every pixel, line of code, and graphic asset we produce. We compile your site to standard open formats that can be hosted anywhere for pennies. We never hold your domain name hostage, lock your records inside proprietary builders, or charge buy-out fees to leave."
+  },
+  {
+    question: "How do we get started and how long does it take?",
+    answer: "We begin with a free digital blueprint audit. We review your current organic reach, check your local competitor footprints, and provide an itemized roadmap. Standard local business projects are completed in **14 to 21 business days** from start to launching live!"
+  }
+];
+
+const testimonials = [
+  {
+    quote: "928Tech replaced our slow WordPress booking site. Load speeds went to instant, our Google Maps presence skyrocketed, and direct jeep tour bookings surged 42% in 60 days!",
+    author: "Sarah Kelly",
+    role: "Director",
+    business: "Sedona Jeep Outfitters"
+  },
+  {
+    quote: "Direct client inquiries doubled! I loved the transparent pricing. No mysterious fees, no sales jargon, just honest Arizona professionals who write incredible high-speed code.",
+    author: "Dave Miller",
+    role: "Founder",
+    business: "Prescott Valley Plumbing & Gas"
+  }
+];
+---
+
+<Layout title={pageTitle} description={pageDescription}>
+  <Header slot="header" />
+
+  <!-- Home Hero Section -->
+  <section class="home-hero section-spacing relative overflow-hidden">
+    <div class="glow-blob glow-blob-1"></div>
+    <div class="container grid-2 align-center">
+      <div class="hero-content animate-slide-up">
+        <ArizonaBadge />
+        <h1 class="hero-title mt-space-2">Arizona's Premium <span class="text-gradient-green">Web Design</span> &amp; AI Search Agency</h1>
+        <p class="hero-lead">
+          We don't rent you slow, generic template sites. We write high-performance custom code that loads in under 0.5s, outranks competitors locally, and secures cited recommendations inside ChatGPT, Siri, and Google.
+        </p>
+        <div class="hero-actions">
+          <a href="/pricing" class="btn btn-sunset">Calculate Build Quote</a>
+          <a href="/contact" class="btn btn-secondary">Get a Free Local Blueprint</a>
+        </div>
+      </div>
+
+      <!-- Hero Visual Showcase -->
+      <div class="hero-visual animate-fade-in">
+        <div class="showcase-card card-glass">
+          <img src="/images/customer_website_showcase.png" alt="928Tech Happy Customer and Website Build Success Showcase" class="showcase-img" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Core Services Section -->
+  <section class="home-services section-spacing bg-surface-shade relative overflow-hidden">
+    <div class="glow-blob glow-blob-2"></div>
+    <div class="container">
+      <div class="section-header text-center">
+        <h2 class="section-title">Engineered to <span class="text-gradient-green">Attract Customers</span></h2>
+        <p class="section-subtitle">We build complete search-engine, answer-engine, and conversion-ready frameworks.</p>
+      </div>
+
+      <div class="grid-4 mt-space-6">
+        {servicesList.map(srv => (
+          <ServiceCard {...srv} />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Why Custom Code Beats Page Builders Section -->
+  <section class="performance-why section-spacing">
+    <div class="container">
+      <div class="grid-2 align-center">
+        <div class="perf-content">
+          <h2 class="section-title">Speed is Money: Why <span class="text-gradient-sunset">0.5 Seconds Beats 8.0 Seconds</span></h2>
+          <p>
+            When local customers search for service contractors or professional practices on mobile phones with weak 4G signals, they abandon slow websites immediately.
+          </p>
+          <p>
+            For every **1-second delay** in loading speeds, your business loses **7% in conversion inquiries**. Templated DIY sites drag down your search performance and increase advertising cost-per-click rates.
+          </p>
+          <p>
+            We compile Astro markup directly to global CDN servers, meaning your pages load almost instantly worldwide.
+          </p>
+          
+          <div class="home-checklist mt-space-3">
+            <div class="check-item">
+              <span class="check-icon">✓</span>
+              <span><strong>Pure HTML Compiler:</strong> Zero heavy javascript bloat sent to customer phones.</span>
+            </div>
+            <div class="check-item">
+              <span class="check-icon">✓</span>
+              <span><strong>WCAG AA Accessible:</strong> Semantic landmarks ensuring all local customers can navigate.</span>
+            </div>
+            <div class="check-item">
+              <span class="check-icon">✓</span>
+              <span><strong>Itemized Invoicing:</strong> Fixed rate project structures with zero proprietary recurring fees.</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="perf-visual">
+          <div class="speed-bars card-glass">
+            <h4 class="speed-bars-title">Lighthouse Performance Ratings</h4>
+            <div class="speed-bar-row">
+              <span class="speed-label">928Tech Build</span>
+              <div class="speed-bar-container">
+                <div class="speed-bar-fill green" style="width: 100%;"></div>
+              </div>
+              <span class="speed-score green-text">100/100 Perfect</span>
+            </div>
+            <div class="speed-bar-row">
+              <span class="speed-label">Wix Template</span>
+              <div class="speed-bar-container">
+                <div class="speed-bar-fill red" style="width: 48%;"></div>
+              </div>
+              <span class="speed-score red-text">48/100 Slow</span>
+            </div>
+            <div class="speed-bar-row">
+              <span class="speed-label">Squarespace Build</span>
+              <div class="speed-bar-container">
+                <div class="speed-bar-fill yellow" style="width: 62%;"></div>
+              </div>
+              <span class="speed-score yellow-text">62/100 Medium</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials Section -->
+  <section class="home-testimonials section-spacing bg-surface-shade relative overflow-hidden">
+    <div class="glow-blob glow-blob-3"></div>
+    <div class="container">
+      <div class="section-header text-center">
+        <h2 class="section-title">Trusted by <span class="text-gradient-green">Arizona Locals</span></h2>
+        <p class="section-subtitle">Read how our high-speed, custom strategies grow actual small business phone inquiries.</p>
+      </div>
+
+      <div class="grid-2 mt-space-6">
+        {testimonials.map(t => (
+          <div class="testimonial-card card-glass">
+            <p class="testimonial-quote">"{t.quote}"</p>
+            <div class="testimonial-author-block">
+              <span class="quote-symbol">“</span>
+              <div>
+                <span class="testimonial-author">{t.author}</span>
+                <span class="testimonial-role">{t.role}, {t.business}</span>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Accordion Section -->
+  <section class="home-faq section-spacing">
+    <div class="container">
+      <div class="section-header text-center">
+        <h2 class="section-title">Frequently Asked <span class="text-gradient-green">Questions</span></h2>
+        <p class="section-subtitle">Answers regarding speed, accessibility, custom coding, and our transparent services.</p>
+      </div>
+      <FaqAccordion items={homeFaq} />
+    </div>
+  </section>
+
+  <!-- Bottom CTA Banner -->
+  <section class="cta-banner section-spacing">
+    <div class="container text-center card-glass cta-card relative overflow-hidden">
+      <div class="glow-blob glow-blob-1"></div>
+      <h2 class="cta-title">Ready for a Fair, High-Performance Web Strategy?</h2>
+      <p class="cta-subtitle">Get an itemized custom scope of work outlining exactly how we will code, optimize, and launch your business website.</p>
+      <div class="cta-actions">
+        <a href="/pricing" class="btn btn-sunset">Calculate Quote Online</a>
+        <a href="/contact" class="btn btn-secondary">Get a Free Strategy Blueprint</a>
+      </div>
+      <p class="phone-disclaimer mt-space-2">Or call the founder directly at: <a href="tel:928-458-8121" class="text-gradient-green"><strong>928-458-8121</strong></a></p>
+    </div>
+  </section>
+
+  <Footer slot="footer" />
+</Layout>
+
+<style>
+  .mt-space-2 { margin-top: var(--space-2); }
+  .mt-space-3 { margin-top: var(--space-3); }
+  .mt-space-6 { margin-top: var(--space-6); }
+  .text-center { text-align: center; }
+  .align-center { align-items: center; }
+
+  .bg-surface-shade {
+    background: rgba(4, 9, 20, 0.4);
+    border-top: 1px solid rgba(255, 255, 255, 0.03);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+  }
+
+  /* Hero Section */
+  .home-hero {
+    padding-top: var(--space-12);
+  }
+  .hero-title {
+    font-size: clamp(2.3rem, 5vw, 3.8rem);
+    margin-bottom: var(--space-3);
+  }
+  .hero-lead {
+    font-size: 1.25rem;
+    color: var(--color-text-secondary);
+    margin-bottom: var(--space-4);
+    max-width: 580px;
+  }
+  .hero-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+  }
+
+  .hero-visual {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+  }
+
+  /* Showcase Visual Block */
+  .showcase-card {
+    padding: 0;
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    max-width: 100%; /* Stretches horizontally to completely fill the grid column */
+    width: 100%;
+    margin: var(--space-6) auto 0;
+    box-shadow: var(--shadow-lg), var(--glow-green);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    transition: transform var(--transition-normal), box-shadow var(--transition-normal);
+  }
+  .showcase-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-xl), var(--glow-green);
+  }
+  @media (min-width: 768px) {
+    .showcase-card {
+      margin-top: 0;
+    }
+  }
+
+  .showcase-img {
+    width: 100%;
+    height: 420px; /* Stretched vertically to match the height of the hero content next to it */
+    object-fit: cover;
+    display: block;
+  }
+
+  /* Section headers */
+  .section-header {
+    max-width: 700px;
+    margin: 0 auto var(--space-6);
+  }
+  .section-title {
+    font-size: clamp(1.8rem, 4vw, 2.5rem);
+    margin-bottom: var(--space-2);
+  }
+  .section-subtitle {
+    font-size: 1.05rem;
+    color: var(--color-text-secondary);
+  }
+
+  /* Why custom code */
+  .home-checklist {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+  }
+  .check-item {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    font-size: 1rem;
+    color: var(--color-text-secondary);
+  }
+  .check-icon {
+    color: var(--color-accent-green);
+    font-weight: bold;
+    font-size: 1.25rem;
+  }
+
+  /* Speed bars chart */
+  .speed-bars {
+    padding: var(--space-4);
+    max-width: 440px;
+    margin: var(--space-6) auto 0;
+  }
+  @media (min-width: 768px) {
+    .speed-bars {
+      margin-top: 0;
+    }
+  }
+
+  .speed-bars-title {
+    font-size: 0.95rem;
+    text-transform: uppercase;
+    color: var(--color-text-secondary);
+    margin-bottom: var(--space-3);
+  }
+  .speed-bar-row {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    margin-bottom: var(--space-3);
+  }
+  .speed-bar-row:last-child {
+    margin-bottom: 0;
+  }
+  .speed-label {
+    font-size: 0.85rem;
+    font-weight: 500;
+  }
+  .speed-bar-container {
+    height: 8px;
+    background: rgba(255,255,255,0.05);
+    border-radius: var(--radius-full);
+    overflow: hidden;
+  }
+  .speed-bar-fill {
+    height: 100%;
+    border-radius: var(--radius-full);
+  }
+  .speed-bar-fill.green { background: var(--color-accent-green); }
+  .speed-bar-fill.yellow { background: var(--color-accent-gold); }
+  .speed-bar-fill.red { background: var(--color-accent-red); }
+  
+  .speed-score {
+    font-size: 0.8rem;
+    font-weight: 700;
+    text-align: right;
+  }
+  .green-text { color: var(--color-accent-green); }
+  .yellow-text { color: var(--color-accent-gold); }
+  .red-text { color: var(--color-accent-red); }
+
+  /* Testimonials */
+  .testimonial-card {
+    padding: var(--space-4);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 220px;
+    border-color: rgba(255,255,255,0.05);
+  }
+  .testimonial-quote {
+    font-size: 1.05rem;
+    line-height: 1.6;
+    color: var(--color-text-secondary);
+    font-style: italic;
+  }
+  .testimonial-author-block {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    border-top: 1px solid rgba(255,255,255,0.05);
+    padding-top: var(--space-2);
+  }
+  .quote-symbol {
+    font-size: 2rem;
+    color: var(--color-accent-green);
+    font-weight: 800;
+    line-height: 1;
+  }
+  .testimonial-author {
+    display: block;
+    font-family: var(--font-family-heading);
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: var(--color-text-primary);
+  }
+  .testimonial-role {
+    font-size: 0.8rem;
+    color: var(--color-text-muted);
+  }
+
+  /* Bottom CTA Banner */
+  .cta-card {
+    padding: var(--space-6) var(--space-4);
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+  @media (min-width: 768px) {
+    .cta-card {
+      padding: var(--space-8) var(--space-6);
+    }
+  }
+  .cta-title {
+    font-size: clamp(1.8rem, 4vw, 2.5rem);
+    margin-bottom: var(--space-2);
+  }
+  .cta-subtitle {
+    font-size: 1.1rem;
+    color: var(--color-text-secondary);
+    max-width: 600px;
+    margin: 0 auto var(--space-4);
+  }
+  .cta-actions {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+  }
+  .phone-disclaimer {
+    font-size: 0.95rem;
+    color: var(--color-text-secondary);
+  }
+</style>
