@@ -261,7 +261,9 @@ const isServicesActive = () => {
     height: 14px;
     transition: transform var(--transition-fast);
   }
-  .nav-item-dropdown:hover .chevron-icon {
+  .nav-item-dropdown:hover .chevron-icon,
+  .nav-item-dropdown:focus-within .chevron-icon,
+  .nav-item-dropdown.is-open .chevron-icon {
     transform: rotate(180deg);
   }
 
@@ -275,24 +277,38 @@ const isServicesActive = () => {
     top: 100%;
     left: 50%;
     transform: translateX(-50%) translateY(10px);
-    width: 260px;
+    width: 290px;
     padding: var(--space-2);
     display: flex;
     flex-direction: column;
     gap: 4px;
     opacity: 0;
+    visibility: hidden;
     pointer-events: none;
-    transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    transition: opacity 0.2s cubic-bezier(0.16, 1, 0.3, 1), transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.2s;
     background: rgba(13, 21, 39, 0.98);
     border: 1px solid rgba(11, 181, 92, 0.2);
     box-shadow: var(--shadow-lg), var(--glow-blue);
     z-index: 120;
     border-radius: var(--radius-md);
   }
+
+  /* Invisible hover bridge spanning between trigger button and menu */
+  .dropdown-menu::before {
+    content: '';
+    position: absolute;
+    top: -16px;
+    left: 0;
+    right: 0;
+    height: 16px;
+    background: transparent;
+  }
   
   .nav-item-dropdown:hover .dropdown-menu,
-  .nav-item-dropdown:focus-within .dropdown-menu {
+  .nav-item-dropdown:focus-within .dropdown-menu,
+  .nav-item-dropdown.is-open .dropdown-menu {
     opacity: 1;
+    visibility: visible;
     pointer-events: auto;
     transform: translateX(-50%) translateY(4px);
   }
@@ -305,6 +321,7 @@ const isServicesActive = () => {
     font-weight: 600;
     color: #ffffff; /* bright white for contrast */
     border-radius: var(--radius-sm);
+    white-space: nowrap;
     transition: all var(--transition-fast);
     text-shadow: 0 2px 8px rgba(0, 0, 0, 1), 0 4px 16px rgba(0, 0, 0, 0.95), 0 0 2px rgba(0, 0, 0, 1);
   }
@@ -559,22 +576,74 @@ const isServicesActive = () => {
     });
   }
 
-  // Accessibility dropdown focus checks on Desktop
+  // Desktop Dropdown hover persistence, focus, & click toggle
+  const navDropdown = document.querySelector('.nav-item-dropdown');
   const dropdownTrigger = document.querySelector('.dropdown-trigger');
   const dropdownMenu = document.getElementById('services-desktop-menu');
 
-  if (dropdownTrigger && dropdownMenu) {
-    dropdownTrigger.addEventListener('focus', () => {
+  if (navDropdown && dropdownTrigger && dropdownMenu) {
+    let closeTimeout: number | undefined;
+
+    const openDropdown = () => {
+      if (closeTimeout) clearTimeout(closeTimeout);
+      navDropdown.classList.add('is-open');
       dropdownTrigger.setAttribute('aria-expanded', 'true');
+    };
+
+    const closeDropdown = () => {
+      if (closeTimeout) clearTimeout(closeTimeout);
+      closeTimeout = window.setTimeout(() => {
+        navDropdown.classList.remove('is-open');
+        dropdownTrigger.setAttribute('aria-expanded', 'false');
+      }, 250);
+    };
+
+    // Hover events with grace debounce
+    navDropdown.addEventListener('mouseenter', openDropdown);
+    navDropdown.addEventListener('mouseleave', closeDropdown);
+
+    // Toggle on click as well
+    dropdownTrigger.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const isOpen = navDropdown.classList.contains('is-open');
+      if (isOpen) {
+        if (closeTimeout) clearTimeout(closeTimeout);
+        navDropdown.classList.remove('is-open');
+        dropdownTrigger.setAttribute('aria-expanded', 'false');
+      } else {
+        openDropdown();
+      }
     });
+
+    // Keyboard accessibility
+    dropdownTrigger.addEventListener('focus', openDropdown);
 
     const dropdownLinks = dropdownMenu.querySelectorAll('a');
     const lastLink = dropdownLinks[dropdownLinks.length - 1];
 
     if (lastLink) {
       lastLink.addEventListener('blur', () => {
-        dropdownTrigger.setAttribute('aria-expanded', 'false');
+        closeDropdown();
       });
     }
+
+    // Close when clicking outside
+    document.addEventListener('click', (e) => {
+      if (!navDropdown.contains(e.target as Node)) {
+        if (closeTimeout) clearTimeout(closeTimeout);
+        navDropdown.classList.remove('is-open');
+        dropdownTrigger.setAttribute('aria-expanded', 'false');
+      }
+    });
+
+    // Close on Escape key
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && navDropdown.classList.contains('is-open')) {
+        if (closeTimeout) clearTimeout(closeTimeout);
+        navDropdown.classList.remove('is-open');
+        dropdownTrigger.setAttribute('aria-expanded', 'false');
+        (dropdownTrigger as HTMLElement).focus();
+      }
+    });
   }
 </script>
